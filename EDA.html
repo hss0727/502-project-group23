@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Hyuksoo</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+  <!-- Favicons -->
+
+  <!-- Custom styles for this template -->
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="container" style="max-width: 800px">
+    <nav class="navbar mx-auto bg-light px-4 fixed-top">
+        <a class="navbar-brand" href="index.html">Big Data and Cloud Computing - Final Project</a>
+        <ul class="nav nav-pills justify-content-center">
+          
+          <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project Introduction</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="EDA.html" style="color: black">EDA</a></li>
+        </ul>
+      </nav>
+
+
+    <br>
+    <h2 class="">1. Introduction</h2>
+    <hr><br>
+    <div class="border rounded px-4 pt-2 pb-0">
+
+        <p class="fw-light fst-italic">The Russo-Ukrainian War,also known as the Russia–Ukraine War, has been ongoing between Russia (alongside Russian separatists in Ukraine) and Ukraine since February 2014. Following Ukraine's Revolution of Dignity, Russia annexed Crimea from Ukraine and supported pro-Russian separatists in the war in Donbas against Ukrainian government forces; fighting for the first eight years of the conflict also included naval incidents, cyberwarfare, and heightened political tensions. Throughout 2021, bilateral tensions rose due to a Russian military buildup near the border with Ukraine, and on 24 February 2022, the conflict saw a major escalation as Russia launched a full-scale invasion of Ukraine.</p>
+        
+        
+        <p class="text-end">Source: <a href="https://en.wikipedia.org/wiki/Russo-Ukrainian_War#Human_rights_violations">Wikipedia</a>
+        </p>
+        
+    </div>
+    <br>
+
+    <p>During this year, the financial market is having extra turmoil due to the ongoing Russia-Ukraine Conflict. This project aims to study this event from a perspective combining the commodity market with online social media. Modern finance theory holds that asset prices are mainly affected by market and psychological factors. Global economies are presently facing severe challenges due to food and energy shortages, since Ukraine and Russia are among the major exporters of wheat, natural gas, etc. From a behavioral finance perspective, geopolitical conflict can have an impact on investors’ psychological factors, which in turn can have an impact on commodity prices. This project will explore the relationship between the food and energy commodity market and Russia-Ukraine related Reddit posts, in hope that the data can capture both market and psychological factors. If another emergent event happens in the future, a similar approach can be conducted to evaluate the impact on commodity markets.</p>
+    <br>
+    <br>
+
+
+    <br>
+    <h2>2. Data Exploration</h2>
+    <hr>
+
+    <a href="https://arxiv.org/pdf/2001.08435.pdf">Link: The Pushshift Reddit Dataset</a></br>
+
+    <p>
+
+    </p>
+
+
+    <b>Summary Statistics</b><br> 
+    
+    <h4>Datasets Table Containing</h4> 
+    1. Size of the datasets<br>
+    2. Row counts of each data (Comments, Submissions, Commodity Price/Volatility)<br>
+    3. Number of Missing Body comments/posts, daily transations<br>
+    4. Start/End Date<br>
+
+    <h4>Subreddits Table Containing </h4>
+    1. Number of Submission<br>
+    2. Number of Comments<br>
+    3. Active Users on each Subrredit<br>
+    4. Number of Texts Containing Foreign Language (Dummy Varaible)<br>
+
+    <h4>Commodity Return/Volatility Table Containing</h4>>
+    1. Price Summary For Each Commodity<br>
+
+    <br><br>
+
+
+    <table class="table table-bordered table-hover table-condensed">
+        <thead><tr><th title="Field #1">Stats</th>
+        <th title="Field #2">Reddit Submissions</th>
+        <th title="Field #3">Reddit Comments</th>
+        <th title="Field #4">Commodity Prices</th>
+        </tr></thead>
+        <tbody><tr>
+        <td>Size</td>
+        <td>0.05G</td>
+        <td>1.4G</td>
+        <td>166KB</td>
+        </tr>
+        <tr>
+        <td>Columns</td>
+        <td>69</td>
+        <td>22</td>
+        <td>15</td>
+        </tr>
+        <tr>
+        <td>Rows</td>
+        <td>384,972</td>
+        <td>9,993,790</td>
+        <td>1,455</td>
+        </tr>
+        <tr>
+        <td>Missing Values</td>
+        <td>54,375[delete]; 259,328 no-text</td>
+        <td>367,528[delete]; 25 no-text</td>
+        <td>2927</td>
+        </tr>
+        <tr>
+        <td>Startdate</td>
+        <td>2022-01-01</td>
+        <td>2022-01-01</td>
+        <td>2018-01-02</td>
+        </tr>
+        <tr>
+        <td>Enddate</td>
+        <td>2022-08-31</td>
+        <td>2022-08-31</td>
+        <td>2022-08-31</td>
+        </tr>
+        </tbody>
+    </table>
+<br><br>
+
+
+
+<table class="table table-bordered table-hover table-condensed">
+<thead><tr><th title="Field #1">Subreddit</th>
+<th title="Field #2">CombatFootage</th>
+<th title="Field #3">CredibleDefense</th>
+<th title="Field #4">RussiaUkraineWar2022</th>
+<th title="Field #5">UkraineConflict</th>
+<th title="Field #6">UkraineInvasionVideos</th>
+<th title="Field #7">UkraineWarReports</th>
+<th title="Field #8">UkraineWarVideoReport</th>
+<th title="Field #9">UkrainianConflict</th>
+<th title="Field #10">geopolitics</th>
+<th title="Field #11">ukraina</th>
+<th title="Field #12">ukraine</th>
+<th title="Field #13">war</th>
+</tr></thead>
+<tbody><tr>
+<td># of Submissions</td>
+<td>107</td>
+<td>169</td>
+<td>25513</td>
+<td>13394</td>
+<td>14360</td>
+<td>7746</td>
+<td>45260</td>
+<td>86925</td>
+<td>60</td>
+<td>17975</td>
+<td>172818</td>
+<td>645</td>
+</tr>
+<tr>
+<td># of Comments</td>
+<td>270539</td>
+<td>64817</td>
+<td>481116</td>
+<td>72528</td>
+<td>116823</td>
+<td>78552</td>
+<td>1724675</td>
+<td>1987549</td>
+<td>23085</td>
+<td>158422</td>
+<td>4990804</td>
+<td>24880</td>
+</tr>
+<tr>
+<td>Active Users</td>
+<td>50383</td>
+<td>4828</td>
+<td>48934</td>
+<td>10933</td>
+<td>16474</td>
+<td>14175</td>
+<td>157469</td>
+<td>129635</td>
+<td>5526</td>
+<td>25841</td>
+<td>262567</td>
+<td>7485</td>
+</tr>
+<tr>
+<td>Contains Foreign Langauge</td>
+<td>36.45%</td>
+<td>18.34%</td>
+<td>27.33%</td>
+<td>29.79%</td>
+<td>30.88%</td>
+<td>30.03%</td>
+<td>29.08%</td>
+<td>25.03%</td>
+<td>13.33%</td>
+<td>50.05%</td>
+<td>27.01%</td>
+<td>21.86%</td>
+</tr>
+</tbody></table>
+<br><br>
+
+
+
+
+
+
+
+    <table class="table table-bordered table-hover table-condensed">
+        <thead><tr><th title="Field #1">Stats</th>
+        <th title="Field #2">Barley</th>
+        <th title="Field #3">Cocoa</th>
+        <th title="Field #4">Coffee</th>
+        <th title="Field #5">Corn Futures</th>
+        <th title="Field #6">Crude Oil</th>
+        <th title="Field #7">Heating Oil</th>
+        <th title="Field #8">Natural Gas</th>
+        <th title="Field #9">Newcastle Coal</th>
+        <th title="Field #10">Oats</th>
+        <th title="Field #11">RBOB Gasoline</th>
+        <th title="Field #12">Rough Rice</th>
+        <th title="Field #13">Soybean Meal Futures</th>
+        <th title="Field #14">Soybean Oil Futures</th>
+        <th title="Field #15">Sugar #11</th>
+        <th title="Field #16">Wheat</th>
+        </tr></thead>
+        <tbody><tr>
+        <td>Count</td>
+        <td align="right">1149</td>
+        <td align="right">1178</td>
+        <td align="right">1177</td>
+        <td align="right">1193</td>
+        <td align="right">1268</td>
+        <td align="right">1263</td>
+        <td align="right">1268</td>
+        <td align="right">1191</td>
+        <td align="right">1176</td>
+        <td align="right">1262</td>
+        <td align="right">1177</td>
+        <td align="right">1184</td>
+        <td align="right">1200</td>
+        <td align="right">1181</td>
+        <td align="right">1191</td>
+        </tr>
+        <tr>
+        <td>Mean</td>
+        <td align="right">1897.88</td>
+        <td align="right">2434.53</td>
+        <td align="right">138.38</td>
+        <td align="right">459.15</td>
+        <td align="right">62.73</td>
+        <td align="right">2.06</td>
+        <td align="right">3.35</td>
+        <td align="right">130.71</td>
+        <td align="right">371.37</td>
+        <td align="right">1.92</td>
+        <td align="right">12.99</td>
+        <td align="right">348.65</td>
+        <td align="right">41.72</td>
+        <td align="right">14.53</td>
+        <td align="right">615.65</td>
+        </tr>
+        <tr>
+        <td>Std</td>
+        <td align="right">491.47</td>
+        <td align="right">195.72</td>
+        <td align="right">48.13</td>
+        <td align="right">133.72</td>
+        <td align="right">20.48</td>
+        <td align="right">0.76</td>
+        <td align="right">1.68</td>
+        <td align="right">97.25</td>
+        <td align="right">151.57</td>
+        <td align="right">0.69</td>
+        <td align="right">1.94</td>
+        <td align="right">54.63</td>
+        <td align="right">17.05</td>
+        <td align="right">3.04</td>
+        <td align="right">172.68</td>
+        </tr>
+        <tr>
+        <td>Min</td>
+        <td align="right">1305.50</td>
+        <td align="right">1895.00</td>
+        <td align="right">86.65</td>
+        <td align="right">302.75</td>
+        <td align="right">-37.63</td>
+        <td align="right">0.61</td>
+        <td align="right">1.48</td>
+        <td align="right">48.50</td>
+        <td align="right">220.75</td>
+        <td align="right">0.41</td>
+        <td align="right">9.78</td>
+        <td align="right">280.00</td>
+        <td align="right">24.99</td>
+        <td align="right">9.21</td>
+        <td align="right">416.50</td>
+        </tr>
+        <tr>
+        <td>25%</td>
+        <td align="right">1518.50</td>
+        <td align="right">2314.00</td>
+        <td align="right">104.10</td>
+        <td align="right">362.75</td>
+        <td align="right">52.07</td>
+        <td align="right">1.70</td>
+        <td align="right">2.40</td>
+        <td align="right">67.85</td>
+        <td align="right">273.19</td>
+        <td align="right">1.48</td>
+        <td align="right">11.70</td>
+        <td align="right">303.77</td>
+        <td align="right">28.59</td>
+        <td align="right">12.15</td>
+        <td align="right">504.25</td>
+        </tr>
+        <tr>
+        <td>50%</td>
+        <td align="right">1817.50</td>
+        <td align="right">2436.00</td>
+        <td align="right">118.20</td>
+        <td align="right">387.25</td>
+        <td align="right">61.35</td>
+        <td align="right">1.98</td>
+        <td align="right">2.78</td>
+        <td align="right">97.15</td>
+        <td align="right">300.50</td>
+        <td align="right">1.90</td>
+        <td align="right">12.56</td>
+        <td align="right">329.40</td>
+        <td align="right">31.70</td>
+        <td align="right">13.36</td>
+        <td align="right">541.00</td>
+        </tr>
+        <tr>
+        <td>75%</td>
+        <td align="right">2100.00</td>
+        <td align="right">2552.00</td>
+        <td align="right">158.70</td>
+        <td align="right">557.25</td>
+        <td align="right">70.78</td>
+        <td align="right">2.19</td>
+        <td align="right">3.73</td>
+        <td align="right">141.58</td>
+        <td align="right">403.81</td>
+        <td align="right">2.16</td>
+        <td align="right">13.74</td>
+        <td align="right">391.65</td>
+        <td align="right">57.95</td>
+        <td align="right">17.66</td>
+        <td align="right">693.00</td>
+        </tr>
+        <tr>
+        <td>Max</td>
+        <td align="right">3261.00</td>
+        <td align="right">3054.00</td>
+        <td align="right">258.35</td>
+        <td align="right">818.25</td>
+        <td align="right">123.70</td>
+        <td align="right">5.14</td>
+        <td align="right">9.68</td>
+        <td align="right">440.00</td>
+        <td align="right">807.00</td>
+        <td align="right">4.31</td>
+        <td align="right">22.07</td>
+        <td align="right">521.90</td>
+        <td align="right">90.60</td>
+        <td align="right">20.42</td>
+        <td align="right">1425.25</td>
+        </tr>
+        </tbody></table>
+        
+        Note:
+        
+        1.Due to difference in trading rules, commodity futures can have different number of trading days.
+        
+        2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.
+
+        <br><br>
+
+
+
+
+    <h4>2-1. Geography - Building Location</h4>
+    <hr>
+    <p>There were three main geographical variables that represented building location: “geo_level_1_id”, “geo_level_2_id”, and “geo_level_3_id”, which could loosely be interpreted as representing the building’s town (level 1), district (level 2), and street (level 3). Since the values are not coordinate system numbers such as latitude and longitude, they do not provide information on the actual positions of buildings on a map. As such, their encodings provide <strong style="color: blue">less interpretability for humans and likely less understandability for a model.</strong></p>
+    <br>
+    <div class="text-center">
+        <img src="./figs/eda_geo.png" alt="geo_eda" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 1. Histograms of variables related to the geographical location of the buildings.</figcaption>
+    </div>
+    <br>
+    <br>
+
+
+    <h4>2-2. Building Information</h4>
+    <hr>
+
+    <p>The distributions of numerical and categorical variables show the relatively large imbalance in data across the variables. For example, the 'age' variable, which is a numeric variable of the age of the building in years, includes '999' for age unknown.</p>
+    <br>
+    <div class="text-center">
+        <img src="./figs/building_structure.png" alt="building_structure" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 2. Numerical and categorical variables related to the building structure. This plot shows that some of the variables are skewed towards lower values with some outliers.</figcaption>
+    </div>
+    <br>
+    <br>
+
+    <p>The variables related to the building materials are categorical variables and dummy variables are constructed before splitting the dataset.</p>
+    <br>
+    <div class="text-center">
+        <img src="./figs/building_materials.png" alt="building_structure" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 3. Categorical variables related to the building materials. The plot shows that most of the variables are imbalanced.</figcaption>
+    </div>
+    <br>
+    <br>
+
+    <p>The distributions of the secondary use variables are shown and compared to the damage grade levels. Using these visualizations,  it is clear that secondary usages have very minimal to zero effect on the damage of a building. </p>
+    <br>
+    <div class="text-center">
+        <img src="./figs/building_usage.png" alt="building_structure" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 4. Categorical variables related to the building usage. The plot shows that most of the variables are imbalanced.</figcaption>
+    </div>
+    <br>
+    <br>
+
+
+    <h4>2-3. Level of Damage</h4>
+    <hr>
+
+    <p>The plot displays each of the features made available in this competition, including the label. The label, as mentioned above, identifies the level of damage sustained by each building: (1) low, (2) medium, or (3) high.</p>
+    <br>
+    <div class="text-center">
+        <img src="./figs/damage_level.png" alt="damage_level" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 5. Distribution of damage level classifications for the training data. There were more training data labeled as "Medium" as compared to "Low" and "High".</figcaption>
+    </div>
+    <br>
+    <br>
+
+    <br>
+    <h2>3. Model</h2>
+    <hr>
+    <p>While there were no missing values across all variables, dummy variables were constructed for the categorical columns and the dataset was split into a 70-30 train-test set. The training and testing sets from this split were established and provided by the DataDriven competition such that the testing set did not contain labels and would be used for final scoring of model submissions. Therefore, all training and testing of models prior to submission had to be done with the given training set in order to assess model accuracy prior to submission. The Random Forest model is used to provide the benchmark for analysis.</p>
+    <div class="text-center">
+        <img src="./figs/confusion_matrix.png" alt="confusion_matrix" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 6. Confusion matrix for Random Forest model (Scikit-learn.ensemble.RandomForestClassifier | Model parameters: n_estimator=150, max_features='sqrt')</figcaption>
+    </div>
+    <br>
+    <br>
+    <p>It’s seen that almost half of the testing data points were accurately predicted to be of “Medium” damage level. However, of the data that had an actual label of “High”, both models predicted almost half to be “Medium” and the other half to be “High”. This may suggest that these levels of damage have similar criteria seen in the variables. Or, this could be a result of the non-uniform distribution of labels across the training and testing data, and therefore the models did not learn how to distinguish between the majority of data points that were “Medium” damage, and the fewer data points that were “High” damage.</p>
+    <br>
+    <div class="text-center">
+        <img src="./figs/feature_importance.png" alt="feature importance" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 7. Feature Importance attribute from the Random Forest classifier. </figcaption>
+    </div>
+    <br>
+    <br>
+    <p>The plot provides insight into the importance of the variables to feature engineer.</p>
+    <br>
+    <br>
+
+
+
+    <br>
+    <h2>4. Feature Engineering</h2>
+    <hr>
+    <p>In order to attempt to improve the two best models’ accuracies and to decrease algorithmic complexity, feature engineering was explored in three main ways: feature selection, feature transformation, and feature extraction techniques.</p>
+    <p>The feature selection process started with categorizing the variables into four factors that were hypothesized to have a relationship with damage level. The categories were geography, building structure, building materials, and building usage. Of these, geography was considered for transformation for two main reasons. First, it is obvious that a building’s location would be an important factor of the level of damage it experiences, as buildings closer to an earthquake’s origin are more likely to experience greater damage. Second, it was seen that the three geographic variables were the top three important variables in all three of the top classification models that were produced without feature engineering: Random Forest, AdaBoost, and Bagging. This is shown and discussed in Figure 6 in the Results section below. Considering these variables’ importance in the pre-feature engineering models, it seemed likely that combining the geographic variables into a single variable may aid in the models’ abilities to interpret and utilize the geographic information. </p>
+    <p>There were three main geographical variables that represented building location: “geo_level_1_id”, “geo_level_2_id”, and “geo_level_3_id”, which could loosely be interpreted as representing the building’s town (level 1), district (level 2), and street (level 3). These variables simply provided an encoding to represent the building’s street, district, and town. Therefore, since the values are not coordinate system numbers such as latitude and longitude, they do not provide information on the actual positions of buildings on a map. As such, their encodings provide less interpretability for humans and likely less understandability for a model. </p>
+    <p>To begin the investigation into these variables, a probability table of the geographical regions is created to better connect location data to the level of damage.  This process can be thought of as encoding or grouping the area with a similar distance from the origin of the earthquake. Table 1 below shows the table of conditional probabilities created based on geographical variable 1. The “counts” column shows the total number of observations of the geographical identifier. Then, the “damage_1”, “damage_2”, and “damage_3” columns count the intersections of each damage level and the geographical identifier. Finally, the conditional probabilities are calculated by dividing the intersection count, and the results are shown in the last three columns of the table.</p>
+    <br>
+    <div class="text-center">
+        <img src="./img/driven_data_feature_engineering/table1.png" alt="table1" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 8. Conditional Probabilities for Geographical Variable 1.</figcaption>
+    </div>
+    <br>
+    <br>
+    <p>As discussed above, the conditional probabilities shown in Table 1 are calculated using Equation 1, where the frequencies of the intersections are divided by the number of each geographical identifier in the data set.</p>
+    <br>
+    <div class="text-center">
+        <img src="./img/driven_data_feature_engineering/equation2.png" alt="equation" class="img-fluid rounded">
+    </div>
+    <br>
+    <p>Based on the above equation and the surrounding discussion, the conditional probabilities can be interpreted as the region-specific risk of damage due to the earthquake. Thus, the geographical variables in the test data set can be readily encoded using Table 1.</p>
+    <br>
+    <div class="text-center">
+        <img src="./img/driven_data_feature_engineering/table2.png" alt="table2" class="img-fluid rounded">
+        <figcaption style="font-style: italic">Figure 9. Partial Table of the Principal Components Extracted from the Building Material Variables.</figcaption>
+    </div>
+    <br>
+    <p>With two methods of feature engineering performed, the resulting reduced data set was used to train the top two tuned models: Random Forest and AdaBoost. The results of this are discussed in the following Results section.</p>
+    <p>Feature engineering decreased the complexity of the model. Since the variables in the original data set were mostly categorical, a numerical transformation of these categorical variables significantly increased the dimensionality of the data. Therefore, PCA’s ability to decrease the number of variables in the data set allowed for a decrease in complexity. However, further research would be needed to assess the efficiency of applying PCA to binary variables.</p>
+    <br>
+    <br>
+
+    <br>
+    <h2>5. Result and Conclusion</h2>
+    <hr>
+    <p>Performance of the algorithm was measured by a micro-averaged F1 score due to the three possible labels, as opposed to a traditional F1 score that evaluates performance on a binary classifier. The DrivenData competition provided a baseline Random Forest model with an accuracy of 58.15%, 15.93% less accurate than the tuned and feature-engineered Random Forest model produced in this analysis. Also, this analysis’ Random Forest model ranked in the top 10% compared to models produced by more than 5300 other competitors (top score: 75.58%). </p>
+    <br>
+    <div class="text-center">
+        <img src="./img/driven_data_feature_engineering/competition_rank.png" alt="rank" class="img-fluid rounded" style="width: 500px">
+        <figcaption style="font-style: italic">Figure 10. Competition Score and Ranking of the Tuned and Feature-Engineered Random Forest Model.</figcaption>
+    </div>
+    <br>
+    <br>
+    <p>When looking at all of these models and results, many technical conclusions can be drawn regarding the best model for the data, the forecasting accuracy of the model, the important features in the model, and the results from submissions to the competition. </p>
+    <p>Using this project as a starting point, this could go in many directions. First, using exploratory data analysis, a further in-depth study could reveal more critical relationships between sets of variables and their impact on the damage of buildings. From these discoveries, sets of building codes could be constructed to maximize the safety of buildings in preparation for the next earthquake. Considering earthquakes are not unusual in that region, the next earthquake is bound to cause damage to buildings that were similarly damaged in the previous earthquake.</p>
+
+</div> <!-- container -->
+
+
+<footer class="blog-footer">
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+
+
+
+</body>
+</html>

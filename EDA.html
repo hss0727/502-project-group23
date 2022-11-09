@@ -307,7 +307,11 @@
       <b>TABLE 3</b> shows statistics of each collected subreddit. As shown, some subreddits have many more users
       and posts than the others. "ukraine", "UkraineWarVideoReport", and "UkrainianConflict" are the top three active
       subreddits.
-      By using John Snow's language detection model, we find that there is a significant number
+      By using John Snow's language detection model, <b>detect_language_375</b> to create <b>"English"</b>,
+      <b>"Russian"</b>,
+      and <b>"Ukrainian"</b>
+      language percentage columns, we find that there is a significant
+      number
       of foreign languages in the reddit posts, containing Ukrainian and Russian.
     </p>
 
@@ -318,7 +322,8 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Volumns of submissions in English, Ukrainian, and
+            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 2:</b>Volumns of submissions in English,
+              Ukrainian, and
               Russian over the observation period</p>
 
           </div>
@@ -334,13 +339,10 @@
     </div>
     <!-- IMAGE END -->
 
-
-
-
-
     <p>
       The volumes of Reddit submissions in these three languages from selected subreddits changed similarly from January
-      2022 to August 2022. The peak for Ukrainian submission arrived in February, earlier than the other two languages
+      2022 to August 2022, as shown in <b>FIGURE 2:</b>. The peak for Ukrainian submission arrived in February, earlier
+      than the other two languages
       in March. The submission count in English started decreasing ever since, while for Russian and Ukrainian
       submissions, the number started to rise again around July 2022.
     </p>
@@ -353,9 +355,6 @@
       submissions in this plot will not add up to the length of our dataset.
     </p>
 
-
-
-
     <!-- IMAGE: body length comparison -->
     <div class="row py-5">
 
@@ -363,32 +362,23 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/body_length.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Word Count Distribution of Comment Body in Two
+            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 3:</b>Word Count Distribution of Comment Body
+              in Two
               Categorizations</p>
 
           </div>
         </div>
       </div>
-
-      <!-- IMAGE: schema END -->
-
-      <!--
-      <p><mark>Add figure number</mark></p>
-      -->
-
     </div>
     <!-- IMAGE END -->
 
-
-
     <p>
-      Overall, most comments contain less than 100 words. In the first part, submitters tend to have longer comments
-      than commenters. In the second part, comments above average score tend to be longer. These findings are
-      intuitively correct.
+      Above charts show the distribution of number of words. Overall, most comments contain less than 100 words. From
+      the
+      first part, it can be observed that submitters tend to have longer comments
+      than commenters. From the second part, comments above average score tend to be longer. These findings are
+      intuitively expected.
     </p>
-    <br>
-    <br>
-
 
     <!-- IMAGE: topic different languages crossposts comparison -->
     <div class="row py-5">
@@ -397,18 +387,14 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/topic_diff_languages.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Topic distribution for submissions in differnet
+            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 4:</b>Topic distribution for submissions in
+              differnet
               language</p>
 
           </div>
         </div>
 
         <!-- IMAGE: schema END -->
-
-        <!--
-      <p><mark>Add figure number</mark></p>
-      -->
-
       </div>
       <!-- IMAGE END -->
 
@@ -426,21 +412,10 @@
       </p>
 
       <p>
-        Insert findings
+        Our main goal is to use topics and sentiments in Russia-Ukraine Conflict reddits to explain price movement in
+        commodity market. Therefore, we collected Commodity Prices from investing.com as our <b>External Data</b>.
       </p>
-
       <br>
-      <br>
-
-
-      <br>
-      <br>
-      <br>
-
-
-      <h4>(External Data)Commodity Price Summary Table</h4>
-      <br>
-
       <table class="table table-bordered table-hover table-condensed">
         <thead>
           <tr>
@@ -624,12 +599,20 @@
         </tbody>
       </table>
 
+      <p style="font-weight: lighter; text-align: center;"><b>TABLE 4:</b>Summary Statistics of the External Data
+        Commodity Prices
+      </p>
+
       <p>Note:</p>
       <p>1.Due to difference in trading rules, commodity futures can have different number of trading days.</p>
       <p>2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.</p>
 
       <br>
       <br>
+      <p>Because it is rare for people to buy commodities at spot price with immediate payment and delivery, we
+        collected futures contract prices, which captures market supply and demand more accurately. Above <b>TABLE 4</b>
+        shows the summary statistics of 15 kinds of commodities. We choose food and energy commodities because they are
+        more related to normal people's daily lives, thus are more related to Reddit users.</p>
       <br>
 
 

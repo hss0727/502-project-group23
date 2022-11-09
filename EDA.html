@@ -445,7 +445,7 @@ While average comment per submission remains a rather constant level from 2022-0
     <div class="card p-0" style="border: none">
       <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
       <div class="card-body">
-          <p style="font-weight: lighter; text-align: center;">Figure description</p>
+          <p style="font-weight: lighter; text-align: center;">Volumns of submissions in English, Ukrainian, and Russian over the observation period</p>
 
       </div>
     </div>
@@ -459,13 +459,16 @@ While average comment per submission remains a rather constant level from 2022-0
 
     </div>
     <!-- IMAGE END -->
-
-
-
-
+    
+    
+  
+    
 
     <p>
-      Insert findings
+      The volumes of Reddit submissions in these three languages from selected subreddits changed similarly from January 2022 to August 2022. The peak for Ukrainian submission arrived in February, earlier than the other two languages in March. The submission count in English started decreasing ever since, while for Russian and Ukrainian submissions, the number started to rise again around July 2022.
+    </p>
+    <p>
+      To categorize the submission records by language, we used Spark NLP pre-trained language detection model <b>detect_language_375</b> and obtained the prediction confidences toward these three languages for each submission content. With the confidence values, we can define dummy variables for three languages by any desired bar. For this plot, the variables are set to be True by confidence over 90%. Please note that since there are posts with prediction confidence lower than 90% for all three designated languages, the total number of submissions in this plot will not add up to the length of our dataset.
     </p>
 
 
@@ -509,7 +512,7 @@ Overall, most comments contain less than 100 words. In the first part, submitter
       <div class="card p-0" style="border: none">
         <img src="img/EDA/topic_diff_languages.png" class="card-img-top" alt="...">
         <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Figure description</p>
+            <p style="font-weight: lighter; text-align: center;">Topic distribution for submissions in differnet language</p>
   
         </div>
       </div>
@@ -527,7 +530,10 @@ Overall, most comments contain less than 100 words. In the first part, submitter
 
 
       <p>
-        Insert findings
+        For the example topics <i>Market</i> and <i>Energy</i>, they only take a small part in the overall discussions. Nevertheless, these two topics are mentioned more frequently in Russian and Ukrainian posts than in English.
+      </p>
+      <p>
+        To find the distribution of posts around specific topics, we utilized Spark SQL <b>rlike</b> function and filtered all the posts with keywords like <mark>stock/foreign exchange/commodity/trading</mark>, <mark>energy/crude oil/natural gas</mark> in Russian, Ukrainian, and English vocabularies respectively. Later, when we conduct topic modeling, we can also plug keywords and topics detected into the regex filter and create visualizations like this. 
       </p>
 
       <br>

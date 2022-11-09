@@ -47,7 +47,8 @@
     <p>
       The original dataset used for analysis is <mark>The Pushshift Reddit Dataset</mark><a
         href="https://arxiv.org/pdf/2001.08435.pdf" target="_blank">(link)</a>. It contains all the submissions and
-      comments posted on Reddit between June 2005 and April 2019 <mark>!!!!chage to January 2021 to August 2022.!!!!</mark>.
+      comments posted on Reddit between June 2005 and April 2019 <mark>!!!!chage to January 2021 to August
+        2022.!!!!</mark>.
     </p>
     <br>
 
@@ -57,70 +58,39 @@
       About the Raw Reddit Dataset
     </h4>
     <p>
-      The format of the dataset is parquet and made up of two components: "submissions" and "comments". The submissions file contains 643,255,528 rows and 68 columns, and the comment file contains 4,473,556,762 rows and 21 columns.
-      
+      The format of the dataset is parquet and made up of two components: "submissions" and "comments". The submissions
+      file contains 643,255,528 rows and 68 columns, and the comment file contains 4,473,556,762 rows and 21 columns.
+
       <!-- 
       <mark>???(check) Both of the columns contain nested columns??? Elaborate more on the schema structure</mark> 
       -->
     </p>
 
     <p>
-      The column that we looked into first was the 'subreddit' column. A <strong>subreddit</strong> is a smaller community is social media Reddit that contains posts associated with the topic. It is the starting point for <strong>Feature Selection</strong>. 
+      The column that we looked into first was the 'subreddit' column. A <strong>subreddit</strong> is a smaller
+      community is social media Reddit that contains posts associated with the topic. It is the starting point for
+      <strong>Feature Selection</strong>.
     </p>
 
     <p>
-      Other columns 
+      Other columns
     </p>
-
-
-    <!-- IMAGE: schema -->
-    <div class="row py-5">
-
-      <div class="col-md-6">
-        <div class="card p-0" style="border: none">
-          <img src="img/EDA/submission_schema.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Schema snippet of "Submission" file</p>
-
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="col-md-6">
-        <div class="card p-0" style="border: none">
-          <img src="img/EDA/comment_schema.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Schema snippet of "Comment" file</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- IMAGE: schema END -->
-
-      <!--
-      <p><mark>Add figure number</mark></p>
-      -->
-
-    </div>
-
-
 
     <h4>
       Subreddit Selection
     </h4>
     <p>
       We decide to replicate the data collection process from <a href="https://arxiv.org/abs/2206.05107">this paper</a>.
-      We select our data from the 12 subreddits in Table 1. The "RU Conflict" category directly focuses on the
+      We select our data from the 12 subreddits in <b>TABLE 1</b>. The "RU Conflict" category directly focuses on the
       Russia-Ukraine conflict, hence we use all the data from these subreddits. The "Military Related" category contains
       general discussion on war and military related
-      topics. To make all the submission and comments relavant to our topic, we further filter on the content and title columns of the "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc.""
+      topics. To make all the submission and comments relavant to our topic, we further filter on the content and title
+      columns of the "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc.""
     </p>
 
     <div class="table-responsive">
       <table class="table">
-        <thead >
+        <thead>
           <tr>
             <th scope="col" style="width: 30%; text-align: center;">Category</th>
             <th scope="col" style="width: 70%; text-align: center;">Subreddit Name</th>
@@ -141,139 +111,41 @@
           </tr>
 
         </tbody>
-        
+
       </table>
-      <p style="font-weight: lighter; text-align: center;">TABLE 1: Selected subreddits</p>
+      <p style="font-weight: lighter; text-align: center;"><b>TABLE 1:</b> Selected subreddits</p>
 
     </div>
 
     <br>
 
 
-
     <p>
-      Number of posts counted using the submission ID, which is unique to the Reddit post, is shown below. The resulting subset from the original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global issue.
+      <b>FIGURE 1</b> counts the number of unique submission ID in the selected subreddits. The resulting subset from
+      the
+      original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global
+      issue. This corroborates that we are collecting the right data.
     </p>
 
 
-     <!-- IMAGE: number of posts time series -->
-     <div class="row py-5">
-
+    <!-- IMAGE: number of posts time series -->
+    <div class="row py-5">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/EDA/submission_time_series_bar_plot.png" class="card-img-top" alt="...">
           <div class="card-body">
-              <p style="font-weight: lighter; text-align: center;">Starting February 2022, number of posts in the dataset increased drastically when Russia-Ukraine conflict became a global issue.</p>
-
+            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1:</b>Starting February 2022, number of posts
+              in the dataset
+              increased drastically when Russia-Ukraine conflict became a global issue.</p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE: schema END -->
-
-      <!--
-      <p><mark>Add figure number</mark></p>
-      -->
-
     </div>
     <!-- IMAGE END -->
-
-
-
-
-
-    <!-- IMAGE: average comments crossposts comparison -->
-    <div class="row py-5">
-
-      <div class="col-md-12">
-      <div class="card p-0" style="border: none">
-        <img src="img/EDA/average_comments_crossposts.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Average Comments/Crossposts per Submission by Month.</p>
-  
-        </div>
-      </div>
-      </div>
-  
-      <!-- IMAGE: schema END -->
-  
-      <!--
-      <p><mark>Add figure number</mark></p>
-      -->
-  
-      </div>
-      <!-- IMAGE END -->
-
-
-
-      <p>
-While average comment per submission remains a rather constant level from 2022-02 to 2022-08, average crosspost per submission in 2022-02 is explicitly higher than other months, which corresponds to the beginning of RU military conflict.
-      </p>
-
-      <br>
-      <br>
-    
-
-
-
-
-
-
-    <!-- Code snippet for filtering -->
-    <!-- <div class="border rounded bg-secondary text-white">
-      <pre>
-        <code>
-    # Using subreddit to filter the data
-
-    ru_subreddit_list = ['ukraine', 'ukraina', 'UkraineConflict',\
-        'RussiaUkraineWar2022', 'UkrainianConflict',\
-        'UkraineWarReports', 'UkraineInvasionVideos',\
-        'UkraineWarVideoReport']
-
-    war_subreddit_list = ['war', "CombatFootage", "CredibleDefense", "geopolitics"]
-    war_search_keywords = r'(^|\s)(ukraine|ukrainian|russia|russian|putin|zelenskyy)(\s|$)'
-    
-
-    # Filtering submission file
-
-    df_sub = df_submission.filter((F.col('subreddit').isin(ru_subreddit_list)) |
-    ((F.col('subreddit').isin(war_subreddit_list)) & (F.lower(F.col('selftext')) \
-        .rlike(war_search_keywords))))
-    df_sub = df_sub.withColumn("created_utc", F.from_unixtime("created_utc"))
-    df_sub = df_sub.withColumn("created_date", F.to_date("created_utc"))
-    df_sub = df_sub.filter(F.col("created_date") >= "2022-01-01")
-    df_sub.count()
-
-    
-    # Filtering comment file
-
-    df_com_all = df_comment.filter((F.col('subreddit').isin(ru_subreddit_list)) |
-          ((F.col('subreddit').isin(war_subreddit_list)) & (F.lower(F.col('body')) \
-        .rlike(war_search_keywords))))
-    df_com_all = df_com_all.withColumn("created_utc", F.from_unixtime("created_utc"))
-    df_com_all = df_com_all.withColumn("created_date", F.to_date("created_utc"))
-    df_com_all = df_com_all.filter(F.col("created_date") >= "2022-01-01")
-    df_com_all.count()
-        </code>
-    </pre>
-    </div>
-    Code snippet for filtering END -->
-
-
-    <!-- <p class="lead">
-      Feature selection
-    </p> -->
-
-
-
-
-    <br>
-    <br>
-    <h4>Summary Statistics of the Filtered Dataset</h4>
-    <br>
     <p>
-      
-
+      One of the most beginning steps of EDA is to check data size, missing values, etc. <b>TABLE 2</b> gives an
+      overview about
+      the basic information of the filtered reddit data and our collected external commodity price data.
     </p>
     <table class="table table-bordered table-hover table-condensed">
       <thead style="text-align: center">
@@ -305,9 +177,9 @@ While average comment per submission remains a rather constant level from 2022-0
         </tr>
         <tr>
           <td>Missing Values</td>
-          <td>54,375[delete]; 259,328 no-text</td>
+          <td>54,375[delete]; 49,239[removed]</td>
           <td>367,528[delete]; 25 no-text</td>
-          <td>2927</td>
+          <td>2,927</td>
         </tr>
         <tr>
           <td>Startdate</td>
@@ -323,17 +195,13 @@ While average comment per submission remains a rather constant level from 2022-0
         </tr>
       </tbody>
     </table>
-    <p style="font-weight: lighter; text-align: center;">Insert table description</p>
-
+    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> Basic Information of the Selected Reddit and
+      External Commodity Data. Note:[deleted] is deleted by author; [removed] is removed by moderator.</p>
     <p>
-      Insert findings
+      Russia-Ukraine Conflict was declared on Feb 23rd 2022. We collected reddit and commodity price data before that
+      time in order to compare the data before and after the event.
     </p>
     <br>
-    <br>
-    <br>
-
-
-    <h4>Summary Statistics of the Selected Subreddits</h4>
     <br>
     <table class="table table-bordered table-hover table-condensed">
       <thead>
@@ -432,28 +300,33 @@ While average comment per submission remains a rather constant level from 2022-0
         </tr>
       </tbody>
     </table>
-    <p style="font-weight: lighter; text-align: center;">Insert table description</p>
+    <p style="font-weight: lighter; text-align: center;"><b>TABLE 3:</b>Summary Statistics of the Selected Subreddits
+    </p>
 
     <p>
-      Insert findings
+      <b>TABLE 3</b> shows statistics of each collected subreddit. As shown, some subreddits have many more users
+      and posts than the others. "ukraine", "UkraineWarVideoReport", and "UkrainianConflict" are the top three active
+      subreddits.
+      By using John Snow's language detection model, we find that there is a significant number
+      of foreign languages in the reddit posts, containing Ukrainian and Russian.
     </p>
 
     <!-- IMAGE: number of submission in different languages -->
     <div class="row py-5">
 
-    <div class="col-md-12">
-    <div class="card p-0" style="border: none">
-      <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
-      <div class="card-body">
-          <p style="font-weight: lighter; text-align: center;">Figure description</p>
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">Figure description</p>
 
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
 
-    <!-- IMAGE: schema END -->
+      <!-- IMAGE: schema END -->
 
-    <!--
+      <!--
     <p><mark>Add figure number</mark></p>
     -->
 
@@ -475,63 +348,66 @@ While average comment per submission remains a rather constant level from 2022-0
     <div class="row py-5">
 
       <div class="col-md-12">
-      <div class="card p-0" style="border: none">
-        <img src="img/EDA/body_length.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Word Count Distribution of Comment Body in Two Categorizations</p>
-  
+        <div class="card p-0" style="border: none">
+          <img src="img/EDA/body_length.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">Word Count Distribution of Comment Body in Two
+              Categorizations</p>
+
+          </div>
         </div>
       </div>
-      </div>
-  
+
       <!-- IMAGE: schema END -->
-  
+
       <!--
       <p><mark>Add figure number</mark></p>
       -->
-  
-      </div>
-      <!-- IMAGE END -->
+
+    </div>
+    <!-- IMAGE END -->
 
 
 
-      <p> 
-Overall, most comments contain less than 100 words. In the first part, submitters tend to have longer comments than commenters. In the second part, comments above average score tend to be longer. These findings are intuitively correct.
-      </p>
-      <br>
-      <br>
+    <p>
+      Overall, most comments contain less than 100 words. In the first part, submitters tend to have longer comments
+      than commenters. In the second part, comments above average score tend to be longer. These findings are
+      intuitively correct.
+    </p>
+    <br>
+    <br>
 
 
-      <!-- IMAGE: topic different languages crossposts comparison -->
+    <!-- IMAGE: topic different languages crossposts comparison -->
     <div class="row py-5">
 
       <div class="col-md-12">
-      <div class="card p-0" style="border: none">
-        <img src="img/EDA/topic_diff_languages.png" class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="card p-0" style="border: none">
+          <img src="img/EDA/topic_diff_languages.png" class="card-img-top" alt="...">
+          <div class="card-body">
             <p style="font-weight: lighter; text-align: center;">Figure description</p>
-  
+
+          </div>
         </div>
       </div>
-      </div>
-  
+
       <!-- IMAGE: schema END -->
-  
+
       <!--
       <p><mark>Add figure number</mark></p>
       -->
-  
-      </div>
-      <!-- IMAGE END -->
+
+    </div>
+    <!-- IMAGE END -->
 
 
 
-      <p>
-        Insert findings
-      </p>
+    <p>
+      Insert findings
+    </p>
 
-      <br>
-      <br>
+    <br>
+    <br>
 
 
     <br>

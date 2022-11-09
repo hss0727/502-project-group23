@@ -318,7 +318,8 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Figure description</p>
+            <p style="font-weight: lighter; text-align: center;">Volumns of submissions in English, Ukrainian, and
+              Russian over the observation period</p>
 
           </div>
         </div>
@@ -338,7 +339,18 @@
 
 
     <p>
-      Insert findings
+      The volumes of Reddit submissions in these three languages from selected subreddits changed similarly from January
+      2022 to August 2022. The peak for Ukrainian submission arrived in February, earlier than the other two languages
+      in March. The submission count in English started decreasing ever since, while for Russian and Ukrainian
+      submissions, the number started to rise again around July 2022.
+    </p>
+    <p>
+      To categorize the submission records by language, we used Spark NLP pre-trained language detection model
+      <b>detect_language_375</b> and obtained the prediction confidences toward these three languages for each
+      submission content. With the confidence values, we can define dummy variables for three languages by any desired
+      bar. For this plot, the variables are set to be True by confidence over 90%. Please note that since there are
+      posts with prediction confidence lower than 90% for all three designated languages, the total number of
+      submissions in this plot will not add up to the length of our dataset.
     </p>
 
 
@@ -385,262 +397,273 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/topic_diff_languages.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Figure description</p>
+            <p style="font-weight: lighter; text-align: center;">Topic distribution for submissions in differnet
+              language</p>
 
           </div>
         </div>
-      </div>
 
-      <!-- IMAGE: schema END -->
+        <!-- IMAGE: schema END -->
 
-      <!--
+        <!--
       <p><mark>Add figure number</mark></p>
       -->
 
-    </div>
-    <!-- IMAGE END -->
+      </div>
+      <!-- IMAGE END -->
 
 
+      <p>
+        For the example topics <i>Market</i> and <i>Energy</i>, they only take a small part in the overall discussions.
+        Nevertheless, these two topics are mentioned more frequently in Russian and Ukrainian posts than in English.
+      </p>
+      <p>
+        To find the distribution of posts around specific topics, we utilized Spark SQL <b>rlike</b> function and
+        filtered all the posts with keywords like <mark>stock/foreign exchange/commodity/trading</mark>,
+        <mark>energy/crude oil/natural gas</mark> in Russian, Ukrainian, and English vocabularies respectively. Later,
+        when we conduct topic modeling, we can also plug keywords and topics detected into the regex filter and create
+        visualizations like this.
+      </p>
 
-    <p>
-      Insert findings
-    </p>
+      <p>
+        Insert findings
+      </p>
 
-    <br>
-    <br>
-
-
-    <br>
-    <br>
-    <br>
-
-
-    <h4>(External Data)Commodity Price Summary Table</h4>
-    <br>
-
-    <table class="table table-bordered table-hover table-condensed">
-      <thead>
-        <tr>
-          <th title="Field #1" style="width: 20%; text-align: center;">Stats</th>
-          <th title="Field #2" style="width: 10%; text-align: center;">Observations</th>
-          <th title="Field #3" style="width: 10%; text-align: center;">Mean</th>
-          <th title="Field #4" style="width: 10%; text-align: center;">Std</th>
-          <th title="Field #5" style="width: 10%; text-align: center;">Min</th>
-          <th title="Field #6" style="width: 10%; text-align: center;">25%</th>
-          <th title="Field #7" style="width: 10%; text-align: center;">50%</th>
-          <th title="Field #8" style="width: 10%; text-align: center;">75%</th>
-          <th title="Field #9" style="width: 10%; text-align: center;">Max</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Barley</td>
-          <td align="right">1149</td>
-          <td align="right">1897.88</td>
-          <td align="right">491.47</td>
-          <td align="right">1305.50</td>
-          <td align="right">1518.50</td>
-          <td align="right">1817.50</td>
-          <td align="right">2100.00</td>
-          <td align="right">3261.00</td>
-        </tr>
-        <tr>
-          <td>Cocoa</td>
-          <td align="right">1178</td>
-          <td align="right">2434.53</td>
-          <td align="right">195.72</td>
-          <td align="right">1895.00</td>
-          <td align="right">2314.00</td>
-          <td align="right">2436.00</td>
-          <td align="right">2552.00</td>
-          <td align="right">3054.00</td>
-        </tr>
-        <tr>
-          <td>Coffee</td>
-          <td align="right">1177</td>
-          <td align="right">138.38</td>
-          <td align="right">48.13</td>
-          <td align="right">86.65</td>
-          <td align="right">104.10</td>
-          <td align="right">118.20</td>
-          <td align="right">158.70</td>
-          <td align="right">258.35</td>
-        </tr>
-        <tr>
-          <td>Corn Futures</td>
-          <td align="right">1193</td>
-          <td align="right">459.15</td>
-          <td align="right">133.72</td>
-          <td align="right">302.75</td>
-          <td align="right">362.75</td>
-          <td align="right">387.25</td>
-          <td align="right">557.25</td>
-          <td align="right">818.25</td>
-        </tr>
-        <tr>
-          <td>Crude Oil</td>
-          <td align="right">1268</td>
-          <td align="right">62.73</td>
-          <td align="right">20.48</td>
-          <td align="right">-37.63</td>
-          <td align="right">52.07</td>
-          <td align="right">61.35</td>
-          <td align="right">70.78</td>
-          <td align="right">123.70</td>
-        </tr>
-        <tr>
-          <td>Heating Oil</td>
-          <td align="right">1263</td>
-          <td align="right">2.06</td>
-          <td align="right">0.76</td>
-          <td align="right">0.61</td>
-          <td align="right">1.70</td>
-          <td align="right">1.98</td>
-          <td align="right">2.19</td>
-          <td align="right">5.14</td>
-        </tr>
-        <tr>
-          <td>Natural Gas</td>
-          <td align="right">1268</td>
-          <td align="right">3.35</td>
-          <td align="right">1.68</td>
-          <td align="right">1.48</td>
-          <td align="right">2.40</td>
-          <td align="right">2.78</td>
-          <td align="right">3.73</td>
-          <td align="right">9.68</td>
-        </tr>
-        <tr>
-          <td>Newcastle Coal</td>
-          <td align="right">1191</td>
-          <td align="right">130.71</td>
-          <td align="right">97.25</td>
-          <td align="right">48.50</td>
-          <td align="right">67.85</td>
-          <td align="right">97.15</td>
-          <td align="right">141.58</td>
-          <td align="right">440.00</td>
-        </tr>
-        <tr>
-          <td>Oats</td>
-          <td align="right">1176</td>
-          <td align="right">371.37</td>
-          <td align="right">151.57</td>
-          <td align="right">220.75</td>
-          <td align="right">273.19</td>
-          <td align="right">300.50</td>
-          <td align="right">403.81</td>
-          <td align="right">807.00</td>
-        </tr>
-        <tr>
-          <td>RBOB Gasoline</td>
-          <td align="right">1262</td>
-          <td align="right">1.92</td>
-          <td align="right">0.69</td>
-          <td align="right">0.41</td>
-          <td align="right">1.48</td>
-          <td align="right">1.90</td>
-          <td align="right">2.16</td>
-          <td align="right">4.31</td>
-        </tr>
-        <tr>
-          <td>Rough Rice</td>
-          <td align="right">1177</td>
-          <td align="right">12.99</td>
-          <td align="right">1.94</td>
-          <td align="right">9.78</td>
-          <td align="right">11.70</td>
-          <td align="right">12.56</td>
-          <td align="right">13.74</td>
-          <td align="right">22.07</td>
-        </tr>
-        <tr>
-          <td>Soybean Meal Futures</td>
-          <td align="right">1184</td>
-          <td align="right">348.65</td>
-          <td align="right">54.63</td>
-          <td align="right">280.00</td>
-          <td align="right">303.77</td>
-          <td align="right">329.40</td>
-          <td align="right">391.65</td>
-          <td align="right">521.90</td>
-        </tr>
-        <tr>
-          <td>Soybean Oil Futures</td>
-          <td align="right">1200</td>
-          <td align="right">41.72</td>
-          <td align="right">17.05</td>
-          <td align="right">24.99</td>
-          <td align="right">28.59</td>
-          <td align="right">31.70</td>
-          <td align="right">57.95</td>
-          <td align="right">90.60</td>
-        </tr>
-        <tr>
-          <td>Sugar #11</td>
-          <td align="right">1181</td>
-          <td align="right">14.53</td>
-          <td align="right">3.04</td>
-          <td align="right">9.21</td>
-          <td align="right">12.15</td>
-          <td align="right">13.36</td>
-          <td align="right">17.66</td>
-          <td align="right">20.42</td>
-        </tr>
-        <tr>
-          <td>Wheat</td>
-          <td align="right">1191</td>
-          <td align="right">615.65</td>
-          <td align="right">172.68</td>
-          <td align="right">416.50</td>
-          <td align="right">504.25</td>
-          <td align="right">541.00</td>
-          <td align="right">693.00</td>
-          <td align="right">1425.25</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>Note:</p>
-    <p>1.Due to difference in trading rules, commodity futures can have different number of trading days.</p>
-    <p>2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.</p>
-
-    <br>
-    <br>
-    <br>
+      <br>
+      <br>
 
 
-    <h4>Timeseries of Reddit Counts and Commodity Prices</h4>
-    <!-- IMAGE: All Timeseries -->
-    <div class="row py-5">
+      <br>
+      <br>
+      <br>
 
-      <div class="col-md-12">
-        <div class="card p-0" style="border: none">
-          <img src="img/EDA/all_timeseries.png" class="card-img-top" alt="...">
+
+      <h4>(External Data)Commodity Price Summary Table</h4>
+      <br>
+
+      <table class="table table-bordered table-hover table-condensed">
+        <thead>
+          <tr>
+            <th title="Field #1" style="width: 20%; text-align: center;">Stats</th>
+            <th title="Field #2" style="width: 10%; text-align: center;">Observations</th>
+            <th title="Field #3" style="width: 10%; text-align: center;">Mean</th>
+            <th title="Field #4" style="width: 10%; text-align: center;">Std</th>
+            <th title="Field #5" style="width: 10%; text-align: center;">Min</th>
+            <th title="Field #6" style="width: 10%; text-align: center;">25%</th>
+            <th title="Field #7" style="width: 10%; text-align: center;">50%</th>
+            <th title="Field #8" style="width: 10%; text-align: center;">75%</th>
+            <th title="Field #9" style="width: 10%; text-align: center;">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Barley</td>
+            <td align="right">1149</td>
+            <td align="right">1897.88</td>
+            <td align="right">491.47</td>
+            <td align="right">1305.50</td>
+            <td align="right">1518.50</td>
+            <td align="right">1817.50</td>
+            <td align="right">2100.00</td>
+            <td align="right">3261.00</td>
+          </tr>
+          <tr>
+            <td>Cocoa</td>
+            <td align="right">1178</td>
+            <td align="right">2434.53</td>
+            <td align="right">195.72</td>
+            <td align="right">1895.00</td>
+            <td align="right">2314.00</td>
+            <td align="right">2436.00</td>
+            <td align="right">2552.00</td>
+            <td align="right">3054.00</td>
+          </tr>
+          <tr>
+            <td>Coffee</td>
+            <td align="right">1177</td>
+            <td align="right">138.38</td>
+            <td align="right">48.13</td>
+            <td align="right">86.65</td>
+            <td align="right">104.10</td>
+            <td align="right">118.20</td>
+            <td align="right">158.70</td>
+            <td align="right">258.35</td>
+          </tr>
+          <tr>
+            <td>Corn Futures</td>
+            <td align="right">1193</td>
+            <td align="right">459.15</td>
+            <td align="right">133.72</td>
+            <td align="right">302.75</td>
+            <td align="right">362.75</td>
+            <td align="right">387.25</td>
+            <td align="right">557.25</td>
+            <td align="right">818.25</td>
+          </tr>
+          <tr>
+            <td>Crude Oil</td>
+            <td align="right">1268</td>
+            <td align="right">62.73</td>
+            <td align="right">20.48</td>
+            <td align="right">-37.63</td>
+            <td align="right">52.07</td>
+            <td align="right">61.35</td>
+            <td align="right">70.78</td>
+            <td align="right">123.70</td>
+          </tr>
+          <tr>
+            <td>Heating Oil</td>
+            <td align="right">1263</td>
+            <td align="right">2.06</td>
+            <td align="right">0.76</td>
+            <td align="right">0.61</td>
+            <td align="right">1.70</td>
+            <td align="right">1.98</td>
+            <td align="right">2.19</td>
+            <td align="right">5.14</td>
+          </tr>
+          <tr>
+            <td>Natural Gas</td>
+            <td align="right">1268</td>
+            <td align="right">3.35</td>
+            <td align="right">1.68</td>
+            <td align="right">1.48</td>
+            <td align="right">2.40</td>
+            <td align="right">2.78</td>
+            <td align="right">3.73</td>
+            <td align="right">9.68</td>
+          </tr>
+          <tr>
+            <td>Newcastle Coal</td>
+            <td align="right">1191</td>
+            <td align="right">130.71</td>
+            <td align="right">97.25</td>
+            <td align="right">48.50</td>
+            <td align="right">67.85</td>
+            <td align="right">97.15</td>
+            <td align="right">141.58</td>
+            <td align="right">440.00</td>
+          </tr>
+          <tr>
+            <td>Oats</td>
+            <td align="right">1176</td>
+            <td align="right">371.37</td>
+            <td align="right">151.57</td>
+            <td align="right">220.75</td>
+            <td align="right">273.19</td>
+            <td align="right">300.50</td>
+            <td align="right">403.81</td>
+            <td align="right">807.00</td>
+          </tr>
+          <tr>
+            <td>RBOB Gasoline</td>
+            <td align="right">1262</td>
+            <td align="right">1.92</td>
+            <td align="right">0.69</td>
+            <td align="right">0.41</td>
+            <td align="right">1.48</td>
+            <td align="right">1.90</td>
+            <td align="right">2.16</td>
+            <td align="right">4.31</td>
+          </tr>
+          <tr>
+            <td>Rough Rice</td>
+            <td align="right">1177</td>
+            <td align="right">12.99</td>
+            <td align="right">1.94</td>
+            <td align="right">9.78</td>
+            <td align="right">11.70</td>
+            <td align="right">12.56</td>
+            <td align="right">13.74</td>
+            <td align="right">22.07</td>
+          </tr>
+          <tr>
+            <td>Soybean Meal Futures</td>
+            <td align="right">1184</td>
+            <td align="right">348.65</td>
+            <td align="right">54.63</td>
+            <td align="right">280.00</td>
+            <td align="right">303.77</td>
+            <td align="right">329.40</td>
+            <td align="right">391.65</td>
+            <td align="right">521.90</td>
+          </tr>
+          <tr>
+            <td>Soybean Oil Futures</td>
+            <td align="right">1200</td>
+            <td align="right">41.72</td>
+            <td align="right">17.05</td>
+            <td align="right">24.99</td>
+            <td align="right">28.59</td>
+            <td align="right">31.70</td>
+            <td align="right">57.95</td>
+            <td align="right">90.60</td>
+          </tr>
+          <tr>
+            <td>Sugar #11</td>
+            <td align="right">1181</td>
+            <td align="right">14.53</td>
+            <td align="right">3.04</td>
+            <td align="right">9.21</td>
+            <td align="right">12.15</td>
+            <td align="right">13.36</td>
+            <td align="right">17.66</td>
+            <td align="right">20.42</td>
+          </tr>
+          <tr>
+            <td>Wheat</td>
+            <td align="right">1191</td>
+            <td align="right">615.65</td>
+            <td align="right">172.68</td>
+            <td align="right">416.50</td>
+            <td align="right">504.25</td>
+            <td align="right">541.00</td>
+            <td align="right">693.00</td>
+            <td align="right">1425.25</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Note:</p>
+      <p>1.Due to difference in trading rules, commodity futures can have different number of trading days.</p>
+      <p>2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.</p>
+
+      <br>
+      <br>
+      <br>
+
+
+      <h4>Timeseries of Reddit Counts and Commodity Prices</h4>
+      <!-- IMAGE: All Timeseries -->
+      <div class="row py-5">
+
+        <div class="col-md-12">
+          <div class="card p-0" style="border: none">
+            <img src="img/EDA/all_timeseries.png" class="card-img-top" alt="...">
+          </div>
         </div>
+        <p><mark>Add figure number</mark></p>
+
       </div>
-      <p><mark>Add figure number</mark></p>
+      <!-- IMAGE: All Timeseries END -->
 
-    </div>
-    <!-- IMAGE: All Timeseries END -->
-
-    <h4> Commodity Price Changes Since Feb 24 2022</h4>
-    <div class="row py-5">
-      <div class="col-md-12">
-        <embed type="text/html" src="img/EDA/price_change.html" width="900" height="700">
+      <h4> Commodity Price Changes Since Feb 24 2022</h4>
+      <div class="row py-5">
+        <div class="col-md-12">
+          <embed type="text/html" src="img/EDA/price_change.html" width="900" height="700">
+        </div>
+        <p><mark>Add figure number</mark></p>
       </div>
-      <p><mark>Add figure number</mark></p>
-    </div>
 
 
-  </div> <!-- container -->
+    </div> <!-- container -->
 
 
-  <footer class="blog-footer">
-    <p>
-      <a href="#">Back to top</a>
-    </p>
-  </footer>
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
 
 
 

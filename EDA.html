@@ -47,7 +47,7 @@
     <p>
       The original dataset used for analysis is <mark>The Pushshift Reddit Dataset</mark><a
         href="https://arxiv.org/pdf/2001.08435.pdf" target="_blank">(link)</a>. It contains all the submissions and
-      comments posted on Reddit between June 2005 and April 2019.
+      comments posted on Reddit between June 2005 and April 2019 <mark>!!!!chage to January 2021 to August 2022.!!!!</mark>.
     </p>
     <br>
 
@@ -57,9 +57,19 @@
       About the Raw Reddit Dataset
     </h4>
     <p>
-      The format of the dataset is parquet and made up of two components: "submissions" and "comments". The submissions
-      file contains 643,255,528 rows and 68 columns, and the comment file contains 4,473,556,762 rows and 21 columns.
-      <mark>???(check) Both of the columns contain nested columns??? Elaborate more on the schema structure</mark>
+      The format of the dataset is parquet and made up of two components: "submissions" and "comments". The submissions file contains 643,255,528 rows and 68 columns, and the comment file contains 4,473,556,762 rows and 21 columns.
+      
+      <!-- 
+      <mark>???(check) Both of the columns contain nested columns??? Elaborate more on the schema structure</mark> 
+      -->
+    </p>
+
+    <p>
+      The column that we looked into first was the 'subreddit' column. A <strong>subreddit</strong> is a smaller community is social media Reddit that contains posts associated with the topic. It is the starting point for <strong>Feature Selection</strong>. 
+    </p>
+
+    <p>
+      Other columns 
     </p>
 
 
@@ -70,7 +80,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/submission_schema.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p>Schema snippet of "Submission" file</p>
+            <p style="font-weight: lighter; text-align: center;">Schema snippet of "Submission" file</p>
 
           </div>
         </div>
@@ -82,14 +92,16 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/comment_schema.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p>Schema snippet of "Comment" file</p>
+            <p style="font-weight: lighter; text-align: center;">Schema snippet of "Comment" file</p>
           </div>
         </div>
       </div>
 
       <!-- IMAGE: schema END -->
 
+      <!--
       <p><mark>Add figure number</mark></p>
+      -->
 
     </div>
 
@@ -103,16 +115,11 @@
       We select our data from the 12 subreddits in Table 1. The "RU Conflict" category directly focuses on the
       Russia-Ukraine conflict, hence we use all the data from these subreddits. The "Military Related" category contains
       general discussion on war and military related
-      topics. To make all the submission and comments relavant to our topic, we further filter on the content and title
-      columns of the
-      "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc."" <mark>Add "How
-        did we
-        get the idea of selecting these subreddits?</mark>
+      topics. To make all the submission and comments relavant to our topic, we further filter on the content and title columns of the "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc.""
     </p>
 
     <div class="table-responsive">
       <table class="table">
-        <caption>TABLE 1: Selected subreddits</caption>
         <thead>
           <tr>
             <th scope="col">Category</th>
@@ -134,9 +141,45 @@
           </tr>
 
         </tbody>
+        
       </table>
+      <p style="font-weight: lighter; text-align: center;">TABLE 1: Selected subreddits</p>
 
     </div>
+
+    <br>
+
+
+
+    <p>
+      Number of posts counted using the submission ID, which is unique to the Reddit post, is shown below. The resulting subset from the original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global issue.
+    </p>
+
+
+     <!-- IMAGE: number of posts time series -->
+     <div class="row py-5">
+
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/EDA/submission_time_series_bar_plot.png" class="card-img-top" alt="...">
+          <div class="card-body">
+              <p style="font-weight: lighter; text-align: center;">Starting February 2022, number of posts in the dataset increased drastically when Russia-Ukraine conflict became a global issue.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE: schema END -->
+
+      <!--
+      <p><mark>Add figure number</mark></p>
+      -->
+
+    </div>
+
+
+
+
 
 
     <!-- Code snippet for filtering -->

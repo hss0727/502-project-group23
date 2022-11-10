@@ -45,10 +45,9 @@
     <br>
 
     <p>
-      The original dataset used for analysis is <mark>The Pushshift Reddit Dataset</mark><a
-        href="https://arxiv.org/pdf/2001.08435.pdf" target="_blank">(link)</a>. It contains all the submissions and
-      comments posted on Reddit between June 2005 and April 2019 <mark>!!!!chage to January 2021 to August
-        2022.!!!!</mark>.
+      The original dataset used for analysis is <a href="https://arxiv.org/pdf/2001.08435.pdf" target="_blank">The
+        Pushshift Reddit Dataset</a>. Our given data is from January 2021 to
+      August 2022.</mark>.
     </p>
     <br>
 
@@ -68,14 +67,10 @@
 
     <p>
       The column that we looked into first was the 'subreddit' column. A <strong>subreddit</strong> is a smaller
-      community is social media Reddit that contains posts associated with the topic. It is the starting point for
-      <strong>Feature Selection</strong>.
+      community is social media Reddit that contains posts associated with the topic. It is the starting point for our
+      <strong>Data Selection</strong>.
     </p>
-
-    <p>
-      Other columns
-    </p>
-
+    <br>
     <h4>
       Subreddit Selection
     </h4>
@@ -85,7 +80,7 @@
       Russia-Ukraine conflict, hence we use all the data from these subreddits. The "Military Related" category contains
       general discussion on war and military related
       topics. To make all the submission and comments relavant to our topic, we further filter on the content and title
-      columns of the "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc.""
+      columns of the "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc.
     </p>
 
     <div class="table-responsive">
@@ -117,9 +112,35 @@
 
     </div>
 
+
     <br>
 
+    <h4>
+      Data Engineering
+    </h4>
+    <p>
+      Our source data from above subreddits is built in this <a
+        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/build_data_code/Build%20Data.ipynb">notebook</a>.
+    </p>
+    <p>
+      Becuase our selected reddit posts about Russia-Ukraine conflict can contain multiple languages, we used John
+      Snow's
+      language detection model, <b>detect_language_375</b>, to create <b>"English"</b>,
+      <b>"Russian"</b>, and <b>"Ukrainian"</b> language percentage columns on the submission data.
+      <a
+        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/Language%20Detection.ipynb">Notebook</a>
+      is for creating the three language columns.
+    </p>
+    <p>
+      We also used Regex to find <b>Market</b> and <b>Energy</b> related reddit posts in different languages, using this
+      <a
+        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-topic-distribution-pie-plot.ipynb">notebook</a>.
+    </p>
+    <br>
 
+    <h4>
+      Exploratory Analysis
+    </h4>
     <p>
       <b>FIGURE 1</b> counts the number of unique submission ID in the selected subreddits. The resulting subset from
       the
@@ -143,10 +164,11 @@
     </div>
     <!-- IMAGE END -->
     <p>
-      One of the most beginning steps of EDA is to check data size, missing values, etc. <b>TABLE 2</b> gives an
+      Our initial steps of EDA is to check data size, missing values, etc. <b>TABLE 2</b> gives an
       overview about
       the basic information of the filtered reddit data and our collected external commodity price data.
     </p>
+    <br>
     <table class="table table-bordered table-hover table-condensed">
       <thead style="text-align: center">
         <tr>
@@ -198,7 +220,7 @@
     <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> Basic Information of the Selected Reddit and
       External Commodity Data. Note:[deleted] is deleted by author; [removed] is removed by moderator.</p>
     <p>
-      Russia-Ukraine Conflict was declared on Feb 23rd 2022. We collected reddit and commodity price data before that
+      Russia-Ukraine Conflict was declared on Feb 24th 2022. We collected reddit and commodity price data before that
       time in order to compare the data before and after the event.
     </p>
     <br>
@@ -331,10 +353,6 @@
       </div>
 
       <!-- IMAGE: schema END -->
-
-      <!--
-    <p><mark>Add figure number</mark></p>
-    -->
 
     </div>
     <!-- IMAGE END -->
@@ -615,8 +633,6 @@
         more related to normal people's daily lives, thus are more related to Reddit users.</p>
       <br>
 
-
-      <h4>Timeseries of Reddit Counts and Commodity Prices</h4>
       <!-- IMAGE: All Timeseries -->
       <div class="row py-5">
 
@@ -625,18 +641,33 @@
             <img src="img/EDA/all_timeseries.png" class="card-img-top" alt="...">
           </div>
         </div>
-        <p><mark>Add figure number</mark></p>
-
+        <p style="font-weight: lighter; text-align: center;"><b>FIGURE 5:</b> Timeseries of Reddit and External Data
+        </p>
       </div>
       <!-- IMAGE: All Timeseries END -->
 
-      <h4> Commodity Price Changes Since Feb 24 2022</h4>
+      <p>To study the intertemporal commodity price impact from Reddit, we ploted all the time series together to have a
+        direct observation. As shown from the <b>FIGURE 5</b>, some commodities had clear uptrend after the conflict
+        declared. <mark>"Barley", "Corn", "Crude Oil", "Heating Oil", "Natural Gas", "Newcastle Coal", "RBOb Gasoline",
+          "Soybean Meal", and "Wheat" all had immediate rise in prices at the end of February.</mark> This price
+        movement is
+        inline with our expectation that the conflict has disrupted production and trade of several commodities,
+        particularly
+        those where Russia and Ukraine are key exporters, including energy, and grains.</p>
+
       <div class="row py-5">
         <div class="col-md-12">
           <embed type="text/html" src="img/EDA/price_change.html" width="900" height="700">
         </div>
-        <p><mark>Add figure number</mark></p>
+        <p style="font-weight: lighter; text-align: center;"><b>FIGURE 6:</b> Commodity Price Changes Since Feb 24 2022
+        </p>
       </div>
+
+      <p>While many commodities had impact from the event, some commodity prices recover faster than others like Wheat
+        and Barley. <b>FIGURE 6</b> shows that <b>Wheat</b> and <b>Barley</b> had 17% and 16% increase in one month.
+        But after 6
+        months at the end of Auguest, both Wheat and Barley's price dropped below Feb 24's level. Later in our study, it
+        would be interesting to find out if our Reddit data can explain this price reversion.</p>
 
 
     </div> <!-- container -->

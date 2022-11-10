@@ -167,7 +167,9 @@
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1:</b>Starting February 2022, number of posts
               in the dataset
-              increased drastically when Russia-Ukraine conflict became a global issue.</p>
+              increased drastically when Russia-Ukraine conflict became a global issue.<a
+                href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-topic-distribution-pie-plot.ipynb">Visualization
+                Code</a></p>
           </div>
         </div>
       </div>
@@ -210,7 +212,7 @@
         <tr>
           <td>Missing Values</td>
           <td>54,375[delete]; 49,239[removed]</td>
-          <td>367,528[delete]; 25 no-text</td>
+          <td>367,528[delete]; 741,394[removed]</td>
           <td>2,927</td>
         </tr>
         <tr>
@@ -334,15 +336,12 @@
     </table>
     <p style="font-weight: lighter; text-align: center;"><b>TABLE 3:</b>Summary Statistics of the Selected Subreddits
     </p>
-
+    <br>
     <p>
       <b>TABLE 3</b> shows statistics of each collected subreddit. As shown, some subreddits have many more users
       and posts than the others. "ukraine", "UkraineWarVideoReport", and "UkrainianConflict" are the top three active
       subreddits.
-      By using John Snow's language detection model, <b>detect_language_375</b> to create <b>"English"</b>,
-      <b>"Russian"</b>,
-      and <b>"Ukrainian"</b>
-      language percentage columns, we find that there is a significant
+      By using John Snow's language detection model, <b>detect_language_375</b>, we find that there is a significant
       number
       of foreign languages in the reddit posts, containing Ukrainian and Russian.
     </p>
@@ -628,12 +627,9 @@
       </table>
 
       <p style="font-weight: lighter; text-align: center;"><b>TABLE 4:</b>Summary Statistics of the External Data
-        Commodity Prices
+        Commodity Prices. Note:1.Due to difference in trading rules, commodity futures can have different number of
+        trading days.2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.
       </p>
-
-      <p>Note:</p>
-      <p>1.Due to difference in trading rules, commodity futures can have different number of trading days.</p>
-      <p>2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.</p>
 
       <br>
       <br>

@@ -51,8 +51,8 @@
 
 
         <div class="col-md-12">
+          <h2>Project Introduction</h2>
           <hr>
-          <h4>Project Introduction</h4>
           <br>
 
           <h4><mark>Analysis on the Impact of Russia-Ukraine Conflict to the Commodity Market using Reddit data</mark>
@@ -208,280 +208,292 @@
           </div>
         </div>
 
-      <!-- Question 4 End -->
+        <!-- Question 4 End -->
 
 
 
-      <!-- Question 5 -->
-      <div class="row mb-1">
-        <div class="col-md-3">
-        </div>
+        <!-- Question 5 -->
+        <div class="row mb-1">
+          <div class="col-md-3">
+          </div>
 
-        <div class="col-md-9">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
-            <div class="col p-4 d-flex flex-column position-static">
-              <h6 style="color: blue;">Sentiment Analysis</h6>
-              <h5><strong class="mb-1">Q5. Are there specific users who have more influence on the sentiment?</strong>
-              </h5><br>
-              <p class="mb-auto"><strong>Business goal: </strong>Find specific authors of the reddit posts who have more
-                influence (or try to have influence) on the sentiment of the public opinion.</p><br>
-              <p class="card-text mb-auto"><strong>Technical proposal: </strong>Find the hyperactive netizen to find how
-                they influence the discussion.
-                Technical Proposal: Group the dataset by the authors, and rank authors by their popularity measures.
-                Extract all the posts and comments from targeted authors. Perform simple text analysis, sentiment
-                extraction, and topic modeling on their posts. Find correlations between the submission popularity and
-                their sentiments.
+          <div class="col-md-9">
+            <div
+              class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h6 style="color: blue;">Sentiment Analysis</h6>
+                <h5><strong class="mb-1">Q5. Are there specific users who have more influence on the sentiment?</strong>
+                </h5><br>
+                <p class="mb-auto"><strong>Business goal: </strong>Find specific authors of the reddit posts who have
+                  more
+                  influence (or try to have influence) on the sentiment of the public opinion.</p><br>
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>Find the hyperactive netizen to find
+                  how
+                  they influence the discussion.
+                  Technical Proposal: Group the dataset by the authors, and rank authors by their popularity measures.
+                  Extract all the posts and comments from targeted authors. Perform simple text analysis, sentiment
+                  extraction, and topic modeling on their posts. Find correlations between the submission popularity and
+                  their sentiments.
 
-              </p>
+                </p>
+              </div>
             </div>
           </div>
+
         </div>
-
-      </div>
-      <!-- Question 5 End -->
+        <!-- Question 5 End -->
 
 
 
-      <!-- Question 6 -->
-      <div class="row mb-1">
-        <div class="col-md-3">
-        </div>
-
-        <div class="col-md-9">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
-            <div class="col p-4 d-flex flex-column position-static">
-              <h6 style="color: blue;">Sentiment Analysis</h6>
-              <h5><strong class="mb-1">Q6. Is there difference in the sentiments among different ages?</strong></h5><br>
-              <p class="mb-auto"><strong>Business goal: </strong>Is there any significant difference in the
-                sentiments/topics towards the RU event between teenagers and adults? We want to get the sentiment
-                difference between teenagers and adults towards different small events in the whole RU conflict, which
-                can be mapped to the time axis. Then we can make different policies according to these two groups.</p>
-              <br>
-              <p class="card-text mb-auto"><strong>Technical proposal: </strong>We first group the data by date/month
-                and over_18. Then we make a sentiment analysis of each Reddit comment/submission. We collect statistics
-                of sentiment scores in different groups. Finally, we have the two sentiment lines plot and map them to
-                small events.
-
-              </p>
-            </div>
+        <!-- Question 6 -->
+        <div class="row mb-1">
+          <div class="col-md-3">
           </div>
-        </div>
-      </div>
-      <!-- Question 6 End -->
 
-
-
-
-      <!-- Question 7 -->
-      <div class="row mb-1">
-
-
-
-        <div class="col-md-12">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
-            <div class="col p-4 d-flex flex-column position-static">
-              <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
-              <h5><strong class="mb-1">Q7. How can we relate the commodity market with the text & sentiment analysis of
-                  the Reddit dataset?</strong></h5><br>
-
-              <p class="mb-auto"><strong>Business goal #1: </strong>Explore the commodity price changes before and after
-                the Russian-Ukraine Conflict. This can be used as a reference to predict what will happen to commodity
-                prices after the conflict.</p><br>
-
-              <p class="mb-auto"><strong>Business goal #2: </strong>What could be the potential market factor that drove
-                the commodity price higher/lower?
-              </p><br>
-
-              <p class="mb-auto"><strong>Business goal #3: </strong>Explore the co-movement between different
-                commodities.</p><br>
-
-              <p class="card-text mb-auto"><strong>Technical proposal: </strong>1) Directly observe the price changes of
-                different commodities since 2022 Feb from time-series charts. 2) Compare the price changes after 2022
-                Feb with the average price changes before that time with consideration of standard deviation. 3) It is
-                also useful to discuss which commodity had the largest price change, and whether that price movement
-                matches with economic data.<br><br>
-                The goal is to examine economic data such as export/import from Russia and Ukraine to identify if the
-                commodity prices are reflecting market fundamentals. It would be interesting if some correlation can be
-                found between historical export/import and commodity market prices. Having an understanding of the
-                fundamentals can help deliver a comprehensive reasoning behind the change in commodity prices.<br>
+          <div class="col-md-9">
+            <div
+              class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h6 style="color: blue;">Sentiment Analysis</h6>
+                <h5><strong class="mb-1">Q6. Is there difference in the sentiments among different ages?</strong></h5>
                 <br>
-                Starting from the naïve Pearson correlation, this project will explore which commodities tend to move
-                together. Since new events can introduce changes to commodity fundamentals, it is also important to
-                compare the correlation before and after the conflict. To consider lag and lead effects, this project
-                can conduct cross-correlation analysis as a next step.
+                <p class="mb-auto"><strong>Business goal: </strong>Is there any significant difference in the
+                  sentiments/topics towards the RU event between teenagers and adults? We want to get the sentiment
+                  difference between teenagers and adults towards different small events in the whole RU conflict, which
+                  can be mapped to the time axis. Then we can make different policies according to these two groups.</p>
+                <br>
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>We first group the data by date/month
+                  and over_18. Then we make a sentiment analysis of each Reddit comment/submission. We collect
+                  statistics
+                  of sentiment scores in different groups. Finally, we have the two sentiment lines plot and map them to
+                  small events.
 
-
-              </p>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-
-
-      </div>
-      <!-- Question 7 End -->
+        <!-- Question 6 End -->
 
 
 
-      <!-- Question 8 -->
-      <div class="row mb-1">
 
-        <div class="col-md-1">
-        </div>
+        <!-- Question 7 -->
+        <div class="row mb-1">
 
-        <div class="col-md-9">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
-            <div class="col p-4 d-flex flex-column position-static">
-              <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
-              <h5><strong class="mb-1">Q8. How does each topic correlate to the commodity price changes?</strong></h5>
-              <br>
 
-              <p class="card-text mb-auto"><strong>Technical proposal: </strong>Conduct a correlation analysis between
-                all the timeseries this project has constructed so far. Have a comprehensive view of the correlations
-                between commodity price changes, sentiments, languages, and topics. Identify the most significant pairs.
-                Further analysis can be studied with consideration of lead-lag effects.
 
-              </p>
+          <div class="col-md-12">
+            <div
+              class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
+                <h5><strong class="mb-1">Q7. How can we relate the commodity market with the text & sentiment analysis
+                    of
+                    the Reddit dataset?</strong></h5><br>
+
+                <p class="mb-auto"><strong>Business goal #1: </strong>Explore the commodity price changes before and
+                  after
+                  the Russian-Ukraine Conflict. This can be used as a reference to predict what will happen to commodity
+                  prices after the conflict.</p><br>
+
+                <p class="mb-auto"><strong>Business goal #2: </strong>What could be the potential market factor that
+                  drove
+                  the commodity price higher/lower?
+                </p><br>
+
+                <p class="mb-auto"><strong>Business goal #3: </strong>Explore the co-movement between different
+                  commodities.</p><br>
+
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>1) Directly observe the price changes
+                  of
+                  different commodities since 2022 Feb from time-series charts. 2) Compare the price changes after 2022
+                  Feb with the average price changes before that time with consideration of standard deviation. 3) It is
+                  also useful to discuss which commodity had the largest price change, and whether that price movement
+                  matches with economic data.<br><br>
+                  The goal is to examine economic data such as export/import from Russia and Ukraine to identify if the
+                  commodity prices are reflecting market fundamentals. It would be interesting if some correlation can
+                  be
+                  found between historical export/import and commodity market prices. Having an understanding of the
+                  fundamentals can help deliver a comprehensive reasoning behind the change in commodity prices.<br>
+                  <br>
+                  Starting from the naïve Pearson correlation, this project will explore which commodities tend to move
+                  together. Since new events can introduce changes to commodity fundamentals, it is also important to
+                  compare the correlation before and after the conflict. To consider lag and lead effects, this project
+                  can conduct cross-correlation analysis as a next step.
+
+
+                </p>
+              </div>
             </div>
           </div>
+
+
         </div>
-
-
-      </div>
-      <!-- Question 8 End -->
+        <!-- Question 7 End -->
 
 
 
+        <!-- Question 8 -->
+        <div class="row mb-1">
 
+          <div class="col-md-1">
+          </div>
 
-      <!-- Question 9 -->
-      <div class="row mb-1">
+          <div class="col-md-9">
+            <div
+              class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
+                <h5><strong class="mb-1">Q8. How does each topic correlate to the commodity price changes?</strong></h5>
+                <br>
 
-        <div class="col-md-1">
-        </div>
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>Conduct a correlation analysis between
+                  all the timeseries this project has constructed so far. Have a comprehensive view of the correlations
+                  between commodity price changes, sentiments, languages, and topics. Identify the most significant
+                  pairs.
+                  Further analysis can be studied with consideration of lead-lag effects.
 
-        <div class="col-md-9">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
-            <div class="col p-4 d-flex flex-column position-static">
-              <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
-              <h5><strong class="mb-1">Q9. Can we use Reddit factors to predict commodity price change?</strong></h5>
-              <br>
-
-              <p class="card-text mb-auto"><strong>Technical proposal: </strong>One of the main goals of this project is
-                to experiment with different predicting models to test if the next-day price change can be modeled by
-                using the psychological factors we derived from previous univariate analyses. Some potential models
-                include OLS, Lasso/Ridge Regression, Tree-based methods, and neural networks. Identify which asset can
-                be predicted most/least accurately.
-              </p>
+                </p>
+              </div>
             </div>
           </div>
+
+
         </div>
-
-
-      </div>
-      <!-- Question 9 End -->
+        <!-- Question 8 End -->
 
 
 
 
 
+        <!-- Question 9 -->
+        <div class="row mb-1">
 
-      <!-- Question 10 -->
-      <div class="row mb-1">
+          <div class="col-md-1">
+          </div>
 
-        <div class="col-md-1">
-        </div>
+          <div class="col-md-9">
+            <div
+              class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
+                <h5><strong class="mb-1">Q9. Can we use Reddit factors to predict commodity price change?</strong></h5>
+                <br>
 
-        <div class="col-md-9">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
-            <div class="col p-4 d-flex flex-column position-static">
-              <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
-              <h5><strong class="mb-1">Q10. Which psychological factors had the most impact on the prediction
-                  results?</strong></h5><br>
-
-              <p class="card-text mb-auto"><strong>Technical proposal: </strong>After assessing the prediction results,
-                this project can also dive deeper into the models to discuss which factors had the most impact on the
-                predictions. Visualizations summarizing the experiments can be used. Using the analysis and intuition
-                developed before, we can discuss the implications of the feature importance and their economic
-                reasoning.
-              </p>
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>One of the main goals of this project
+                  is
+                  to experiment with different predicting models to test if the next-day price change can be modeled by
+                  using the psychological factors we derived from previous univariate analyses. Some potential models
+                  include OLS, Lasso/Ridge Regression, Tree-based methods, and neural networks. Identify which asset can
+                  be predicted most/least accurately.
+                </p>
+              </div>
             </div>
           </div>
+
+
         </div>
-
-
-      </div>
-      <!-- Question 10 End -->
+        <!-- Question 9 End -->
 
 
 
 
 
 
-      <!-- About the Team  -->
-      <div id="aboutTeam" class="d-block" style="height:100px">
-      </div>
-      <hr>
-      <h4>About the Team</h4>
+        <!-- Question 10 -->
+        <div class="row mb-1">
 
-      <div class="row py-5">
+          <div class="col-md-1">
+          </div>
 
-        <div class="col-md-3">
-          <div class="card p-0" style="border: none">
-            <img src="img/aboutTeam/miglei.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #6610f2">Minglei Cai</h5>
+          <div class="col-md-9">
+            <div
+              class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h6 style="color: Red;">Commodity + Reddit (Joining external data)</h6>
+                <h5><strong class="mb-1">Q10. Which psychological factors had the most impact on the prediction
+                    results?</strong></h5><br>
+
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>After assessing the prediction
+                  results,
+                  this project can also dive deeper into the models to discuss which factors had the most impact on the
+                  predictions. Visualizations summarizing the experiments can be used. Using the analysis and intuition
+                  developed before, we can discuss the implications of the feature importance and their economic
+                  reasoning.
+                </p>
+              </div>
             </div>
           </div>
+
+
         </div>
+        <!-- Question 10 End -->
 
 
 
-        <div class="col-md-3">
-          <div class="card p-0" style="border: none">
-            <img src="img/aboutTeam/joey.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #6610f2">Junlin(Joey) Liu</h5>
+
+
+
+        <!-- About the Team  -->
+        <div id="aboutTeam" class="d-block" style="height:100px">
+        </div>
+        <hr>
+        <h4>About the Team</h4>
+
+        <div class="row py-5">
+
+          <div class="col-md-3">
+            <div class="card p-0" style="border: none">
+              <img src="img/aboutTeam/miglei.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color: #6610f2">Minglei Cai</h5>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-md-3">
-          <div class="card p-0" style="border: none">
-            <img src="img/aboutTeam/xinlu.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #6610f2">Xinlu Liu</h5>
+
+
+          <div class="col-md-3">
+            <div class="card p-0" style="border: none">
+              <img src="img/aboutTeam/joey.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color: #6610f2">Junlin(Joey) Liu</h5>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-md-3">
-          <div class="card p-0" style="border: none">
-            <img src="img/aboutTeam/Hyuksoo.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #6610f2">Hyuksoo Shin</h5>
+          <div class="col-md-3">
+            <div class="card p-0" style="border: none">
+              <img src="img/aboutTeam/xinlu.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color: #6610f2">Xinlu Liu</h5>
+              </div>
             </div>
           </div>
+
+          <div class="col-md-3">
+            <div class="card p-0" style="border: none">
+              <img src="img/aboutTeam/Hyuksoo.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color: #6610f2">Hyuksoo Shin</h5>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-      </div>
 
 
 
+      </div> <!-- container -->
 
-    </div> <!-- container -->
 
-
-    <footer class="blog-footer">
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
+      <footer class="blog-footer">
+        <p>
+          <a href="#">Back to top</a>
+        </p>
+      </footer>
 
 
 

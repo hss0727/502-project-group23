@@ -87,9 +87,9 @@
       We decide to replicate the data collection process from <a href="https://arxiv.org/abs/2206.05107">this paper</a>.
       We select our data from the 12 subreddits in <b>TABLE 1</b>. The "RU Conflict" category directly focuses on the
       Russia-Ukraine conflict, hence we use all the data from these subreddits. The "Military Related" category contains
-      general discussion on war and military related
-      topics. To make all the submissions and comments relavant to our topic, we further filter on the content and title
-      columns of the "Military Related" subredits to ensure they contain keywords like ukraine, russia, Putin, etc.
+      general discussion on war and military-related
+      topics. To make all the submissions and comments relevant to our topic, we further filter the content and title
+      columns of the "Military Related" subreddits to ensure they contain keywords like ukraine, russia, Putin, etc.
     </p>
 
     <div class="table-responsive">
@@ -129,11 +129,11 @@
     </h4>
     <br>
     <p>
-      Our source data from above subreddits is built in this <a
+      Our source data from the above subreddits is built in this <a
         href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/Build%20Data.ipynb">notebook</a>.
     </p>
     <p>
-      Because our selected reddit posts about Russia-Ukraine conflict can contain multiple languages, we used John
+      Because our selected reddit posts about the Russia-Ukraine conflict can contain multiple languages, we used John
       Snow's
       language detection model, <b>detect_language_375</b>, to create <b>"English"</b>,
       <b>"Russian"</b>, and <b>"Ukrainian"</b> language percentage columns on the submission data.
@@ -167,7 +167,7 @@
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1:</b>Starting from February 2022, number of posts
               in the dataset
-              increased drastically when Russia-Ukraine conflict became a global issue.<a
+              increased drastically when the Russia-Ukraine conflict became a global issue.<a
                 href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-topic-distribution-pie-plot.ipynb">Visualization
                 Code</a></p>
           </div>

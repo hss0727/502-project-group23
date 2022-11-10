@@ -47,7 +47,7 @@
     <p>
       The original dataset used for analysis is <a href="https://arxiv.org/pdf/2001.08435.pdf" target="_blank">The
         Pushshift Reddit Dataset</a>. Our given data is from January 2021 to
-      August 2022.</mark>.
+      August 2022.</mark>
     </p>
     <br>
 
@@ -56,6 +56,7 @@
     <h4>
       About the Raw Reddit Dataset
     </h4>
+    <br>
     <p>
       The format of the dataset is parquet and made up of two components: "submissions" and "comments". The submissions
       file contains 643,255,528 rows and 68 columns, and the comment file contains 4,473,556,762 rows and 21 columns.
@@ -72,15 +73,16 @@
     </p>
 
     <p>
-      Other columns contain numerical values such as "num_comments"(Submission), "score"(Comment);<br>
-      string values such as "title"(Submission), "selftext"(Submission), "body"(Comment); <br>
-      boolean values such as "over_18", "disable_comments";<br>
-      and embed or structural columns such as "media_embed"(Submission), "preview"(Submission).
+      There are some columns that we potential will use in our project, including numerical columns such as
+      "num_comments"(Submission), "score"(Comment), text columns such as "title"(Submission),
+      "selftext"(Submission),
+      "body"(Comment), and boolean columns such as "over_18", "disable_comments".
     </p>
 
     <h4>
       Subreddit Selection
     </h4>
+    <br>
     <p>
       We decide to replicate the data collection process from <a href="https://arxiv.org/abs/2206.05107">this paper</a>.
       We select our data from the 12 subreddits in <b>TABLE 1</b>. The "RU Conflict" category directly focuses on the
@@ -125,6 +127,7 @@
     <h4>
       Data Engineering
     </h4>
+    <br>
     <p>
       Our source data from above subreddits is built in this <a
         href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/build_data_code/Build%20Data.ipynb">notebook</a>.
@@ -148,13 +151,13 @@
     <h4>
       Exploratory Analysis
     </h4>
+    <br>
     <p>
       <b>FIGURE 1</b> counts the number of unique submission ID in the selected subreddits. The resulting subset from
       the
       original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global
       issue. This corroborates that we are collecting the right data.
     </p>
-
 
     <!-- IMAGE: number of posts time series -->
     <div class="row py-5">
@@ -226,11 +229,11 @@
     </table>
     <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> Basic Information of the Selected Reddit and
       External Commodity Data. Note:[deleted] is deleted by author; [removed] is removed by moderator.</p>
+    <br>
     <p>
       Russia-Ukraine Conflict was declared on Feb 24th 2022. We collected reddit and commodity price data before that
-      time in order to compare the data before and after the event.
+      time in order to compare the trends before and after the event.
     </p>
-    <br>
     <br>
     <table class="table table-bordered table-hover table-condensed">
       <thead>

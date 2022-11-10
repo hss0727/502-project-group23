@@ -73,7 +73,7 @@
     </p>
 
     <p>
-      There are some columns that we potential will use in our project, including numerical columns such as
+      There are some columns that we potentially will use in our project, including numerical columns such as
       "num_comments"(Submission), "score"(Comment), text columns such as "title"(Submission),
       "selftext"(Submission),
       "body"(Comment), and boolean columns such as "over_18", "disable_comments".
@@ -87,9 +87,9 @@
       We decide to replicate the data collection process from <a href="https://arxiv.org/abs/2206.05107">this paper</a>.
       We select our data from the 12 subreddits in <b>TABLE 1</b>. The "RU Conflict" category directly focuses on the
       Russia-Ukraine conflict, hence we use all the data from these subreddits. The "Military Related" category contains
-      general discussion on war and military related
-      topics. To make all the submission and comments relavant to our topic, we further filter on the content and title
-      columns of the "Military Related" subredits to ensure they contain keywards like ukraine, russia, Putin, etc.
+      general discussion on war and military-related
+      topics. To make all the submissions and comments relevant to our topic, we further filter the content and title
+      columns of the "Military Related" subreddits to ensure they contain keywords like ukraine, russia, Putin, etc.
     </p>
 
     <div class="table-responsive">
@@ -129,11 +129,11 @@
     </h4>
     <br>
     <p>
-      Our source data from above subreddits is built in this <a
+      Our source data from the above subreddits is built in this <a
         href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/Build%20Data.ipynb">notebook</a>.
     </p>
     <p>
-      Because our selected reddit posts about Russia-Ukraine conflict can contain multiple languages, we used John
+      Because our selected reddit posts about the Russia-Ukraine conflict can contain multiple languages, we used John
       Snow's
       language detection model, <b>detect_language_375</b>, to create <b>"English"</b>,
       <b>"Russian"</b>, and <b>"Ukrainian"</b> language percentage columns on the submission data.
@@ -153,7 +153,7 @@
     </h4>
     <br>
     <p>
-      <b>FIGURE 1</b> counts the number of unique submission ID in the selected subreddits. The resulting subset from
+      <b>FIGURE 1</b> counts the number of unique submission IDs in the selected subreddits. The resulting subset from
       the
       original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global
       issue. This corroborates that we are collecting the right data.
@@ -165,18 +165,19 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/submission_time_series_bar_plot.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1:</b>Starting February 2022, number of posts
+            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1:</b>Starting from February 2022, number of
+              posts
               in the dataset
-              increased drastically when Russia-Ukraine conflict became a global issue.<a
+              increased drastically when the Russia-Ukraine conflict became a global issue.<a
                 href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/time_barplot.ipynb">Visualization
-                Code</a>.</p>
+                Code</a></p>
           </div>
         </div>
       </div>
     </div>
     <!-- IMAGE END -->
     <p>
-      Our initial steps of EDA is to check data size, missing values, etc. <b>TABLE 2</b> gives an
+      Our initial steps of EDA are to check data size, missing values, etc. <b>TABLE 2</b> gives an
       overview about
       the basic information of the filtered reddit data and our collected external commodity price data.
     </p>
@@ -362,7 +363,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 2:</b>Volumns of submissions in English,
+            <p style="font-weight: lighter; text-align: center;"><b>FIGURE 2:</b>Volumes of submissions in English,
               Ukrainian, and
               Russian over the observation period.<a
                 href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-timeseries-line-chart.ipynb">Visualization
@@ -379,7 +380,7 @@
 
     <p>
       The volumes of Reddit submissions in these three languages from selected subreddits changed similarly from January
-      2022 to August 2022, as shown in <b>FIGURE 2:</b>. The peak for Ukrainian submission arrived in February, earlier
+      2022 to August 2022, as shown in <b>FIGURE 2:</b>. The peak for Ukrainian submissions arrived in February, earlier
       than the other two languages
       in March. The submission count in English started decreasing ever since, while for Russian and Ukrainian
       submissions, the number started to rise again around July 2022.
@@ -413,10 +414,11 @@
     <!-- IMAGE END -->
 
     <p>
-      Above charts show the distribution of number of words. Overall, most comments contain less than 100 words. From
+      The above charts show the distribution of the number of words. Overall, most comments contain less than 100 words.
+      From
       the
       first part, it can be observed that submitters tend to have longer comments
-      than commenters. From the second part, comments above average score tend to be longer. These findings are
+      than commenters. From the second part, comments above the average score tend to be longer. These findings are
       intuitively expected.
     </p>
 
@@ -454,7 +456,7 @@
 
       <p>
         Our main goal is to use topics and sentiments in Russia-Ukraine Conflict reddits to explain price movement in
-        commodity market. Therefore, we collected Commodity Prices from investing.com as our <b>External Data</b>.
+        the commodity market. Therefore, we collected Commodity Prices from investing.com as our <b>External Data</b>.
       </p>
       <br>
       <table class="table table-bordered table-hover table-condensed">
@@ -650,7 +652,7 @@
       <br>
       <br>
       <p>Because it is rare for people to buy commodities at spot price with immediate payment and delivery, we
-        collected futures contract prices, which captures market supply and demand more accurately. Above <b>TABLE 4</b>
+        collected futures contract prices, which capture market supply and demand more accurately. Above <b>TABLE 4</b>
         shows the summary statistics of 15 kinds of commodities. We choose food and energy commodities because they are
         more related to normal people's daily lives, thus are more related to Reddit users.</p>
       <br>
@@ -670,12 +672,13 @@
       </div>
       <!-- IMAGE: All Timeseries END -->
 
-      <p>To study the intertemporal commodity price impact from Reddit, we ploted all the time series together to have a
-        direct observation. As shown from the <b>FIGURE 5</b>, some commodities had clear uptrend after the conflict
+      <p>To study the intertemporal commodity price impact from Reddit, we plotted all the time series together to have
+        a
+        direct observation. As shown from the <b>FIGURE 5</b>, some commodities had a clear uptrend after the conflict
         declared. <mark>"Barley", "Corn", "Crude Oil", "Heating Oil", "Natural Gas", "Newcastle Coal", "RBOb Gasoline",
-          "Soybean Meal", and "Wheat" all had immediate rise in prices at the end of February.</mark> This price
+          "Soybean Meal", and "Wheat" all had an immediate rise in prices at the end of February.</mark> This price
         movement is
-        inline with our expectation that the conflict has disrupted production and trade of several commodities,
+        in line with our expectation that the conflict has disrupted production and trade of several commodities,
         particularly
         those where Russia and Ukraine are key exporters, including energy, and grains.</p>
 
@@ -690,10 +693,11 @@
         </p>
       </div>
 
-      <p>While many commodities had impact from the event, some commodity prices recover faster than others like Wheat
-        and Barley. <b>FIGURE 6</b> shows that <b>Wheat</b> and <b>Barley</b> had 17% and 16% increase in one month.
+      <p>While many commodities had an impact from the event, some commodity prices recover faster than others like
+        Wheat
+        and Barley. <b>FIGURE 6</b> shows that <b>Wheat</b> and <b>Barley</b> had 17% and 16% increases in one month.
         But after 6
-        months at the end of Auguest, both Wheat and Barley's price dropped below Feb 24's level. Later in our study, it
+        months at the end of August, both Wheat and Barley's prices dropped below Feb 24's level. Later in our study, it
         would be interesting to find out if our Reddit data can explain this price reversion.</p>
 
 

@@ -131,23 +131,27 @@
       </table>
     </div>
 
+    <h5>Commen words</h5>
     <p>
       As we tagged all the submissions and comments by their languages, we split the datasets into English, Russian, and Ukrainian since they are part of the focus of our textual analysis.
     </p>
     <p>
-      Common words can help us find what has frequently been brought up by people when making comments and posts under our selected subreddits. Inside the spark environment, we explode the body of the comments and submissions into single words. By aggregating all the vocabularies by their counts, we are able to sort them to find the most common words over our time interval of interest.
+      Common words can help us find what has frequently been brought up by people when making comments and posts under our selected subreddits. Inside the spark environment, we explode the body of the comments and submissions into single words. By aggregating all the vocabularies by their counts, we are able to sort them to find the most common words over our time interval of interest. Please refer to <a
+      href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/common_words_submission_comment_language.ipynb">this notebook</a> for the code extracting common words.
     </p>
     <p>
-      For the comments and submissions in English, terms related to <i>war</i> also appear naturally. The top few are the cognate words of countries, which come with the territory of the subreddits we selected. While we may also interpret part of the counts for <i>russian</i> and <i>ukrainian</i> as referring to the people. Combined with the fact that the word <i>people</i> is one of the most common words, we can find the humane and compassionate nature of the discussion. Moreover, among all the political leaders involved in the conflict, Putin gets most of the attention. 
+      For the comments and submissions in English, terms related to <i>war</i> appear naturally. The top few are the cognate words of countries, which come with the territory of the subreddits we selected. While we may also interpret part of the counts for <i>russian</i> and <i>ukrainian</i> as referring to the people. Combined with the fact that the word <i>people</i> is one of the most common words, we can find the humane and compassionate nature of the discussion. Moreover, among all the political leaders involved in the conflict, Putin gets most of the attention. 
     </p>
     <p>  
       Beyond the top ten words we listed, NATO and the US are the two other political entities that appear the most in the discussion. We also find curse words appear in high frequency, implying an extremely sentimental tone among the posts.
     </p>
     <p>
-      The common words for posts in Russian and Ukrainian include words like US dollars and populations,  which could suggest different angles of discussions like finance and geopolitics. Words like <i>Green</i> and <i>Babchenko</i> possibly represent political entries and figures that are not familiar to foreign people outside of the confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
+      The common words for posts in Russian and Ukrainian include words like US dollars and populations, which could suggest different angles of discussions like finance and geopolitics. Words like <i>Green</i> and <i>Babchenko</i> possibly represent political entries and figures that are not familiar to foreign people outside of the confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
     </p>
+    <h5>TF-IDF</h5>
     <p>
-      Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b> machine learning features and annotators, we fed our cleaned text data through the tokenizer. And then conduct hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the inversed document frequency for each TF vector corresponding to the text records. By extracting function properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the most important words.
+      Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b> machine learning features and annotators, we feed our cleaned text data through the tokenizer. And then conduct hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the inversed document frequency for each TF vector corresponding to the text records. By extracting function properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the most important words. Please refer to <a
+      href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/TFIDF.ipynb">this notebook</a> for calculating the TF-IDF scores.
     </p>
     <p>
       TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different perspectives of the discussion. We can see political or geometrical representations like <i>European, German, and Belarus</i>. Words like <i>brigade</i>, <i> combat</i>, and </i> front</i> imply more detailed descriptions and discussion going on in the military-related discussion. The nickname "Dr. Eisenfaust." for the Mayer of Kyiv brings up a new political figure other than Putin. Instead of nouns, more adjectives appearing as important words bring out the discussion nature of Reddit. 
@@ -155,20 +159,7 @@
 
     <h4>Q2. (NLP) What are different languages other than English that can be analyzed in the Dataset? (language detection) Xinlu</h4>
     <p>
-      Although it is easy to assume that most of the Reddit content is in English, 
-based on the chosen topics, we targeted English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence toward these three languages for each submission and comment content. With the confidence values, we can define dummy variables for three languages by any desired bar. 
-    </p>
-    <p>
-      For the NLP part of our project, we subset our data by their language with 80% confidence. 
-    </p>
-    <p>
-      We conduct our common word analysis using PySpark SQL functions, following the process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined functions under the PySpark SQL environment. 
-    </p>
-    <p>
-      Since we are dealing with foreign languages, we also utilized Spark NLP pre-trained pipeline <b>translate_ru_en</b> and <b>translate_uk_en</b>, enabling translation from Russian and Ukrainian to English, respectively. When we only need the translation for word tokens, we use the pipelines start with document assembler, followed by the Spark Neural Machine Translation framework <b>Marian</b> models <b>opus_mt_ru_en</b> and <b>opus_mt_uk_en</b> respectively.
-    </p>
-    <p>
-      The results we obtain give us insights into how the focus of the discussion in different languages varies from each other. However, since there is a significant gap between the volume of records in English and the volume of records in Russian and Ukrainian,  we will not include records in these languages in our further explorations.
+      Although it is easy to assume that most of the Reddit content is in English, based on the chosen topics, we target English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence toward these three languages for each submission and comment content. With the confidence values, we can define dummy variables for three languages by any desired bar. For the NLP part of our project, we subset our data by their language with 80% confidence. We conduct our common word analysis using PySpark SQL functions, following the process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined functions under the PySpark SQL environment. Since we are dealing with foreign languages, we also utilize Spark NLP pre-trained pipeline <b>translate_ru_en</b> and <b>translate_uk_en</b>, enabling translation from Russian and Ukrainian to English, respectively. When we only need the translation for word tokens, we use the pipelines start with document assembler, followed by the Spark Neural Machine Translation framework <b>Marian</b> models <b>opus_mt_ru_en</b> and <b>opus_mt_uk_en</b> respectively. The results we obtain give us insights into how the focus of the discussion in different languages varies from each other. However, since there is a significant gap between the volume of records in English and the volume of records in Russian and Ukrainian,  we will not include records in these languages in our further explorations.
     </p>
 
 

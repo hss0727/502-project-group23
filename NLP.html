@@ -85,6 +85,93 @@
 
     </div>
 
+    <h4>Common words/important words(tf-idf) for languages/submissions/comments(Table)</h4>
+    <p>Table for common/important words(xinlu)</p>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>Language</th>
+          <th>Reddit Subset</th>
+          <th>Top 10 common words by word counts</th>
+          <th>Top 10 important words by TF-IDF</th>
+        </tr>
+        <tr>
+          <th rowspan="2" style="vertical-align: middle;">English</th>
+          <th style="vertical-align: middle;">submission</th>
+          <td><i>ukraine</i>, <i>russian</i>, <i>russia</i>, <i>ukrainian</i>, <i>war</i>, <i>putin</i>, <i>people</i>, <i>forces</i>, <i>military</i>, <i>russians</i></td>
+          <td><i>european</i>, <i>german</i>, <i>full</i>, <i>man</i>, <i>belarus</i>, <i>combat</i>, <i>avoided</i>, <i>left</i>, <i>brigade</i>, <i>front</i></td>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle;">comment</th>
+          <td ><i>russia</i>, <i>ukraine</i>, <i>russian</i>, <i>war</i>, <i>people</i>, <i>putin</i>, <i>russians</i>, <i>ukrainian</i>, <i>time</i>, <i>good</i></td>
+          <td><i>hypercompetence</i>, <i>yourse</i>, <i>irepepctive</i>, <i>feeeeeeeelings</i>, <i>favorably</i>, <i>eisenfaust</i>, <i>cowy</i>, <i>trackers</i>, <i>correctlynused</i>, <i>isayevich</i></td>
+        </tr>
+        <tr>
+          <th rowspan="2"style="vertical-align: middle;">Russian</th>
+          <th style="vertical-align: middle;">submission</th>
+          <td><i>России(Russian Federation)</i>, <i>войны(War)</i>, <i>Путин(Putin)</i>, <i>США(United States dollars)</i>, <i>время(time)</i>, <i>своих(your own)</i>, <i>Зеленский(Green)</i>, <i>территории(Territory)</i>, <i>мир(peace)</i>, <i>Бабченко:(Babchenko:)</i>,</td>
+          <td><i>других(Other)</i>, <i>работает(working)</i>, <i>города(Cities)</i>, <i>день(day)</i>, <i>помощи(assistance)</i>, <i>вся(All of them.)</i>, <i>детей(Children)</i>, <i>российской(Russian)</i>, <i>куклу(Doll)</i>, <i>мира(peace)</i></td>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle;">comment</th>
+          <td><i>России(Russian Federation)</i>, <i>Украине(Ukraine)</i>, <i>люди(people)</i>, <i>людей(of human beings)</i>, <i>войны(War)</i>, <i>Путин(Putin)</i>, <i>человек(Total population)</i>, <i>страны(Country)</i>, <i>НАТО(NATO)</i>, <i>США(United States dollars)</i>,</td>
+          <td><i>начали(Start)</i>, <i>своим(your own)</i>, <i>ситуации(situation)</i>, <i>россияне(Russians)</i>, <i>самом(I'm not sure.)</i>, <i>шмольцы(Shh.)</i>, <i>человека(Human Rights)</i>, <i>страна(Country)</i>, <i>ребята…(Guys...)</i>, <i>мир(peace)</i></td>
+        </tr>
+        <tr>
+          <th rowspan="2"style="vertical-align: middle;">Ukrainian</th>
+          <th style="vertical-align: middle;">submission</th>
+          <td><i>України(Ukraine)</i>, <i>Росії(Russia)</i>, <i>війни(wars)</i>, <i>РФ(RF)</i>, <i>США(United States)</i>, <i>людей(people)</i>, <i>Слава(Glory)</i>, <i>вторгнення(invasion)</i>, <i>окупантів(Occupationals)</i>, <i>дітей(kids)</i></td>
+          <td><i>російська(grow up)</i>, <i>останнім(Permanent)</i>, <i>дорослих(The older)</i>, <i>дорозі(Dorose)</i>, <i>думкою(Thoughtful)</i>, <i>олександра(olexandra)</i>, <i>дізнатися(to know)</i>, <i>дія(the United Nations)</i>, <i>експертів(Suppliers)</i>, <i>translate(transfer)</i></td>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle;">comment</th>
+          <td><i>України(Ukraine)</i>, <i>людей(people)</i>, <i>війни(wars)</i>, <i>взагалі(generally)</i>, <i>питання(question)</i>, <i>країни(countries)</i>, <i>Слава(Glory)</i>, <i>Росії(Russia)</i>, <i>США(United States)</i>, <i>життя(life)</i></td>
+          <td><i>повномасштабному(large scale)</i>, <i>наприклад(Apparatus)</i>, <i>гроші(for a little while)</i>, <i>замінив(Deputy)</i>, <i>українців(Theft)</i>, <i>росії(and grow up)</i>, <i>microsoft(Microsoft)</i>, <i>supermarkety(Supermarkety)</i>, <i>автократії(autocratic)</i>, <i>аккаунт(account)</i></td>
+        </tr>
+      </table>
+    </div>
+
+    <p>
+      As we tagged all the submissions and comments by their languages, we split the datasets into English, Russian, and Ukrainian since they are part of the focus of our textual analysis.
+    </p>
+    <p>
+      Common words can help us find what has frequently been brought up by people when making comments and posts under our selected subreddits. Inside the spark environment, we explode the body of the comments and submissions into single words. By aggregating all the vocabularies by their counts, we are able to sort them to find the most common words over our time interval of interest.
+    </p>
+    <p>
+      For the comments and submissions in English, terms related to <i>war</i> also appear naturally. The top few are the cognate words of countries, which come with the territory of the subreddits we selected. While we may also interpret part of the counts for <i>russian</i> and <i>ukrainian</i> as referring to the people. Combined with the fact that the word <i>people</i> is one of the most common words, we can find the humane and compassionate nature of the discussion. Moreover, among all the political leaders involved in the conflict, Putin gets most of the attention. 
+    </p>
+    <p>  
+      Beyond the top ten words we listed, NATO and the US are the two other political entities that appear the most in the discussion. We also find curse words appear in high frequency, implying an extremely sentimental tone among the posts.
+    </p>
+    <p>
+      The common words for posts in Russian and Ukrainian include words like US dollars and populations,  which could suggest different angles of discussions like finance and geopolitics. Words like <i>Green</i> and <i>Babchenko</i> possibly represent political entries and figures that are not familiar to foreign people outside of the confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
+    </p>
+    <p>
+      Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b> machine learning features and annotators, we fed our cleaned text data through the tokenizer. And then conduct hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the inversed document frequency for each TF vector corresponding to the text records. By extracting function properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the most important words.
+    </p>
+    <p>
+      TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different perspectives of the discussion. We can see political or geometrical representations like <i>European, German, and Belarus</i>. Words like <i>brigade</i>, <i> combat</i>, and </i> front</i> imply more detailed descriptions and discussion going on in the military-related discussion. The nickname "Dr. Eisenfaust." for the Mayer of Kyiv brings up a new political figure other than Putin. Instead of nouns, more adjectives appearing as important words bring out the discussion nature of Reddit. 
+    </p>
+
+    <h4>Q2. (NLP) What are different languages other than English that can be analyzed in the Dataset? (language detection) Xinlu</h4>
+    <p>
+      Although it is easy to assume that most of the Reddit content is in English, 
+based on the chosen topics, we targeted English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence toward these three languages for each submission and comment content. With the confidence values, we can define dummy variables for three languages by any desired bar. 
+    </p>
+    <p>
+      For the NLP part of our project, we subset our data by their language with 80% confidence. 
+    </p>
+    <p>
+      We conduct our common word analysis using PySpark SQL functions, following the process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined functions under the PySpark SQL environment. 
+    </p>
+    <p>
+      Since we are dealing with foreign languages, we also utilized Spark NLP pre-trained pipeline <b>translate_ru_en</b> and <b>translate_uk_en</b>, enabling translation from Russian and Ukrainian to English, respectively. When we only need the translation for word tokens, we use the pipelines start with document assembler, followed by the Spark Neural Machine Translation framework <b>Marian</b> models <b>opus_mt_ru_en</b> and <b>opus_mt_uk_en</b> respectively.
+    </p>
+    <p>
+      The results we obtain give us insights into how the focus of the discussion in different languages varies from each other. However, since there is a significant gap between the volume of records in English and the volume of records in Russian and Ukrainian,  we will not include records in these languages in our further explorations.
+    </p>
+
+
 
 
     <h4>

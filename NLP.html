@@ -141,7 +141,7 @@
       punctuations,and stopwords; 3) lemmatizing each word to its single format, e.g. "words" to "word", "makes" to
       "make".
     </p>
-    <div class="row py-5">
+    <div class="row py-4">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/data_flow.png" class="card-img-top" alt="...">
@@ -159,10 +159,6 @@
       returns, we use daily close-to-close prices.
     </p>
 
-
-
-    <br>
-    <br>
     <br>
     <hr>
     <h4>Q1. (NLP) What are the major topics discussed in Reddit related to Russia Ukraine conflict?</h4>
@@ -368,12 +364,6 @@
       </div>
     </div>
 
-
-
-
-    <br>
-    <br>
-
     <br>
     <hr>
     <h4>Q3. Which topics/kinds of submissions/comments are more popular?</h4>
@@ -567,9 +557,9 @@
     <h4>Q4. How is the sentiment in Reddit posts over time related to Russian-Ukrainian Conflict?</h4>
 
     <p>
-      Sentiment analysis helps us cast a view on how people react to the topic of RU conflict.
-      By applying the sentiment analysis pipeline and further processing, we gain the sentiment scores
-      for each reddit in both submissions and comments.
+      Sentiment analysis casts a view on how people react to the topic of RU conflict.
+      By applying the sentiment analysis pipeline and further processing, we obtain the sentiment scores
+      for each reddit for both submissions and comments.
     </p>
     <p><strong>Creation of Sentiment-Related Attributes & Stats:</strong></p>
     <ul>
@@ -579,31 +569,23 @@
         medium-size pipeline for our Reddit case.
       </li>
       <li>
-        While this pipeline output the four kinds of sentiment results:
-        'positive', 'negative', 'neutral', 'None', we create the new
+        While this pipeline outputs four kinds of sentiment results:
+        'positive', 'negative', 'neutral', and 'None', we create a new
         'sentiment_score' column, which is 1.0 when positive and 0.0 otherwise,
-        to place an accentuation on the positive sentiments.
+        to put an emphasize on the positive sentiments.
       </li>
       <li>
-        And we focus our NLP analysis on positive & negative reddits.
-      </li>
-      <li>
-        Then we compute the average sentiment score
-        as well as count the numbers of positive and negative reddits, both on a daily basis.
+        Then we aggregate the average sentiment scores
+        as well as the numbers of positive and negative reddits into daily timeseries.
         Please refer to <a
           href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these
           notebooks</a>
-        for the code we use for generating the sentiment-related attributes & stats.
+        for the code we use for generating the sentiment-related attributes & statistics.
       </li>
     </ul>
-
-    <p><strong>Summary Tables:</strong></p>
     <p>
-      Furthermore, we create two summary tables for the sentiments:
-      one for the average sentiment scores(on a daily basis); one for the scores(column of the original dataset) in
-      different sentiments.
+      <b>Table ##</b> shows a summary of the generated sentiment scores.
     </p>
-
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <tr>
@@ -639,13 +621,13 @@
       of Sentiment Scores. <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
         Code</a></p>
-
-    <p>From the sentiment score summary table, we can see that:</p>
+    <p>From <b>Table ##</b>, we can see that:</p>
     <ul>
       <li>The dates for maximum/minimum sentiment scores in Submissions and Comments are similar.</li>
-      <li>Submissions have a larger fluctuation and a overall lower level for the sentiment scores than comments.</li>
+      <li>Submission scores have larger fluctuations and lower sentiment scores overall than comments.</li>
     </ul>
-
+    <p>Each Reddit post also has a score for itself. The score is simply the number of upvotes minus the number of
+      downvotes.<b>Table ##</b> shows a summary of Reddit scores.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <tr>
@@ -700,8 +682,8 @@
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
         Code</a></p>
 
-    <p>From the score summary table, we can roughly say that negative reddits often come up with higher scores.
-      Then we verify our intuition by carrying out two-sample t-tests:</p>
+    <p>From the score summary table, we can see that reddits with negative sentiment tend to have higher Reddit scores.
+      To verify this numerical hypothesis using two-sample t-tests:</p>
     <ul>
       <li>Two-sample t-test for submission scores in 2 sentiments:</li>
       <code>statistic = -2.36</code>
@@ -713,10 +695,14 @@
       <br>
       <code>pvalue = 1.012e-233</code>
     </ul>
-    <p>These results finally lead to the conclusion: </p>
+    <p>The results lead to our conclusion: </p>
     <p>Reddits with positive sentiments tend to have
       lower scores than those with negative sentiments,
-      whether for submissions or comments.</p>
+      for both submissions and comments.</p>
+    <p>We also created two keyword generated dummy variables to separate Reddit posts with Russia-related content such
+      as "Putin", "Russia", etc, from Ukraine-related content such as "Zelensky", "Ukraine", etc. From <b>Table ##</b>,
+      we find that Ukraine-related content has more positive sentiment posts and less negative sentiment posts as
+      compared to Russian-related content.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <thead>
@@ -744,19 +730,13 @@
       Keywords. <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">Visualization
         Code</a></p>
-
-    <p>
-      Then we create two visualizations: one for the reddit counts of different sentiments,
-      and one for the sentiment scores.
-    </p>
-
-    <div class="row py-5">
+    <div class="row py-4">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/sentiment_score_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-              Sentiment Score Time Series. <a
+              Sentiment Score Time Series. Trend is the 10-day moving average.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Line%20Plot.ipynb">Visualization
                 Code</a></p>
           </div>
@@ -764,26 +744,26 @@
       </div>
     </div>
     <p>
-      Note: The trend value for a certain day is computed using the mean of daily
-      average sentiment scores in the following 10 days. (If date-axis exceeded, then
-      less than 10 days)
+      <b>Figure ##</b> plots the aggregated daily average sentiment scores for comments and submissions. Both charts had
+      a steep upward trend at the end of February. Compared to submission sentiment scores's stale trend, comment
+      sentiment is getting more and more positive. We think it makes sense that comments are usually more emotional than
+      submissions, especially at the beginning of the conflict. That's why we see a large dip at the beginning of the
+      comment sentiment chart(right).
     </p>
-    <p>
-      &emsp;Trend[i]=Avg(SentScore[i:min((i+10),len(SentScore))])
-    </p>
-
-    <!-- <div class="row py-5">
+    <div class="row py-3">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/RU_conflict_timeline.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-              Russian-Ukrainian Conflict Timeline</p>
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Russia-Ukraine Conflict
+              Event Timeline.<a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/timeline.ipynb">Visualization
+                Code</a></p>
           </div>
         </div>
       </div>
-    </div> -->
-
+    </div>
+    <p><b>Figure ##</b> plots the event line of Russia-Ukraine Conflict.</p>
     <p>
       In the <strong>Prelude</strong> phase, contradictions were fermented between Russia and Ukraine on many
       issues, among which the most significant one is whether Ukraine should enter NATO.
@@ -868,21 +848,14 @@
     <br>
 
     <hr>
-
-
-
-    <br>
     <br>
   </div> <!-- container -->
-
 
   <footer class="blog-footer">
     <p>
       <a href="#">Back to top</a>
     </p>
   </footer>
-
-
 
 </body>
 

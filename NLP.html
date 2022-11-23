@@ -115,7 +115,9 @@
       </table>
     </div>
     <p style="font-weight: lighter; text-align: center;"><strong>TABLE 1</strong> Statistics
-      of Sentiment Scores</p>
+      of Sentiment Scores. <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
+        Code</a></p>
     <br>
     <br>
     <br>
@@ -128,8 +130,9 @@
 
     <p>
       Our text data sets are the Reddit comments and submissions from January 1, 2022 to August 31, 2022, amounting to
-      10,378,762 unique articles. For submission posts, "title" and "selftext" are concatenated. We leverage Apache
-      Spark and Spark NLP to build the text processing pipeline. First, we used the pre-trained model
+      10,378,762 unique posts. For submission posts, "title" and "selftext" are concatenated. We leverage Apache
+      Spark and Spark NLP to build the text processing pipeline. <b>Figure 2</b> plots our data processing flow. First,
+      we used the pre-trained model
       “detect_language_375” provided by John Snow Labs, to detect the languages of each post and estimate the language
       proportion from 0 to 1. We include posts in Ukrainian, Russian, and English, and create three sub-datasets for
       each of them by selecting posts with an estimated proportion above 0.8 for that language. Secondly, we remove
@@ -143,7 +146,9 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/data_flow.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Data Pipeline</p>
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 2 </strong>Data Pipeline. <a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Data">Pipeline
+                Code</a></p>
           </div>
         </div>
       </div>
@@ -159,7 +164,6 @@
     <br>
     <br>
     <br>
-    <!-- Q1 -->
     <hr>
     <h4>Q1. (NLP) What are the major topics discussed in Reddit related to Russia Ukraine conflict?</h4>
     <br>
@@ -367,9 +371,6 @@
 
 
 
-
-
-
     <br>
     <br>
 
@@ -517,7 +518,12 @@
         </tr>
       </table>
       <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Common/Important words found from
-        applying tf-idf</p>
+        applying tf-idf. <a
+          href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Text%20Stats/common-words-submission-comment-language.ipynb">Common
+          Words
+          Code</a> and <a
+          href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Text%20Stats/TF-IDF.ipynb">TF-IDF
+          Code</a></p>
     </div>
 
     <br>
@@ -630,7 +636,9 @@
       </table>
     </div>
     <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics
-      of Sentiment Scores</p>
+      of Sentiment Scores. <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
+        Code</a></p>
 
     <p>From the sentiment score summary table, we can see that:</p>
     <ul>
@@ -688,7 +696,9 @@
       </table>
     </div>
     <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of
-      Scores in Positive/Negative Sentiments</p>
+      Scores in Positive/Negative Sentiments. <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
+        Code</a></p>
 
     <p>From the score summary table, we can roughly say that negative reddits often come up with higher scores.
       Then we verify our intuition by carrying out two-sample t-tests:</p>
@@ -730,30 +740,14 @@
         </tbody>
       </table>
     </div>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of
-      Scores in Positive/Negative Sentiments</p>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Positive/Negative Sentiments by
+      Keywords. <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">Visualization
+        Code</a></p>
 
-    <p><strong>Visualizations:</strong></p>
     <p>
       Then we create two visualizations: one for the reddit counts of different sentiments,
-      and one for the sentiment scores. We compare two time-serie plots with the RU-conflict
-      timeline, according to <a
-        href="https://en.wikipedia.org/wiki/Timeline_of_the_2022_Russian_invasion_of_Ukraine">wikipedia</a>.
-    </p>
-
-    <div class="row py-5">
-      <div class="col-md-12">
-        <div class="card p-0" style="border: none">
-          <img src="img/NLP/sentiment_count_plot.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-              Reddit Quantity Time Series in 2 Sentiments</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p>
-      Note: The weekly-based stacked histograms are also generated from the daily-based datasets.
+      and one for the sentiment scores.
     </p>
 
     <div class="row py-5">
@@ -762,7 +756,9 @@
           <img src="img/NLP/sentiment_score_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-              Sentiment Score Time Series</p>
+              Sentiment Score Time Series. <a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Line%20Plot.ipynb">Visualization
+                Code</a></p>
           </div>
         </div>
       </div>
@@ -776,7 +772,7 @@
       &emsp;Trend[i]=Avg(SentScore[i:min((i+10),len(SentScore))])
     </p>
 
-    <div class="row py-5">
+    <!-- <div class="row py-5">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/RU_conflict_timeline.jpg" class="card-img-top" alt="...">
@@ -786,7 +782,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <p>
       In the <strong>Prelude</strong> phase, contradictions were fermented between Russia and Ukraine on many
@@ -849,19 +845,19 @@
       Figure xx plots the Pearson correlations between all the timeseries we collected during the 8-month period.
     </p>
 
-    <div class="row py-5">
-
+    <div class="row py-3">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/correlations.png" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Correlations between topics,
-              sentiments, and commodity prices.</p>
+              sentiments, and commodity prices.<a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/Correlations.ipynb">Visualization
+                Code</a></p>
           </div>
         </div>
       </div>
     </div>
-
     <p>
       The highlighting areas concentrate on the top-left and bottom-right corners, indicating there is strong
       relationship within

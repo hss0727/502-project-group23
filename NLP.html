@@ -54,9 +54,12 @@
     </ol>
     </p>
     <br>
+    <br>
+    <br>
 
 
 
+    <hr>
     <h4>
       Data Cleaning
     </h4>
@@ -91,20 +94,104 @@
 
 
 
-
-
-
-
-
-
     <br>
     <br>
     <br>
-    <h2>Q1. Finding common, important words</h2>
+    <!-- Q1 -->
     <hr>
+    <h4>Q1. (NLP) What are the major topics discussed in Reddit related to Russia Ukraine conflict?</h4>
+    <br>
+    <p>
+      <strong>Topic models</strong> generate interpretable text features extracted from documents. These models help identify and cluster similar documents and are useful tools to tag documents.
+    </p>
+
+    <p><a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html">Spark MLlib documentation</a> specifies the terminology used in this analysis: Link</p>
+    <ol>
+      <li><mark>term = word</mark>: an element of the vocabulary</li>
+      <li><mark>token</mark>: instance of a term appearing in a document</li>
+      <li><mark>topic</mark>:multinomial distribution over terms representing some concept</li>
+      <li><mark>document</mark>: one piece of text, corresponding to one row in the input data</li>
+    </ol>
 
     <br>
-    <h4>Q1-1. Using tf-idf for languages, submissions, and comments</h4>
+
+
+
+
+
+
+    <h4>
+      Latent Dirichlet Allocation (LDA)
+    </h4>
+    <p>
+      <strong>Latent Dirichlet Allocation (LDA)</strong> is a statistical model that helps produce meaningful topics that humans can relate to. It assumes that topics are probability distributions over words, and documents are distributions over topics and that topics use only a limited number of terms frequently. 
+    </p>
+
+    <ul>
+      <li><mark>k</mark>: number of topics (= number of clusters)</li>
+      <li><mark>maxIter</mark>: number of iterations</li>
+      <li><mark>featuresCol</mark>: a collection of documents as input data. Feature transformers such as <strong>Tokenizer</strong> and <strong>CountVectorizer</strong> are used to convert text to word count vectors as input data.</li>
+    </ul>
+    <br>
+
+    <h4>
+      Topic Modeling Pipeline
+    </h4>
+    <p>
+      We proceed with 15 topics, top 10 words per topic using the cleaned documents as input data. The <a href="https://colab.research.google.com/drive/14bf2kwdU4f5UBUYEkTJO01NjFtWEZU_-#scrollTo=yqwgYNlgwxvX">notebook</a> contains the LDA pipeline applied to the submissions and comments data. The data from two sources are stacked using <mark>union</mark> command to provide comprehensive topic modeling on every posts related to RU Conflict in the Reddit dataset. 
+    </p>
+
+        <!-- IMAGE: LDA PIPELINE -->
+        <div class="row py-5">
+
+          <div class="col-md-12">
+            <div class="card p-0" style="border: none">
+              <img src="img/NLP/pipeline.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>LDA Pipeline</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!-- IMAGE END -->
+
+
+    <br>
+    <hr>
+    <h4>Q2. (NLP) What are different languages other than English that can be analyzed in the Dataset? (language
+      detection) Xinlu</h4>
+    <p>
+      Although it is easy to assume that most of the Reddit content is in English, based on the chosen topics, we target
+      English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we
+      use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence
+      toward these three languages for each submission and comment content. With the confidence values, we can define
+      dummy variables for three languages by any desired bar. For the NLP part of our project, we subset our data by
+      their language with 80% confidence. We conduct our common word analysis using PySpark SQL functions, following the
+      process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our
+      vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include
+      <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined
+      functions under the PySpark SQL environment. Since we are dealing with foreign languages, we also utilize Spark
+      NLP pre-trained pipeline <b>translate_ru_en</b> and <b>translate_uk_en</b>, enabling translation from Russian and
+      Ukrainian to English, respectively. When we only need the translation for word tokens, we use the pipelines start
+      with document assembler, followed by the Spark Neural Machine Translation framework <b>Marian</b> models
+      <b>opus_mt_ru_en</b> and <b>opus_mt_uk_en</b> respectively. The results we obtain give us insights into how the
+      focus of the discussion in different languages varies from each other. However, since there is a significant gap
+      between the volume of records in English and the volume of records in Russian and Ukrainian, we will not include
+      records in these languages in our further explorations.
+    </p>
+      
+      
+      
+
+
+
+
+    <br>
+    <br>
+
+    <br>
+    <hr>
+    <h4>Q3. Which topics/kinds of submissions/comments are more popular?</h4>
 
   <p>
     Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b> machine learning features and annotators, we feed our cleaned text data through the tokenizer. And then conduct hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the inversed document frequency for each TF vector corresponding to the text records. By extracting function properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the most important words. Please refer to <a
@@ -227,54 +314,18 @@
       possibly represent political entries and figures that are not familiar to foreign people outside of the
       confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
     </p>
-    <h5>TF-IDF</h5>
-    <p>
-      Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b>
-      machine learning features and annotators, we feed our cleaned text data through the tokenizer. And then conduct
-      hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the
-      dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the
-      inversed document frequency for each TF vector corresponding to the text records. By extracting function
-      properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the
-      most important words. Please refer to <a
-        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/TFIDF.ipynb">this notebook</a>
-      for calculating the TF-IDF scores.
-    </p>
-    <p>
-      TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different
-      perspectives of the discussion. We can see political or geometrical representations like <i>European, German, and
-        Belarus</i>. Words like <i>brigade</i>, <i> combat</i>, and </i> front</i> imply more detailed descriptions and
-      discussion going on in the military-related discussion. The nickname "Dr. Eisenfaust." for the Mayer of Kyiv
-      brings up a new political figure other than Putin. Instead of nouns, more adjectives appearing as important words
-      bring out the discussion nature of Reddit.
-    </p>
+  
 
-    <h4>Q2. (NLP) What are different languages other than English that can be analyzed in the Dataset? (language
-      detection) Xinlu</h4>
-    <p>
-      Although it is easy to assume that most of the Reddit content is in English, based on the chosen topics, we target
-      English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we
-      use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence
-      toward these three languages for each submission and comment content. With the confidence values, we can define
-      dummy variables for three languages by any desired bar. For the NLP part of our project, we subset our data by
-      their language with 80% confidence. We conduct our common word analysis using PySpark SQL functions, following the
-      process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our
-      vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include
-      <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined
-      functions under the PySpark SQL environment. Since we are dealing with foreign languages, we also utilize Spark
-      NLP pre-trained pipeline <b>translate_ru_en</b> and <b>translate_uk_en</b>, enabling translation from Russian and
-      Ukrainian to English, respectively. When we only need the translation for word tokens, we use the pipelines start
-      with document assembler, followed by the Spark Neural Machine Translation framework <b>Marian</b> models
-      <b>opus_mt_ru_en</b> and <b>opus_mt_uk_en</b> respectively. The results we obtain give us insights into how the
-      focus of the discussion in different languages varies from each other. However, since there is a significant gap
-      between the volume of records in English and the volume of records in Russian and Ukrainian, we will not include
-      records in these languages in our further explorations.
-    </p>
+    
 
 
 
 
 
 
+
+
+  
 
 
 
@@ -283,50 +334,15 @@
     <br>
     <br>
     <br>
-    <h2>Q4. Topic Modeling using Spark ML package</h2>
-    <hr>
-    <!-- Q5 -->
-    <h4></h4>
-    <p>
-      <strong>Topic models</strong> generate interpretable text features extracted from documents. These models help identify and cluster similar documents and are useful tools to tag documents.
-    </p>
-
-    <p>Spark MLlib documentation specifies the terminology used in this analysis: <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html">Link</a></p>
-    <ol>
-      <li><mark>term = word</mark>: an element of the vocabulary</li>
-      <li><mark>token</mark>: instance of a term appearing in a document</li>
-      <li><mark>topic</mark>:multinomial distribution over terms representing some concept</li>
-      <li><mark>document</mark>: one piece of text, corresponding to one row in the input data</li>
-    </ol>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
 
 
-
-
-
-
-    <h4>
-      Latent Dirichlet Allocation (LDA)
-    </h4>
-    <p>
-      <strong>Latent Dirichlet Allocation (LDA)</strong> is a statistical model that helps produce meaningful topics that humans can relate to. It assumes that topics are probability distributions over words, and documents are distributions over topics and that topics use only a limited number of terms frequently. 
-    </p>
-
-    <ul>
-      <li><mark>k</mark>: number of topics (= number of clusters)</li>
-      <li><mark>maxIter</mark>: number of iterations</li>
-      <li><mark>featuresCol</mark>: a collection of documents as input data. Feature transformers such as <strong>Tokenizer</strong> and <strong>CountVectorizer</strong> are used to convert text to word count vectors as input data.</li>
-    </ul>
-
-
-
-
-
-    <br>
-
-
-
+    <!--FROM EDA TAB USE AND TRASH -->
+    <h1>The contents below are codes from EDA tab. Use and trash</h1>
     <p>
       Number of posts counted using the submission ID, which is unique to the Reddit post, is shown below. The resulting subset from the original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global issue.
     </p>
@@ -358,27 +374,7 @@
 
 
 
-    <!-- IMAGE: average comments crossposts comparison -->
-    <div class="row py-5">
 
-      <div class="col-md-12">
-      <div class="card p-0" style="border: none">
-        <img src="img/EDA/average_comments_crossposts.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;">Figure description</p>
-  
-        </div>
-      </div>
-      </div>
-  
-      <!-- IMAGE: schema END -->
-  
-      <!--
-      <p><mark>Add figure number</mark></p>
-      -->
-  
-      </div>
-      <!-- IMAGE END -->
 
 
 
@@ -932,6 +928,15 @@
       <p><mark>Add figure number</mark></p>
     </div>
 
+
+
+
+
+
+
+
+
+  <!-- DO NOT TRASH BELOW -->
 
   </div> <!-- container -->
 

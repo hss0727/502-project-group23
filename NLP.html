@@ -44,15 +44,9 @@
     <hr>
     <br>
 
-    <p>
-      The goal of our analysis:
-    <ol>
-      <li>(Xinlu) Common words, Important words,.......</li>
-      <li>Sentiment Analysis.........</li>
-      <li>Topic Modeling......</li>
-      <li>Combine NLP with external data</li>
-    </ol>
-    </p>
+    <h4>
+      Summary
+    </h4>
     <br>
     <br>
     <br>
@@ -334,20 +328,23 @@
     <h4>Q4. How is the sentiment in Reddit posts over time related to Russian-Ukrainian Conflict?</h4>
 
     <p>
-      Sentiment analysis helps us cast a view on how people react to the topic of RU conflict. 
-      By applying the sentiment analysis pipeline and further processing, we gain the sentiment scores 
-      for each reddit in both submissions and comments. Then we compute the daily average sentiment score 
-      as well as do the counting for positive and negative reddits. 
-      Please refer to <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these notebooks</a> 
+      Sentiment analysis helps us cast a view on how people react to the topic of RU conflict.
+      By applying the sentiment analysis pipeline and further processing, we gain the sentiment scores
+      for each reddit in both submissions and comments. Then we compute the daily average sentiment score
+      as well as do the counting for positive and negative reddits.
+      Please refer to <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these
+        notebooks</a>
       for the code we use for generating the sentiment-related attributes & stats.
     </p>
 
     <p><strong>Summary Tables:</strong></p>
     <p>
-      Furthermore, we create two summary tables for the sentiments: 
-      one for the average sentiment scores(on a daily basis); one for the scores(column of the original dataset) in different sentiments.
+      Furthermore, we create two summary tables for the sentiments:
+      one for the average sentiment scores(on a daily basis); one for the scores(column of the original dataset) in
+      different sentiments.
     </p>
-    
+
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <tr>
@@ -379,8 +376,8 @@
         </tr>
       </table>
     </div>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics 
-    of Sentiment Scores</p>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics
+      of Sentiment Scores</p>
 
     <p>From the sentiment score summary table, we can see that:</p>
     <ol>
@@ -437,32 +434,58 @@
         </tr>
       </table>
     </div>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of 
-    Scores in Positive/Negative Sentiments</p>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of
+      Scores in Positive/Negative Sentiments</p>
 
-    <p>From the score summary table, we can roughly say that negative reddits often come up with higher scores. 
-    Then we verify our intuition by carrying out two-sample t-tests:</p>
+    <p>From the score summary table, we can roughly say that negative reddits often come up with higher scores.
+      Then we verify our intuition by carrying out two-sample t-tests:</p>
     <ul>
       <li>Two-sample t-test for submission scores in 2 sentiments:</li>
       <code>statistic = -2.36</code>
       <br>
-      <code>pvalue = 0.0179</code> 
+      <code>pvalue = 0.0179</code>
 
       <li>Two-sample t-test for comment scores in 2 sentiments:</li>
       <code>statistic = -32.64</code>
       <br>
-      <code>pvalue = 1.012e-233</code> 
+      <code>pvalue = 1.012e-233</code>
     </ul>
     <p>These results finally lead to the conclusion: </p>
-    <p>Reddits with positive sentiments tend to have 
-      lower scores than those with negative sentiments, 
-    whether for submissions or comments.</p>
+    <p>Reddits with positive sentiments tend to have
+      lower scores than those with negative sentiments,
+      whether for submissions or comments.</p>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <thead>
+          <tr>
+            <th title="Field #1">Sentiment</th>
+            <th title="Field #2">Positive</th>
+            <th title="Field #3">Negative</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Russia</td>
+            <td align="right">12475</td>
+            <td align="right">52497</td>
+          </tr>
+          <tr>
+            <td>Ukraine</td>
+            <td align="right">20067</td>
+            <td align="right">46907</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of
+      Scores in Positive/Negative Sentiments</p>
 
     <p><strong>Visualizations:</strong></p>
     <p>
-      Then we create two visualizations: one for the reddit counts of different sentiments, 
-      and one for the sentiment scores. We compare two time-serie plots with the RU-conflict 
-      timeline, according to <a href="https://en.wikipedia.org/wiki/Timeline_of_the_2022_Russian_invasion_of_Ukraine">wikipedia</a>.
+      Then we create two visualizations: one for the reddit counts of different sentiments,
+      and one for the sentiment scores. We compare two time-serie plots with the RU-conflict
+      timeline, according to <a
+        href="https://en.wikipedia.org/wiki/Timeline_of_the_2022_Russian_invasion_of_Ukraine">wikipedia</a>.
     </p>
 
     <div class="row py-5">
@@ -471,7 +494,7 @@
           <img src="img/NLP/sentiment_count_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-           Reddit Quantity Time Series in 2 Sentiments</p>
+              Reddit Quantity Time Series in 2 Sentiments</p>
           </div>
         </div>
       </div>
@@ -483,7 +506,7 @@
           <img src="img/NLP/sentiment_score_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-            Sentiment Score Time Series</p>
+              Sentiment Score Time Series</p>
           </div>
         </div>
       </div>
@@ -495,45 +518,45 @@
           <img src="img/NLP/RU_conflict_timeline.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
-            Russian-Ukrainian Conflict Timeline</p>
+              Russian-Ukrainian Conflict Timeline</p>
           </div>
         </div>
       </div>
     </div>
 
     <p>
-      In the <strong>Prelude</strong> phase, contradictions were fermented between Russia and Ukraine on many 
+      In the <strong>Prelude</strong> phase, contradictions were fermented between Russia and Ukraine on many
       issues, among which the most significant one is whether Ukraine should enter NATO.
     </p>
     <p>
-      Once the prelude ended and the war began in the end of February, 
-      reddits on the RU topic exploded correspondingly, 
-      both for the positive ones and negative ones. A large number of submissions and comments 
-      on this topic were posted in a short time. 
+      Once the prelude ended and the war began in the end of February,
+      reddits on the RU topic exploded correspondingly,
+      both for the positive ones and negative ones. A large number of submissions and comments
+      on this topic were posted in a short time.
     </p>
 
     <p>
-      In phase 1, <strong>Invasion of Ukraine</strong>, Russia launched the military invasion of Ukraine. 
-      The daily average sentiment scores of 
-      submissions experienced a decreasing phase, which reflects the fermentation of negative 
-      emotions of anxiety, disorder and even panic. Meanwhile, the sentiment scores of comments fluctuated  
+      In phase 1, <strong>Invasion of Ukraine</strong>, Russia launched the military invasion of Ukraine.
+      The daily average sentiment scores of
+      submissions experienced a decreasing phase, which reflects the fermentation of negative
+      emotions of anxiety, disorder and even panic. Meanwhile, the sentiment scores of comments fluctuated
       largely due to the uncertainties of the war.
     </p>
 
     <p>
       In phase 2, <strong>Southeastern Front</strong>, the area of heavy fighting
-       shifted to the south and east of Ukraine.
-      The number of submissions decreased largely, which is the common 
+      shifted to the south and east of Ukraine.
+      The number of submissions decreased largely, which is the common
       case for most news topics. The sentiment
-      scores of comments were fluctuating largely during this period, which reflects the emotion of 
+      scores of comments were fluctuating largely during this period, which reflects the emotion of
       the disturbed people who still paid close attention to the conflict.
     </p>
 
     <p>
       In phase 3, <strong>Ukrainian Counteroffensives</strong>, Ukrainian forces retook substantial
       ground during counteroffensives in the south and east, continuing to the present day. The number
-      of both positive and negative posted reddits became stabler than previous. Sentiment scores of 
-      comments started to increase in this phase. Most people no longer worried about the burst of 
+      of both positive and negative posted reddits became stabler than previous. Sentiment scores of
+      comments started to increase in this phase. Most people no longer worried about the burst of
       the potential 'Third World War'.
     </p>
 
@@ -553,7 +576,7 @@
     <br>
     <hr>
 
-    
+
 
     <h4>Q8.(External Data) How does each topic correlate to the commodity price changes?</h4>
 
@@ -590,24 +613,6 @@
 
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div> <!-- container -->
 
 

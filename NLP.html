@@ -335,6 +335,11 @@
 
     <h4>Q8. How does each topic correlate to the commodity price changes?</h4>
 
+    <p>
+      It is a common practice to use correlation as preliminary analysis to test simple relationships between variables.
+      Figure xx plots the Pearson correlations between all the timeseries we collected during the 8-month period.
+    </p>
+
     <div class="row py-5">
 
       <div class="col-md-12">
@@ -349,15 +354,11 @@
     </div>
 
     <p>
-      Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b>
-      machine learning features and annotators, we feed our cleaned text data through the tokenizer. And then conduct
-      hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the
-      dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the
-      inversed document frequency for each TF vector corresponding to the text records. By extracting function
-      properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the
-      most important words. Please refer to <a
-        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/TFIDF.ipynb">this notebook</a>
-      for calculating the TF-IDF scores.
+      The highlighting areas concentrate on the top-left and bottom-right corners, indicating there is strong
+      relationship within
+      commodity returns and reddit textual features, but not between them. Since our goal is to use reddit to predict
+      commodity returns, a weak correlation between predictor and target implies we will need better features and a
+      better-than-linear model.
     </p>
     <br>
 

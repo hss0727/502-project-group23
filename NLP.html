@@ -428,18 +428,18 @@
     <p><strong>Creation of Sentiment-Related Attributes & Stats:</strong></p>
     <ul>
       <li>
-        We used the pre-trained pipeline of <strong>analyze_sentimentdl_use_twitter</strong>
+        We use the pre-trained pipeline of <strong>analyze_sentimentdl_use_twitter</strong>
         provided by <strong>John Snow Labs</strong>, since that's the most suitable
         medium-size pipeline for our Reddit case.
       </li>
       <li>
-        While this pipeline outputed the four kinds of sentiment results:
-         'positive', 'negative', 'neutral', 'None', we created the new 
+        While this pipeline outputs the four kinds of sentiment results:
+         'positive', 'negative', 'neutral', 'None', we create the new 
          'sentiment_score' column, which is 1.0 when positive and 0.0 otherwise,
           to place an accentuation on the positive sentiments.
       </li>
       <li>
-        And we focused our NLP analysis on positive & negative reddits. 
+        And we focus our NLP analysis on positive & negative reddits. 
       </li>
       <li>
         Then we compute the average sentiment score 

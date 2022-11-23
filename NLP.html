@@ -243,7 +243,8 @@
       use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence
       toward these three languages for each submission and comment content. With the confidence values, we can define
       dummy variables for three languages by any desired bar. For the NLP part of our project, we subset our data by
-      their language with 80% confidence. We conduct our common word analysis using PySpark SQL functions, following the
+      their language with 80% confidence. <mark>Figure ## shows how the volumes of submissions in different languages change over time</mark>. 
+      We conduct our common word analysis using PySpark SQL functions, following the
       process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our
       vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include
       <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined
@@ -256,6 +257,20 @@
       between the volume of records in English and the volume of records in Russian and Ukrainian, we will not include
       records in these languages in our further explorations.
     </p>
+
+    <div class="col-md-12">
+      <div class="card p-0" style="border: none">
+        <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p style="font-weight: lighter; text-align: center;"><b>FIGURE ##:</b>Volumes of submissions in English,
+            Ukrainian, and
+            Russian over the observation period.<a
+              href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-timeseries-line-chart.ipynb">Visualization
+              Code</a>.</p>
+
+        </div>
+      </div>
+    </div>
 
 
 
@@ -283,7 +298,8 @@
     </p>
     <p>
       TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different
-      perspectives of the discussion. We can see political or geometrical representations like <i>European, German, and
+      perspectives of the discussion. The word <i>children</i> appeares as one of the most important word in Russian submissions, 
+      shows us that peopel are paying attention to the future generation during a hard time. We can also see political or geometrical representations like <i>European, German, and
         Belarus</i>. Words like <i>brigade</i>, <i> combat</i>, and </i> front</i> imply more detailed descriptions and
       discussion going on in the military-related discussion. The nickname "Dr. Eisenfaust." for the Mayer of Kyiv
       brings up a new political figure other than Putin. Instead of nouns, more adjectives appearing as important words
@@ -322,48 +338,43 @@
         <tr>
           <th rowspan="2" style="vertical-align: middle;">Russian</th>
           <th style="vertical-align: middle;">submission</th>
-          <td><i>России(Russian Federation)</i>, <i>войны(War)</i>, <i>Путин(Putin)</i>, <i>США(United States
-              dollars)</i>, <i>время(time)</i>, <i>своих(your own)</i>, <i>Зеленский(Green)</i>,
-            <i>территории(Territory)</i>, <i>мир(peace)</i>, <i>Бабченко:(Babchenko:)</i>,
+          <td><i>это(This is)</i>, <i>украины(Ukraine)</i>, <i>россии(Russia)</i>, <i>украине(Ukraine)</i>, 
+            <i>рф(Russia)</i>, <i>войны(War)</i>, <i>просто(simply)</i>, <i>против(against)</i>, 
+            <i>видео(video)</i>, <i>очень(Very much)</i>
           </td>
-          <td><i>других(Other)</i>, <i>работает(working)</i>, <i>города(Cities)</i>, <i>день(day)</i>,
-            <i>помощи(assistance)</i>, <i>вся(All of them.)</i>, <i>детей(Children)</i>, <i>российской(Russian)</i>,
-            <i>куклу(Doll)</i>, <i>мира(peace)</i>
+          <td><i>других(Other)</i>, <i>работает(It's working)</i>, <i>свои(Their)</i>, <i>такие(such)</i>, 
+            <i>города(City)</i>, <i>день(day)</i>, <i>помощи(Help)</i>, <i>вся(all)</i>, 
+            <i>детей(Children)</i>, <i>лишь(only)</i>
           </td>
         </tr>
         <tr>
           <th style="vertical-align: middle;">comment</th>
-          <td><i>России(Russian Federation)</i>, <i>Украине(Ukraine)</i>, <i>люди(people)</i>, <i>людей(of human
-              beings)</i>, <i>войны(War)</i>, <i>Путин(Putin)</i>, <i>человек(Total population)</i>,
-            <i>страны(Country)</i>, <i>НАТО(NATO)</i>, <i>США(United States dollars)</i>,
-          </td>
-          <td><i>начали(Start)</i>, <i>своим(your own)</i>, <i>ситуации(situation)</i>, <i>россияне(Russians)</i>,
-            <i>самом(I'm not sure.)</i>, <i>шмольцы(Shh.)</i>, <i>человека(Human Rights)</i>, <i>страна(Country)</i>,
-            <i>ребята…(Guys...)</i>, <i>мир(peace)</i>
-          </td>
+          <td><i>это(This is)</i>, <i>просто(simply)</i>, <i>всё(all)</i>, <i>россии(Russia)</i>, 
+            <i>украине(Ukraine)</i>, <i>очень(Very much)</i>, <i>которые(That)</i>, <i>украины(Ukraine)</i>, 
+            <i>люди(people)</i>, <i>лет(Years)</i></td>
+          <td><i>начали(Started)</i>, <i>своим(Your)</i>, <i>ситуации(Situation)</i>, 
+            <i>россияне(Russians)</i>, <i>хочет(Wants)</i>, <i>самом(The)</i>, <i>шмольцы(Schmoltsy)</i>, 
+            <i>человека(Person)</i>, <i>должен(must)</i>, <i>страна(country)</i></td>
         </tr>
         <tr>
           <th rowspan="2" style="vertical-align: middle;">Ukrainian</th>
           <th style="vertical-align: middle;">submission</th>
-          <td><i>України(Ukraine)</i>, <i>Росії(Russia)</i>, <i>війни(wars)</i>, <i>РФ(RF)</i>, <i>США(United
-              States)</i>, <i>людей(people)</i>, <i>Слава(Glory)</i>, <i>вторгнення(invasion)</i>,
-            <i>окупантів(Occupationals)</i>, <i>дітей(kids)</i>
-          </td>
-          <td><i>російська(grow up)</i>, <i>останнім(Permanent)</i>, <i>дорослих(The older)</i>, <i>дорозі(Dorose)</i>,
-            <i>думкою(Thoughtful)</i>, <i>олександра(olexandra)</i>, <i>дізнатися(to know)</i>, <i>дія(the United
-              Nations)</i>, <i>експертів(Suppliers)</i>, <i>translate(transfer)</i>
+          <td><i>України(Ukraine)</i>, <i>Україні(Ukraine)</i>, <i>Україна(Ukraine)</i>, <i>Україну(Ukraine)</i>, 
+            <i>Росії(Russia)</i>, <i>війни(War)</i>, <i>РФ(RF)</i>, <i>США(United States)</i>, <i>Росія(Russia)</i>, 
+            <i>the(that)</i></td>
+          <td><i>російська(Russian)</i>, <i>військові(Military)</i>, <i>останнім(Last)</i>, <i>дорослих(Adults)</i>, 
+            <i>дорозі(Road)</i>, <i>думкою(Opinion)</i>, <i>олександра(Alexander)</i>, <i>дізнатися(find out)</i>, 
+            <i>my(Mi)</i>, <i>дія(action)</i></td>
           </td>
         </tr>
         <tr>
           <th style="vertical-align: middle;">comment</th>
-          <td><i>України(Ukraine)</i>, <i>людей(people)</i>, <i>війни(wars)</i>, <i>взагалі(generally)</i>,
-            <i>питання(question)</i>, <i>країни(countries)</i>, <i>Слава(Glory)</i>, <i>Росії(Russia)</i>, <i>США(United
-              States)</i>, <i>життя(life)</i>
-          </td>
-          <td><i>повномасштабному(large scale)</i>, <i>наприклад(Apparatus)</i>, <i>гроші(for a little while)</i>,
-            <i>замінив(Deputy)</i>, <i>українців(Theft)</i>, <i>росії(and grow up)</i>, <i>microsoft(Microsoft)</i>,
-            <i>supermarkety(Supermarkety)</i>, <i>автократії(autocratic)</i>, <i>аккаунт(account)</i>
-          </td>
+          <td><i>України(Ukraine)</i>, <i>Україні(Ukraine)</i>, <i>людей(People)</i>, <i>має(Has)</i>, 
+            <i>війни(War)</i>, <i>взагалі(generally)</i>, <i>Україну(Ukraine)</i>, <i>Україна(Ukraine)</i>, 
+            <i>питання(question)</i>, <i>робити(do)</i></td>
+          <td><i>повномасштабному(full-scale)</i>, <i>мови(Language)</i>, <i>маю(Mean)</i>, 
+            <i>наприклад(For example)</i>, <i>гроші(money)</i>, <i>замінив(Replaced)</i>, 
+            <i>якісна(Quality)</i>, <i>мова(language)</i>, <i>українців(Ukrainians)</i>, <i>робити(do)</i></td>
         </tr>
       </table>
       <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Common/Important words found from
@@ -382,7 +393,7 @@
       our selected subreddits. Inside the spark environment, we explode the body of the comments and submissions into
       single words. By aggregating all the vocabularies by their counts, we are able to sort them to find the most
       common words over our time interval of interest. Please refer to <a
-        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/common_words_submission_comment_language.ipynb">this
+        href="https://common_words_submission_comment_language.ipynb">this
         notebook</a> for the code extracting common words.
     </p>
     <p>
@@ -399,7 +410,7 @@
       the posts.
     </p>
     <p>
-      The common words for posts in Russian and Ukrainian include words like US dollars and populations, which could
+      Except the top ten we listed, the common words for posts in Russian and Ukrainian also include words like US dollars and populations, which could
       suggest different angles of discussions like finance and geopolitics. Words like <i>Green</i> and <i>Babchenko</i>
       possibly represent political entries and figures that are not familiar to foreign people outside of the
       confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.

@@ -331,6 +331,216 @@
 
     <hr>
 
+    <h4>Q4. How is the sentiment in Reddit posts over time related to Russian-Ukrainian Conflict?</h4>
+
+    <p>
+      Sentiment analysis helps us cast a view on how people react to the topic of RU conflict. 
+      By applying the sentiment analysis pipeline and further processing, we gain the sentiment scores 
+      for each reddit in both submissions and comments. Then we compute the daily average sentiment score 
+      as well as do the counting for positive and negative reddits. 
+      Please refer to <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these notebooks</a> 
+      for the code we use for generating the sentiment-related attributes & stats.
+    </p>
+
+    <p><strong>Summary Tables:</strong></p>
+    <p>
+      Furthermore, we create two summary tables for the sentiments: 
+      one for the average sentiment scores(on a daily basis); one for the scores(column of the original dataset) in different sentiments.
+    </p>
+    
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <td>Sentiment Score Stats</td>
+          <td>Average</td>
+          <td>Minimum/Date</td>
+          <td>Maximum/Date</td>
+          <td>Std</td>
+          <td>Q1</td>
+          <td>Q3</td>
+        </tr>
+        <tr>
+          <td>Submissions</td>
+          <td>0.244</td>
+          <td>0.086/01-12</td>
+          <td>0.481/01-01</td>
+          <td>0.041</td>
+          <td>0.220</td>
+          <td>0.268</td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>0.344</td>
+          <td>0.251/01-22</td>
+          <td>0.422/01-02</td>
+          <td>0.028</td>
+          <td>0.334</td>
+          <td>0.362</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics 
+    of sentiment scores</p>
+
+    <p>From the sentiment score summary table, we can see that:</p>
+    <ol>
+      <li>The dates for maximum/minimum sentiment scores in Submissions and Comments are similar.</li>
+      <li>Submissions have a larger fluctuation and a overall lower level for the sentiment scores than comments.</li>
+    </ol>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <td>Score Stats</td>
+          <td>Counts</td>
+          <td>Average</td>
+          <td>Range</td>
+          <td>IQR</td>
+          <td>Std</td>
+          <td>Skewness</td>
+        </tr>
+        <tr>
+          <td>Positive Submissions</td>
+          <td>66445</td>
+          <td>296.23</td>
+          <td>0~108426</td>
+          <td>109</td>
+          <td>1741.93</td>
+          <td>22.05</td>
+        </tr>
+        <tr>
+          <td>Negative Submissions</td>
+          <td>192527</td>
+          <td>313.31</td>
+          <td>0~195763</td>
+          <td>168</td>
+          <td>1554.17</td>
+          <td>29.21</td>
+        </tr>
+        <tr>
+          <td>Positive Comments</td>
+          <td>2375428</td>
+          <td>9.51</td>
+          <td>-618~8607</td>
+          <td>5</td>
+          <td>47.40</td>
+          <td>33.37</td>
+        </tr>
+        <tr>
+          <td>Negative Comments</td>
+          <td>4144561</td>
+          <td>10.87</td>
+          <td>-657~9421</td>
+          <td>6</td>
+          <td>52.92</td>
+          <td>33.31</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of 
+    scores in positive/negative sentiments</p>
+
+    <p>From the score summary table, we can roughly say that negative reddits often come up with higher scores. 
+    Then we verify our intuition by carrying out two-sample t-tests:</p>
+    <ul>
+      <li>Two-sample t-test for submission scores in 2 sentiments:</li>
+      <code>statistic = -2.36</code>
+      <br>
+      <code>pvalue = 0.0179</code> 
+
+      <li>Two-sample t-test for comment scores in 2 sentiments:</li>
+      <code>statistic = -32.64</code>
+      <br>
+      <code>pvalue = 1.012e-233</code> 
+    </ul>
+    <p>These results finally lead to the conclusion: </p>
+    <p>Reddits with positive sentiments tend to have 
+      lower scores than those with negative sentiments, 
+    whether for submissions or comments.</p>
+
+    <p><strong>Visualizations:</strong></p>
+    <p>
+      Then we create two visualizations: one for the reddit counts of different sentiments, 
+      and one for the sentiment scores. We compare two time-serie plots with the RU-conflict 
+      timeline, according to <a href="https://en.wikipedia.org/wiki/Timeline_of_the_2022_Russian_invasion_of_Ukraine">wikipedia</a>.
+    </p>
+
+    <div class="row py-5">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="imgs/sentiment_count_plot.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
+           Reddit Quantity Time Series in 2 Sentiments</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row py-5">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="imgs/sentiment_score_plot.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
+            Sentiment Score Time Series</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row py-5">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="imgs/RU_conflict_timeline.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
+            Russian-Ukrainian Conflict Timeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      In the Prelude phase, contradictions were fermented between Russia and Ukraine on many 
+      issues, among which the most significant one is <strong>whether Ukraine should enter NATO</strong>.
+    </p>
+    <p>
+      Once the prelude ended and the war began in the end of February, 
+      Reddits on the RU topic exploded correspondingly, 
+      both for the positive ones and negative ones. A large number of submissions and comments 
+      on this topic were posted in a short time. 
+    </p>
+
+    <p>
+      In phase 1, <strong>Invasion of Ukraine</strong>, Russia launched the military invasion of Ukraine. 
+      The daily average sentiment scores of 
+      submissions experienced a decreasing phase, which reflects the fermentation of negative 
+      emotions of anxiety, disorder and even panic. Meanwhile, the sentiment scores of comments fluctuated  
+      largely due to the uncertainties of the war.
+    </p>
+
+    <p>
+      In phase 2, <strong>Southeastern Front</strong>, the area of heavy fighting
+       shifted to the south and east of Ukraine.
+      The number of submissions decreased largely, which is the common 
+      case for most news topics. The sentiment
+      scores of comments were fluctuating largely during this period, which reflects the emotion of 
+      the disturbed people who still paid close attention to the conflict.
+    </p>
+
+    <p>
+      In phase 3, <strong>Ukrainian Counteroffensives</strong>, Ukrainian forces retook substantial
+      ground during counteroffensives in the south and east, continuing to the present day. The number
+      of both positive and negative posted reddits became stabler than previous. Sentiment scores of 
+      comments started to increase in this phase. Most people no longer worried about the burst of 
+      the potential 'Third World War'.
+    </p>
+
+    <br>
+    <hr>
+
+
     <h4>Q6. Is there difference in the sentiments among different ages?
     </h4>
     <p>
@@ -343,6 +553,7 @@
     <br>
     <hr>
 
+    
 
     <h4>Q8.(External Data) How does each topic correlate to the commodity price changes?</h4>
 

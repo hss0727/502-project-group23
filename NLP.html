@@ -337,9 +337,9 @@
       their language with 80% confidence. <mark>Figure ## shows how the volumes of submissions in different languages
         change over time</mark>.
       We conduct our common word analysis using PySpark SQL functions, following the
-      process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our
+      process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TF-IDF scores for our
       vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include
-      <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined
+      <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TF-IDF score to words by user-defined
       functions under the PySpark SQL environment. Since we are dealing with foreign languages, we also utilize Spark
       NLP pre-trained pipeline <b>translate_ru_en</b> and <b>translate_uk_en</b>, enabling translation from Russian and
       Ukrainian to English, respectively. When we only need the translation for word tokens, we use the pipelines start
@@ -369,12 +369,13 @@
     <h4>Q3. Which topics/kinds of submissions/comments are more popular?</h4>
 
     <p>
-      Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b>
+      Applying the TF-IDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b>
       machine learning features and annotators, we feed our cleaned text data through the tokenizer. And then conduct
       hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the
       dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the
       inversed document frequency for each TF vector corresponding to the text records. By extracting function
-      properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the
+      properties and annotator returns, we map the TF-IDF score back to the textual word tokens and sort them to find
+      the
       most important words. Please refer to <a
         href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/TFIDF.ipynb">this notebook</a>
       for calculating the TF-IDF scores.
@@ -414,12 +415,12 @@
 
     <center>
       <p>
-        \(TFIDF =\ TF \times IDF\)
+        \(TF-IDF =\ TF \times IDF\)
       </p>
     </center>
 
     <p>
-      TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different
+      TF-IDF helps us discard the dominance of words like country names and wars. The critical words give us different
       perspectives of the discussion. The word <i>children</i> appeares as one of the most important word in Russian
       submissions,
       shows us that peopel are paying attention to the future generation during a hard time. We can also see political

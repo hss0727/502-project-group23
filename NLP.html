@@ -19,10 +19,9 @@
   <link href="css/styles.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
-  
+
 </head>
 
 <body>
@@ -53,10 +52,73 @@
     <h4>
       Summary
     </h4>
+    <p>
+      We construct sentiment and topic features from the Reddit posts, to reflect what people talk about and how they
+      feel about the Russia-Ukraine Conflict event. From the topic modeling, we find the submissions are concentrated
+      among
+      major three topics about “military force”, “city riot”, and “sanctions”, while the comments are more balanced on
+      different topics. From the sentiment analysis, as <b>Table 1</b> shows, we find people have more negative comments
+      and
+      submissions than the positive ones, and they also tend to give higher scores for negative posts. From our
+      preliminary analysis, we do not find strong correlations between commodity returns and topics or sentiments. This
+      is not unexpected due to returns notoriously have low signal-to-noise ratios, and it also suggests that we should
+      have more
+      flexible model to capture text information.
+    </p>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <td>Score Stats</td>
+          <td>Counts</td>
+          <td>Average</td>
+          <td>Range</td>
+          <td>IQR</td>
+          <td>Std</td>
+          <td>Skewness</td>
+        </tr>
+        <tr>
+          <td>Positive Submissions</td>
+          <td>66445</td>
+          <td>296.23</td>
+          <td>0~108426</td>
+          <td>109</td>
+          <td>1741.93</td>
+          <td>22.05</td>
+        </tr>
+        <tr>
+          <td>Negative Submissions</td>
+          <td>192527</td>
+          <td>313.31</td>
+          <td>0~195763</td>
+          <td>168</td>
+          <td>1554.17</td>
+          <td>29.21</td>
+        </tr>
+        <tr>
+          <td>Positive Comments</td>
+          <td>2375428</td>
+          <td>9.51</td>
+          <td>-618~8607</td>
+          <td>5</td>
+          <td>47.40</td>
+          <td>33.37</td>
+        </tr>
+        <tr>
+          <td>Negative Comments</td>
+          <td>4144561</td>
+          <td>10.87</td>
+          <td>-657~9421</td>
+          <td>6</td>
+          <td>52.92</td>
+          <td>33.31</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 1</strong> Statistics
+      of Sentiment Scores</p>
     <br>
     <br>
     <br>
-
 
 
     <hr>
@@ -327,10 +389,13 @@
       for calculating the TF-IDF scores.
     </p>
     <p>
-      TF-IDF stands for term frequency-inverse document frequency. It is a statistical measure that evaluates how relevant a words is to a document in a collection of document.
+      TF-IDF stands for term frequency-inverse document frequency. It is a statistical measure that evaluates how
+      relevant a words is to a document in a collection of document.
     </p>
     <p>
-      The TF <b>term frequency</b> measures how many times one instance of word appears in the a document over the length of the document. In our case, how many time one word token appears in one comment/submission text body over the length of the comment/submission.
+      The TF <b>term frequency</b> measures how many times one instance of word appears in the a document over the
+      length of the document. In our case, how many time one word token appears in one comment/submission text body over
+      the length of the comment/submission.
     </p>
     <center>
       <p>
@@ -338,17 +403,22 @@
       </p>
     </center>
     <p>
-      The IDF <b>inverse document frequency</b> measures how common or rare one instance of word is in the entire document set. 
-      In our case, how common or rare a word token is over the whold subsets of comments or submissions texts. The small the IDF is 
-      the more common a word is. The IDF essentailly help us eliminate the interference of words like <i>Ukrainian</i> and <i>Russian</i> when trying to extract important words.
+      The IDF <b>inverse document frequency</b> measures how common or rare one instance of word is in the entire
+      document set.
+      In our case, how common or rare a word token is over the whold subsets of comments or submissions texts. The small
+      the IDF is
+      the more common a word is. The IDF essentailly help us eliminate the interference of words like <i>Ukrainian</i>
+      and <i>Russian</i> when trying to extract important words.
     </p>
     <center>
       <p>
-        \(IDF (inversed\ document\ frequency) = \log \frac{total\ number\ of\ documents}{number\ of\ documents\ containing\ the\ word}\)
+        \(IDF (inversed\ document\ frequency) = \log \frac{total\ number\ of\ documents}{number\ of\ documents\
+        containing\ the\ word}\)
       </p>
     </center>
     <p>
-      The TF-IDF score is calculated for every unique word token appears in the text body of our dataset. The higher the score is, the more critical the word is. 
+      The TF-IDF score is calculated for every unique word token appears in the text body of our dataset. The higher the
+      score is, the more critical the word is.
     </p>
 
     <center>
@@ -533,8 +603,8 @@
         <tr>
           <td>Sentiment Score Stats</td>
           <td>Average</td>
-          <td>Minimum/Date</td>
-          <td>Maximum/Date</td>
+          <td>Minimum</td>
+          <td>Maximum</td>
           <td>Std</td>
           <td>Q1</td>
           <td>Q3</td>
@@ -542,8 +612,8 @@
         <tr>
           <td>Submissions</td>
           <td>0.244</td>
-          <td>0.086/01-12</td>
-          <td>0.481/01-01</td>
+          <td>0.086</td>
+          <td>0.481</td>
           <td>0.041</td>
           <td>0.220</td>
           <td>0.268</td>
@@ -551,8 +621,8 @@
         <tr>
           <td>Comments</td>
           <td>0.344</td>
-          <td>0.251/01-22</td>
-          <td>0.422/01-02</td>
+          <td>0.251</td>
+          <td>0.422</td>
           <td>0.028</td>
           <td>0.334</td>
           <td>0.362</td>

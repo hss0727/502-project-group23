@@ -70,6 +70,16 @@
       punctuations,and stopwords; 3) lemmatizing each word to its single format, e.g. "words" to "word", "makes" to
       "make".
     </p>
+    <div class="row py-5">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/NLP/data_flow.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Data Pipeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>
       We collect the commodity futures' price data from investing.com. The data has the same date range as the Reddit
       data from January 1, 2022 to August 31, 2022, covering 15 major food and energy commodities. To calculate the
@@ -93,10 +103,10 @@
     <p><a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html">Spark
         MLlib documentation</a> specifies the terminology used in this analysis: Link</p>
     <ol>
-      <li><mark>term = word</mark>: an element of the vocabulary</li>
-      <li><mark>token</mark>: instance of a term appearing in a document</li>
-      <li><mark>topic</mark>:multinomial distribution over terms representing some concept</li>
-      <li><mark>document</mark>: one piece of text, corresponding to one row in the input data</li>
+      <li><strong>term = word</strong>: an element of the vocabulary</li>
+      <li><strong>token</strong>: instance of a term appearing in a document</li>
+      <li><strong>topic</strong>:multinomial distribution over terms representing some concept</li>
+      <li><strong>document</strong>: one piece of text, corresponding to one row in the input data</li>
     </ol>
 
     <br>
@@ -116,9 +126,9 @@
     </p>
 
     <ul>
-      <li><mark>k</mark>: number of topics (= number of clusters)</li>
-      <li><mark>maxIter</mark>: number of iterations</li>
-      <li><mark>featuresCol</mark>: a collection of documents as input data. Feature transformers such as
+      <li><strong>k</strong>: number of topics (= number of clusters)</li>
+      <li><strong>maxIter</strong>: number of iterations</li>
+      <li><strong>featuresCol</strong>: a collection of documents as input data. Feature transformers such as
         <strong>Tokenizer</strong> and <strong>CountVectorizer</strong> are used to convert text to word count vectors
         as input data.
       </li>
@@ -138,12 +148,107 @@
 
     <!-- IMAGE: LDA PIPELINE -->
     <div class="row py-5">
-
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/pipeline.png" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>LDA Pipeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- IMAGE END -->
+
+    <p>
+      The <strong>DocumentAssembler</strong> transforms the input data to annotation format so that Spark can use it as
+      input data - <mark>DOCUMENT</mark>. The <strong>Tokenizer</strong> splits lines in document into words -
+      <mark>TOKEN</mark>. Finally, the Finisher transforms the annotation format of Spark NLP to a "human-readable"
+      format. Normalizer (lowercasing), Lemmatizer, and StopWordsCleaners are skipped in this pipeline since they are
+      already processed in the Data Cleaning step. The <strong>CountVectorizer</strong> is used to count the frequency
+      of the each term in the document and provide input data for the LDA model. (<mark>featuresCol</mark> vector)
+
+
+    </p>
+    <p style="font-weight: lighter; text-align: left;">Reference: <a
+        href="https://medium.com/trustyou-engineering/topic-modelling-with-pyspark-and-spark-nlp-a99d063f1a6e">Topic
+        Modelling with PySpark and Spark NLP</a> - Maria obedkova</p>
+    <br>
+    <p>
+      The table below summarizes the result 15 topics and top 10 words per each topic.
+    </p>
+
+
+
+
+    <!--TOPIC MODELING SUMMARIZATION TABLE-->
+    <table class="table table-bordered table-hover table-condensed">
+      <thead style="text-align: center">
+        <tr>
+          <th title="Field #1" style="width: 10%">Topic #</th>
+          <th title="Field #2" style="width: 90%">Topic Words</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        <tr>
+          <td>1</td>
+          <td>[lol, putin, russian, russia, dead, wait, years, good, guy, ukrainian]</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>[russian, ukraine, russians, russia, ukrainian, day, war, shit, make, ukrainians]</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>[russian, fuck, good, ukrainian, people, russia, guy, video, thing, lol]</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>[love, people, damn, ukraine, russia, world, war, god, good, lot]</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>[russian, ukraine, russia, tanks, air, tank, artillery, military, weapons, hit]</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>[post, ukraine, hope, video, people, reddit, russian, back, give, read]</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>[information, ukraine, message, rules, mod, reddit, issue, mail, vital, muted]</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>[ukraine, russian, bad, people, russia, youtu, troll, putin, army, time]</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>[russia, ukraine, war, people, russian, putin, country, nato, world, time]</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>[putin, shit, man, ukraine, russia, trump, russian, people, utm, war]</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ## </strong>Topic words processed for 15 Topics
+      (=k, clusters)</p>
+    <!--TOPIC MODELING SUMMARIZATION TABLE-->
+
+
+    <br>
+    <br>
+    <p>
+      The plot below visualizes the result 15 topics and top 10 words per each topic.
+    </p>
+
+    <!-- IMAGE: LDA PIPELINE -->
+    <div class="row py-2">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/NLP/(temp)_topic_modeling_plot.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Temporary figure</p>
           </div>
         </div>
       </div>
@@ -161,7 +266,9 @@
       use Spark NLP pre-trained language detection model <b>detect_language_375</b>. We obtain the prediction confidence
       toward these three languages for each submission and comment content. With the confidence values, we can define
       dummy variables for three languages by any desired bar. For the NLP part of our project, we subset our data by
-      their language with 80% confidence. We conduct our common word analysis using PySpark SQL functions, following the
+      their language with 80% confidence. <mark>Figure ## shows how the volumes of submissions in different languages
+        change over time</mark>.
+      We conduct our common word analysis using PySpark SQL functions, following the
       process of tokenizing, aggregating by vocabulary, counting, and sorting. We obtain the TFIDF scores for our
       vocabularies using PySpark machine learning feature algorithms. The extraction and transformation tools include
       <b>Tokenizer</b>, <b>HashingTF</b>, <b>IDF</b>. We map the resulting TFIDF score to words by user-defined
@@ -174,6 +281,20 @@
       between the volume of records in English and the volume of records in Russian and Ukrainian, we will not include
       records in these languages in our further explorations.
     </p>
+
+    <div class="col-md-12">
+      <div class="card p-0" style="border: none">
+        <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p style="font-weight: lighter; text-align: center;"><b>FIGURE ##:</b>Volumes of submissions in English,
+            Ukrainian, and
+            Russian over the observation period.<a
+              href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-timeseries-line-chart.ipynb">Visualization
+              Code</a>.</p>
+
+        </div>
+      </div>
+    </div>
 
 
 
@@ -201,7 +322,10 @@
     </p>
     <p>
       TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different
-      perspectives of the discussion. We can see political or geometrical representations like <i>European, German, and
+      perspectives of the discussion. The word <i>children</i> appeares as one of the most important word in Russian
+      submissions,
+      shows us that peopel are paying attention to the future generation during a hard time. We can also see political
+      or geometrical representations like <i>European, German, and
         Belarus</i>. Words like <i>brigade</i>, <i> combat</i>, and </i> front</i> imply more detailed descriptions and
       discussion going on in the military-related discussion. The nickname "Dr. Eisenfaust." for the Mayer of Kyiv
       brings up a new political figure other than Putin. Instead of nouns, more adjectives appearing as important words
@@ -240,47 +364,48 @@
         <tr>
           <th rowspan="2" style="vertical-align: middle;">Russian</th>
           <th style="vertical-align: middle;">submission</th>
-          <td><i>России(Russian Federation)</i>, <i>войны(War)</i>, <i>Путин(Putin)</i>, <i>США(United States
-              dollars)</i>, <i>время(time)</i>, <i>своих(your own)</i>, <i>Зеленский(Green)</i>,
-            <i>территории(Territory)</i>, <i>мир(peace)</i>, <i>Бабченко:(Babchenko:)</i>,
+          <td><i>это(This is)</i>, <i>украины(Ukraine)</i>, <i>россии(Russia)</i>, <i>украине(Ukraine)</i>,
+            <i>рф(Russia)</i>, <i>войны(War)</i>, <i>просто(simply)</i>, <i>против(against)</i>,
+            <i>видео(video)</i>, <i>очень(Very much)</i>
           </td>
-          <td><i>других(Other)</i>, <i>работает(working)</i>, <i>города(Cities)</i>, <i>день(day)</i>,
-            <i>помощи(assistance)</i>, <i>вся(All of them.)</i>, <i>детей(Children)</i>, <i>российской(Russian)</i>,
-            <i>куклу(Doll)</i>, <i>мира(peace)</i>
+          <td><i>других(Other)</i>, <i>работает(It's working)</i>, <i>свои(Their)</i>, <i>такие(such)</i>,
+            <i>города(City)</i>, <i>день(day)</i>, <i>помощи(Help)</i>, <i>вся(all)</i>,
+            <i>детей(Children)</i>, <i>лишь(only)</i>
           </td>
         </tr>
         <tr>
           <th style="vertical-align: middle;">comment</th>
-          <td><i>России(Russian Federation)</i>, <i>Украине(Ukraine)</i>, <i>люди(people)</i>, <i>людей(of human
-              beings)</i>, <i>войны(War)</i>, <i>Путин(Putin)</i>, <i>человек(Total population)</i>,
-            <i>страны(Country)</i>, <i>НАТО(NATO)</i>, <i>США(United States dollars)</i>,
+          <td><i>это(This is)</i>, <i>просто(simply)</i>, <i>всё(all)</i>, <i>россии(Russia)</i>,
+            <i>украине(Ukraine)</i>, <i>очень(Very much)</i>, <i>которые(That)</i>, <i>украины(Ukraine)</i>,
+            <i>люди(people)</i>, <i>лет(Years)</i>
           </td>
-          <td><i>начали(Start)</i>, <i>своим(your own)</i>, <i>ситуации(situation)</i>, <i>россияне(Russians)</i>,
-            <i>самом(I'm not sure.)</i>, <i>шмольцы(Shh.)</i>, <i>человека(Human Rights)</i>, <i>страна(Country)</i>,
-            <i>ребята…(Guys...)</i>, <i>мир(peace)</i>
+          <td><i>начали(Started)</i>, <i>своим(Your)</i>, <i>ситуации(Situation)</i>,
+            <i>россияне(Russians)</i>, <i>хочет(Wants)</i>, <i>самом(The)</i>, <i>шмольцы(Schmoltsy)</i>,
+            <i>человека(Person)</i>, <i>должен(must)</i>, <i>страна(country)</i>
           </td>
         </tr>
         <tr>
           <th rowspan="2" style="vertical-align: middle;">Ukrainian</th>
           <th style="vertical-align: middle;">submission</th>
-          <td><i>України(Ukraine)</i>, <i>Росії(Russia)</i>, <i>війни(wars)</i>, <i>РФ(RF)</i>, <i>США(United
-              States)</i>, <i>людей(people)</i>, <i>Слава(Glory)</i>, <i>вторгнення(invasion)</i>,
-            <i>окупантів(Occupationals)</i>, <i>дітей(kids)</i>
+          <td><i>України(Ukraine)</i>, <i>Україні(Ukraine)</i>, <i>Україна(Ukraine)</i>, <i>Україну(Ukraine)</i>,
+            <i>Росії(Russia)</i>, <i>війни(War)</i>, <i>РФ(RF)</i>, <i>США(United States)</i>, <i>Росія(Russia)</i>,
+            <i>the(that)</i>
           </td>
-          <td><i>російська(grow up)</i>, <i>останнім(Permanent)</i>, <i>дорослих(The older)</i>, <i>дорозі(Dorose)</i>,
-            <i>думкою(Thoughtful)</i>, <i>олександра(olexandra)</i>, <i>дізнатися(to know)</i>, <i>дія(the United
-              Nations)</i>, <i>експертів(Suppliers)</i>, <i>translate(transfer)</i>
+          <td><i>російська(Russian)</i>, <i>військові(Military)</i>, <i>останнім(Last)</i>, <i>дорослих(Adults)</i>,
+            <i>дорозі(Road)</i>, <i>думкою(Opinion)</i>, <i>олександра(Alexander)</i>, <i>дізнатися(find out)</i>,
+            <i>my(Mi)</i>, <i>дія(action)</i>
+          </td>
           </td>
         </tr>
         <tr>
           <th style="vertical-align: middle;">comment</th>
-          <td><i>України(Ukraine)</i>, <i>людей(people)</i>, <i>війни(wars)</i>, <i>взагалі(generally)</i>,
-            <i>питання(question)</i>, <i>країни(countries)</i>, <i>Слава(Glory)</i>, <i>Росії(Russia)</i>, <i>США(United
-              States)</i>, <i>життя(life)</i>
+          <td><i>України(Ukraine)</i>, <i>Україні(Ukraine)</i>, <i>людей(People)</i>, <i>має(Has)</i>,
+            <i>війни(War)</i>, <i>взагалі(generally)</i>, <i>Україну(Ukraine)</i>, <i>Україна(Ukraine)</i>,
+            <i>питання(question)</i>, <i>робити(do)</i>
           </td>
-          <td><i>повномасштабному(large scale)</i>, <i>наприклад(Apparatus)</i>, <i>гроші(for a little while)</i>,
-            <i>замінив(Deputy)</i>, <i>українців(Theft)</i>, <i>росії(and grow up)</i>, <i>microsoft(Microsoft)</i>,
-            <i>supermarkety(Supermarkety)</i>, <i>автократії(autocratic)</i>, <i>аккаунт(account)</i>
+          <td><i>повномасштабному(full-scale)</i>, <i>мови(Language)</i>, <i>маю(Mean)</i>,
+            <i>наприклад(For example)</i>, <i>гроші(money)</i>, <i>замінив(Replaced)</i>,
+            <i>якісна(Quality)</i>, <i>мова(language)</i>, <i>українців(Ukrainians)</i>, <i>робити(do)</i>
           </td>
         </tr>
       </table>
@@ -300,7 +425,7 @@
       our selected subreddits. Inside the spark environment, we explode the body of the comments and submissions into
       single words. By aggregating all the vocabularies by their counts, we are able to sort them to find the most
       common words over our time interval of interest. Please refer to <a
-        href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/common_words_submission_comment_language.ipynb">this
+        href="https://common_words_submission_comment_language.ipynb">this
         notebook</a> for the code extracting common words.
     </p>
     <p>
@@ -317,7 +442,8 @@
       the posts.
     </p>
     <p>
-      The common words for posts in Russian and Ukrainian include words like US dollars and populations, which could
+      Except the top ten we listed, the common words for posts in Russian and Ukrainian also include words like US
+      dollars and populations, which could
       suggest different angles of discussions like finance and geopolitics. Words like <i>Green</i> and <i>Babchenko</i>
       possibly represent political entries and figures that are not familiar to foreign people outside of the
       confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
@@ -337,6 +463,31 @@
         notebooks</a>
       for the code we use for generating the sentiment-related attributes & stats.
     </p>
+    <p><strong>Creation of Sentiment-Related Attributes & Stats:</strong></p>
+    <ul>
+      <li>
+        We used the pre-trained pipeline of <strong>analyze_sentimentdl_use_twitter</strong>
+        provided by <strong>John Snow Labs</strong>, since that's the most suitable
+        medium-size pipeline for our Reddit case.
+      </li>
+      <li>
+        While this pipeline outputed the four kinds of sentiment results:
+        'positive', 'negative', 'neutral', 'None', we created the new
+        'sentiment_score' column, which is 1.0 when positive and 0.0 otherwise,
+        to place an accentuation on the positive sentiments.
+      </li>
+      <li>
+        And we focused our NLP analysis on positive & negative reddits.
+      </li>
+      <li>
+        Then we compute the average sentiment score
+        as well as count the numbers of positive and negative reddits, both on a daily basis.
+        Please refer to <a
+          href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these
+          notebooks</a>
+        for the code we use for generating the sentiment scores.
+      </li>
+    </ul>
 
     <p><strong>Summary Tables:</strong></p>
     <p>
@@ -380,10 +531,10 @@
       of Sentiment Scores</p>
 
     <p>From the sentiment score summary table, we can see that:</p>
-    <ol>
+    <ul>
       <li>The dates for maximum/minimum sentiment scores in Submissions and Comments are similar.</li>
       <li>Submissions have a larger fluctuation and a overall lower level for the sentiment scores than comments.</li>
-    </ol>
+    </ul>
 
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
@@ -499,6 +650,9 @@
         </div>
       </div>
     </div>
+    <p>
+      Note: The weekly-based stacked histograms are also generated from the daily-based dataset.
+    </p>
 
     <div class="row py-5">
       <div class="col-md-12">
@@ -511,6 +665,14 @@
         </div>
       </div>
     </div>
+    <p>
+      Note: The trend value for a certain day is computed using the mean of daily
+      average sentiment scores in the following 10 days. (If date-axis exceeded, then
+      less than 10 days)
+    </p>
+    <math>
+      &emsp;Trend[i]=Avg(SentScore[i:min((i+10),len(SentScore))])
+    </math>
 
     <div class="row py-5">
       <div class="col-md-12">

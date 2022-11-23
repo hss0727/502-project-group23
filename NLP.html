@@ -66,8 +66,61 @@
     </p>
 
 
+<<<<<<< HEAD
     <h4>Common words/important words(tf-idf) for languages/submissions/comments(Table)</h4>
     <p>Table for common/important words(xinlu)</p>
+=======
+    <!-- IMAGE: schema -->
+    <div class="row py-5">
+
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/NLP/temp.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">Explanation</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE: schema END -->
+
+
+      <!--
+      <p><mark>Add figure number</mark></p>
+      -->
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <h2>Q1. Finding common, important words</h2>
+    <hr>
+
+    <br>
+    <h4>Q1-1. Using tf-idf for languages, submissions, and comments</h4>
+
+  <p>
+    Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b> machine learning features and annotators, we feed our cleaned text data through the tokenizer. And then conduct hashing term frequency transformation for the tokenized column. HashingTF enables dimensionality reduction to the dataset, which is very helpful when working on large-sized data in a distributive manner. We then compute the inversed document frequency for each TF vector corresponding to the text records. By extracting function properties and annotator returns, we map the TFIDF score back to the textual word tokens and sort them to find the most important words. Please refer to <a
+    href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/TFIDF.ipynb">this notebook</a> for calculating the TF-IDF scores.
+  </p>
+  <p>
+    TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different perspectives of the discussion. We can see political or geometrical representations like <i>European, German, and Belarus</i>. Words like <i>brigade</i>, <i> combat</i>, and </i> front</i> imply more detailed descriptions and discussion going on in the military-related discussion. The nickname "Dr. Eisenfaust." for the Mayer of Kyiv brings up a new political figure other than Putin. Instead of nouns, more adjectives appearing as important words bring out the discussion nature of Reddit. 
+  </p>
+
+  <br>
+
+>>>>>>> 20e8050 (Modify Xinlu's writing)
     <div class="table-responsive">
       <table class="table">
         <tr>
@@ -142,9 +195,12 @@
           </td>
         </tr>
       </table>
+      <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong>  Common/Important words found from applying tf-idf</p>
     </div>
 
-    <h5>Commen words</h5>
+    <br>
+    
+
     <p>
       As we tagged all the submissions and comments by their languages, we split the datasets into English, Russian, and
       Ukrainian since they are part of the focus of our textual analysis.
@@ -176,6 +232,7 @@
       possibly represent political entries and figures that are not familiar to foreign people outside of the
       confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
     </p>
+<<<<<<< HEAD
     <h5>TF-IDF</h5>
     <p>
       Applying the TFIDF method to our text data gives us more insight into online discussions. With the <b>pyspark</b>
@@ -199,6 +256,14 @@
 
     <h4>Q2. (NLP) What are different languages other than English that can be analyzed in the Dataset? (language
       detection) Xinlu</h4>
+=======
+
+    
+
+    <br>
+    <br>
+    <h4>Q1-2. What are different languages other than English that can be analyzed in the Dataset? (language detection)</h4>
+>>>>>>> 20e8050 (Modify Xinlu's writing)
     <p>
       Although it is easy to assume that most of the Reddit content is in English, based on the chosen topics, we target
       English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we
@@ -221,6 +286,670 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <h2>Q4. Topic Modeling using Spark ML package</h2>
+    <hr>
+    <!-- Q5 -->
+    <h4></h4>
+    <p>
+      <strong>Topic models</strong> generate interpretable text features extracted from documents. These models help identify and cluster similar documents and are useful tools to tag documents.
+    </p>
+
+    <p>Spark MLlib documentation specifies the terminology used in this analysis: <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html">Link</a></p>
+    <ol>
+      <li><mark>term = word</mark>: an element of the vocabulary</li>
+      <li><mark>token</mark>: instance of a term appearing in a document</li>
+      <li><mark>topic</mark>:multinomial distribution over terms representing some concept</li>
+      <li><mark>document</mark>: one piece of text, corresponding to one row in the input data</li>
+    </ol>
+
+    <br>
+
+
+
+
+
+
+    <h4>
+      Latent Dirichlet Allocation (LDA)
+    </h4>
+    <p>
+      <strong>Latent Dirichlet Allocation (LDA)</strong> is a statistical model that helps produce meaningful topics that humans can relate to. It assumes that topics are probability distributions over words, and documents are distributions over topics and that topics use only a limited number of terms frequently. 
+    </p>
+
+    <ul>
+      <li><mark>k</mark>: number of topics (= number of clusters)</li>
+      <li><mark>maxIter</mark>: number of iterations</li>
+      <li><mark>featuresCol</mark>: a collection of documents as input data. Feature transformers such as <strong>Tokenizer</strong> and <strong>CountVectorizer</strong> are used to convert text to word count vectors as input data.</li>
+    </ul>
+
+
+
+
+
+    <br>
+
+
+
+    <p>
+      Number of posts counted using the submission ID, which is unique to the Reddit post, is shown below. The resulting subset from the original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global issue.
+    </p>
+
+
+     <!-- IMAGE: number of posts time series -->
+     <div class="row py-5">
+
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/EDA/submission_time_series_bar_plot.png" class="card-img-top" alt="...">
+          <div class="card-body">
+              <p style="font-weight: lighter; text-align: center;">Starting February 2022, number of posts in the dataset increased drastically when Russia-Ukraine conflict became a global issue.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE: schema END -->
+
+      <!--
+      <p><mark>Add figure number</mark></p>
+      -->
+
+    </div>
+    <!-- IMAGE END -->
+
+
+
+
+
+    <!-- IMAGE: average comments crossposts comparison -->
+    <div class="row py-5">
+
+      <div class="col-md-12">
+      <div class="card p-0" style="border: none">
+        <img src="img/EDA/average_comments_crossposts.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">Figure description</p>
+  
+        </div>
+      </div>
+      </div>
+  
+      <!-- IMAGE: schema END -->
+  
+      <!--
+      <p><mark>Add figure number</mark></p>
+      -->
+  
+      </div>
+      <!-- IMAGE END -->
+
+
+
+      <p>
+        Insert findings
+      </p>
+
+      <br>
+      <br>
+    
+
+
+
+
+
+
+    <!-- Code snippet for filtering -->
+    <!-- <div class="border rounded bg-secondary text-white">
+      <pre>
+        <code>
+    # Using subreddit to filter the data
+
+    ru_subreddit_list = ['ukraine', 'ukraina', 'UkraineConflict',\
+        'RussiaUkraineWar2022', 'UkrainianConflict',\
+        'UkraineWarReports', 'UkraineInvasionVideos',\
+        'UkraineWarVideoReport']
+
+    war_subreddit_list = ['war', "CombatFootage", "CredibleDefense", "geopolitics"]
+    war_search_keywords = r'(^|\s)(ukraine|ukrainian|russia|russian|putin|zelenskyy)(\s|$)'
+    
+
+    # Filtering submission file
+
+    df_sub = df_submission.filter((F.col('subreddit').isin(ru_subreddit_list)) |
+    ((F.col('subreddit').isin(war_subreddit_list)) & (F.lower(F.col('selftext')) \
+        .rlike(war_search_keywords))))
+    df_sub = df_sub.withColumn("created_utc", F.from_unixtime("created_utc"))
+    df_sub = df_sub.withColumn("created_date", F.to_date("created_utc"))
+    df_sub = df_sub.filter(F.col("created_date") >= "2022-01-01")
+    df_sub.count()
+
+    
+    # Filtering comment file
+
+    df_com_all = df_comment.filter((F.col('subreddit').isin(ru_subreddit_list)) |
+          ((F.col('subreddit').isin(war_subreddit_list)) & (F.lower(F.col('body')) \
+        .rlike(war_search_keywords))))
+    df_com_all = df_com_all.withColumn("created_utc", F.from_unixtime("created_utc"))
+    df_com_all = df_com_all.withColumn("created_date", F.to_date("created_utc"))
+    df_com_all = df_com_all.filter(F.col("created_date") >= "2022-01-01")
+    df_com_all.count()
+        </code>
+    </pre>
+    </div>
+    Code snippet for filtering END -->
+
+
+    <!-- <p class="lead">
+      Feature selection
+    </p> -->
+
+
+
+
+    <br>
+    <br>
+    <h4>Summary Statistics of the Filtered Dataset</h4>
+    <br>
+    <p>
+      
+
+    </p>
+    <table class="table table-bordered table-hover table-condensed">
+      <thead style="text-align: center">
+        <tr>
+          <th title="Field #1" style="width: 25%">Stats</th>
+          <th title="Field #2" style="width: 25%">Reddit Submissions</th>
+          <th title="Field #3" style="width: 25%">Reddit Comments</th>
+          <th title="Field #4" style="width: 25%">Commodity Prices</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        <tr>
+          <td>Size</td>
+          <td>0.05G</td>
+          <td>1.4G</td>
+          <td>166KB</td>
+        </tr>
+        <tr>
+          <td>Columns</td>
+          <td>69</td>
+          <td>22</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Rows</td>
+          <td>384,972</td>
+          <td>9,993,790</td>
+          <td>1,455</td>
+        </tr>
+        <tr>
+          <td>Missing Values</td>
+          <td>54,375[delete]; 259,328 no-text</td>
+          <td>367,528[delete]; 25 no-text</td>
+          <td>2927</td>
+        </tr>
+        <tr>
+          <td>Startdate</td>
+          <td>2022-01-01</td>
+          <td>2022-01-01</td>
+          <td>2018-01-02</td>
+        </tr>
+        <tr>
+          <td>Enddate</td>
+          <td>2022-08-31</td>
+          <td>2022-08-31</td>
+          <td>2022-08-31</td>
+        </tr>
+      </tbody>
+    </table>
+    
+
+    <p>
+      Insert findings
+    </p>
+    <br>
+    <br>
+    <br>
+
+
+    <h4>Summary Statistics of the Selected Subreddits</h4>
+    <br>
+    <table class="table table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th title="Field #1" style="width: 12%; text-align: center;">Subreddit</th>
+          <th title="Field #2" style="width: 22%; text-align: center;"># of Submissions</th>
+          <th title="Field #3" style="width: 22%; text-align: center;"># of Comments</th>
+          <th title="Field #4" style="width: 22%; text-align: center;">Active Users</th>
+          <th title="Field #5" style="width: 22%; text-align: center;">Contains Foreign Langauge</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        <tr>
+          <td>CombatFootage</td>
+          <td align="right">107</td>
+          <td align="right">270539</td>
+          <td align="right">50383</td>
+          <td>36.45%</td>
+        </tr>
+        <tr>
+          <td>CredibleDefense</td>
+          <td align="right">169</td>
+          <td align="right">64817</td>
+          <td align="right">4828</td>
+          <td>18.34%</td>
+        </tr>
+        <tr>
+          <td>RussiaUkraineWar2022</td>
+          <td align="right">25513</td>
+          <td align="right">481116</td>
+          <td align="right">48934</td>
+          <td>27.33%</td>
+        </tr>
+        <tr>
+          <td>UkraineConflict</td>
+          <td align="right">13394</td>
+          <td align="right">72528</td>
+          <td align="right">10933</td>
+          <td>29.79%</td>
+        </tr>
+        <tr>
+          <td>UkraineInvasionVideos</td>
+          <td align="right">14360</td>
+          <td align="right">116823</td>
+          <td align="right">16474</td>
+          <td>30.88%</td>
+        </tr>
+        <tr>
+          <td>UkraineWarReports</td>
+          <td align="right">7746</td>
+          <td align="right">78552</td>
+          <td align="right">14175</td>
+          <td>30.03%</td>
+        </tr>
+        <tr>
+          <td>UkraineWarVideoReport</td>
+          <td align="right">45260</td>
+          <td align="right">1724675</td>
+          <td align="right">157469</td>
+          <td>29.08%</td>
+        </tr>
+        <tr>
+          <td>UkrainianConflict</td>
+          <td align="right">86925</td>
+          <td align="right">1987549</td>
+          <td align="right">129635</td>
+          <td>25.03%</td>
+        </tr>
+        <tr>
+          <td>geopolitics</td>
+          <td align="right">60</td>
+          <td align="right">23085</td>
+          <td align="right">5526</td>
+          <td>13.33%</td>
+        </tr>
+        <tr>
+          <td>ukraina</td>
+          <td align="right">17975</td>
+          <td align="right">158422</td>
+          <td align="right">25841</td>
+          <td>50.05%</td>
+        </tr>
+        <tr>
+          <td>ukraine</td>
+          <td align="right">172818</td>
+          <td align="right">4990804</td>
+          <td align="right">262567</td>
+          <td>27.01%</td>
+        </tr>
+        <tr>
+          <td>war</td>
+          <td align="right">645</td>
+          <td align="right">24880</td>
+          <td align="right">7485</td>
+          <td>21.86%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-weight: lighter; text-align: center;">Insert table description</p>
+
+    <p>
+      Insert findings
+    </p>
+
+    <!-- IMAGE: number of submission in different languages -->
+    <div class="row py-5">
+
+    <div class="col-md-12">
+    <div class="card p-0" style="border: none">
+      <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p style="font-weight: lighter; text-align: center;">Figure description</p>
+
+      </div>
+    </div>
+    </div>
+
+    <!-- IMAGE: schema END -->
+
+    <!--
+    <p><mark>Add figure number</mark></p>
+    -->
+
+    </div>
+    <!-- IMAGE END -->
+
+
+
+
+
+    <p>
+      Insert findings
+    </p>
+
+
+
+
+    <!-- IMAGE: body length comparison -->
+    <div class="row py-5">
+
+      <div class="col-md-12">
+      <div class="card p-0" style="border: none">
+        <img src="img/EDA/body_length.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">Figure description</p>
+  
+        </div>
+      </div>
+      </div>
+  
+      <!-- IMAGE: schema END -->
+  
+      <!--
+      <p><mark>Add figure number</mark></p>
+      -->
+  
+      </div>
+      <!-- IMAGE END -->
+
+
+
+      <p>
+        Insert findings
+      </p>
+      <br>
+      <br>
+
+
+      <!-- IMAGE: topic different languages crossposts comparison -->
+    <div class="row py-5">
+
+      <div class="col-md-12">
+      <div class="card p-0" style="border: none">
+        <img src="img/EDA/topic_diff_languages.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">Figure description</p>
+  
+        </div>
+      </div>
+      </div>
+  
+      <!-- IMAGE: schema END -->
+  
+      <!--
+      <p><mark>Add figure number</mark></p>
+      -->
+  
+      </div>
+      <!-- IMAGE END -->
+
+
+
+      <p>
+        Insert findings
+      </p>
+
+      <br>
+      <br>
+
+
+    <br>
+    <br>
+    <br>
+
+
+    <h4>(External Data)Commodity Price Summary Table</h4>
+    <br>
+
+    <table class="table table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th title="Field #1" style="width: 20%; text-align: center;">Stats</th>
+          <th title="Field #2" style="width: 10%; text-align: center;">Observations</th>
+          <th title="Field #3" style="width: 10%; text-align: center;">Mean</th>
+          <th title="Field #4" style="width: 10%; text-align: center;">Std</th>
+          <th title="Field #5" style="width: 10%; text-align: center;">Min</th>
+          <th title="Field #6" style="width: 10%; text-align: center;">25%</th>
+          <th title="Field #7" style="width: 10%; text-align: center;">50%</th>
+          <th title="Field #8" style="width: 10%; text-align: center;">75%</th>
+          <th title="Field #9" style="width: 10%; text-align: center;">Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Barley</td>
+          <td align="right">1149</td>
+          <td align="right">1897.88</td>
+          <td align="right">491.47</td>
+          <td align="right">1305.50</td>
+          <td align="right">1518.50</td>
+          <td align="right">1817.50</td>
+          <td align="right">2100.00</td>
+          <td align="right">3261.00</td>
+        </tr>
+        <tr>
+          <td>Cocoa</td>
+          <td align="right">1178</td>
+          <td align="right">2434.53</td>
+          <td align="right">195.72</td>
+          <td align="right">1895.00</td>
+          <td align="right">2314.00</td>
+          <td align="right">2436.00</td>
+          <td align="right">2552.00</td>
+          <td align="right">3054.00</td>
+        </tr>
+        <tr>
+          <td>Coffee</td>
+          <td align="right">1177</td>
+          <td align="right">138.38</td>
+          <td align="right">48.13</td>
+          <td align="right">86.65</td>
+          <td align="right">104.10</td>
+          <td align="right">118.20</td>
+          <td align="right">158.70</td>
+          <td align="right">258.35</td>
+        </tr>
+        <tr>
+          <td>Corn Futures</td>
+          <td align="right">1193</td>
+          <td align="right">459.15</td>
+          <td align="right">133.72</td>
+          <td align="right">302.75</td>
+          <td align="right">362.75</td>
+          <td align="right">387.25</td>
+          <td align="right">557.25</td>
+          <td align="right">818.25</td>
+        </tr>
+        <tr>
+          <td>Crude Oil</td>
+          <td align="right">1268</td>
+          <td align="right">62.73</td>
+          <td align="right">20.48</td>
+          <td align="right">-37.63</td>
+          <td align="right">52.07</td>
+          <td align="right">61.35</td>
+          <td align="right">70.78</td>
+          <td align="right">123.70</td>
+        </tr>
+        <tr>
+          <td>Heating Oil</td>
+          <td align="right">1263</td>
+          <td align="right">2.06</td>
+          <td align="right">0.76</td>
+          <td align="right">0.61</td>
+          <td align="right">1.70</td>
+          <td align="right">1.98</td>
+          <td align="right">2.19</td>
+          <td align="right">5.14</td>
+        </tr>
+        <tr>
+          <td>Natural Gas</td>
+          <td align="right">1268</td>
+          <td align="right">3.35</td>
+          <td align="right">1.68</td>
+          <td align="right">1.48</td>
+          <td align="right">2.40</td>
+          <td align="right">2.78</td>
+          <td align="right">3.73</td>
+          <td align="right">9.68</td>
+        </tr>
+        <tr>
+          <td>Newcastle Coal</td>
+          <td align="right">1191</td>
+          <td align="right">130.71</td>
+          <td align="right">97.25</td>
+          <td align="right">48.50</td>
+          <td align="right">67.85</td>
+          <td align="right">97.15</td>
+          <td align="right">141.58</td>
+          <td align="right">440.00</td>
+        </tr>
+        <tr>
+          <td>Oats</td>
+          <td align="right">1176</td>
+          <td align="right">371.37</td>
+          <td align="right">151.57</td>
+          <td align="right">220.75</td>
+          <td align="right">273.19</td>
+          <td align="right">300.50</td>
+          <td align="right">403.81</td>
+          <td align="right">807.00</td>
+        </tr>
+        <tr>
+          <td>RBOB Gasoline</td>
+          <td align="right">1262</td>
+          <td align="right">1.92</td>
+          <td align="right">0.69</td>
+          <td align="right">0.41</td>
+          <td align="right">1.48</td>
+          <td align="right">1.90</td>
+          <td align="right">2.16</td>
+          <td align="right">4.31</td>
+        </tr>
+        <tr>
+          <td>Rough Rice</td>
+          <td align="right">1177</td>
+          <td align="right">12.99</td>
+          <td align="right">1.94</td>
+          <td align="right">9.78</td>
+          <td align="right">11.70</td>
+          <td align="right">12.56</td>
+          <td align="right">13.74</td>
+          <td align="right">22.07</td>
+        </tr>
+        <tr>
+          <td>Soybean Meal Futures</td>
+          <td align="right">1184</td>
+          <td align="right">348.65</td>
+          <td align="right">54.63</td>
+          <td align="right">280.00</td>
+          <td align="right">303.77</td>
+          <td align="right">329.40</td>
+          <td align="right">391.65</td>
+          <td align="right">521.90</td>
+        </tr>
+        <tr>
+          <td>Soybean Oil Futures</td>
+          <td align="right">1200</td>
+          <td align="right">41.72</td>
+          <td align="right">17.05</td>
+          <td align="right">24.99</td>
+          <td align="right">28.59</td>
+          <td align="right">31.70</td>
+          <td align="right">57.95</td>
+          <td align="right">90.60</td>
+        </tr>
+        <tr>
+          <td>Sugar #11</td>
+          <td align="right">1181</td>
+          <td align="right">14.53</td>
+          <td align="right">3.04</td>
+          <td align="right">9.21</td>
+          <td align="right">12.15</td>
+          <td align="right">13.36</td>
+          <td align="right">17.66</td>
+          <td align="right">20.42</td>
+        </tr>
+        <tr>
+          <td>Wheat</td>
+          <td align="right">1191</td>
+          <td align="right">615.65</td>
+          <td align="right">172.68</td>
+          <td align="right">416.50</td>
+          <td align="right">504.25</td>
+          <td align="right">541.00</td>
+          <td align="right">693.00</td>
+          <td align="right">1425.25</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Note:</p>
+    <p>1.Due to difference in trading rules, commodity futures can have different number of trading days.</p>
+    <p>2.Crude Oil had negative price during Covid when cost of carry exceeded intrinsic value.</p>
+
+    <br>
+    <br>
+    <br>
+
+
+    <h4>Timeseries of Reddit Counts and Commodity Prices</h4>
+    <!-- IMAGE: All Timeseries -->
+    <div class="row py-5">
+
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/EDA/all_timeseries.png" class="card-img-top" alt="...">
+        </div>
+      </div>
+      <p><mark>Add figure number</mark></p>
+
+    </div>
+    <!-- IMAGE: All Timeseries END -->
+
+    <h4> Commodity Price Changes Since Feb 24 2022</h4>
+    <div class="row py-5">
+      <div class="col-md-12">
+        <embed type="text/html" src="img/EDA/price_change.html" width="900" height="700">
+      </div>
+      <p><mark>Add figure number</mark></p>
+    </div>
+
+
+>>>>>>> 20e8050 (Modify Xinlu's writing)
   </div> <!-- container -->
 
 

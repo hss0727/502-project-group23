@@ -17,6 +17,12 @@
 
   <!-- Custom styles for this template -->
   <link href="css/styles.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  
 </head>
 
 <body>
@@ -320,6 +326,37 @@
         href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/TFIDF.ipynb">this notebook</a>
       for calculating the TF-IDF scores.
     </p>
+    <p>
+      TF-IDF stands for term frequency-inverse document frequency. It is a statistical measure that evaluates how relevant a words is to a document in a collection of document.
+    </p>
+    <p>
+      The TF <b>term frequency</b> measures how many times one instance of word appears in the a document over the length of the document. In our case, how many time one word token appears in one comment/submission text body over the length of the comment/submission.
+    </p>
+    <center>
+      <p>
+        \(TF = \frac{count\ of\ the\ word\ in\ document}{number\ of\ words\ in\ document}\)
+      </p>
+    </center>
+    <p>
+      The IDF <b>inverse document frequency</b> measures how common or rare one instance of word is in the entire document set. 
+      In our case, how common or rare a word token is over the whold subsets of comments or submissions texts. The small the IDF is 
+      the more common a word is. The IDF essentailly help us eliminate the interference of words like <i>Ukrainian</i> and <i>Russian</i> when trying to extract important words.
+    </p>
+    <center>
+      <p>
+        \(IDF (inversed\ document\ frequency) = \log \frac{total\ number\ of\ documents}{number\ of\ documents\ containing\ the\ word}\)
+      </p>
+    </center>
+    <p>
+      The TF-IDF score is calculated for every unique word token appears in the text body of our dataset. The higher the score is, the more critical the word is. 
+    </p>
+
+    <center>
+      <p>
+        \(TFIDF =\ TF \times IDF\)
+      </p>
+    </center>
+
     <p>
       TFIDF helps us discard the dominance of words like country names and wars. The critical words give us different
       perspectives of the discussion. The word <i>children</i> appeares as one of the most important word in Russian

@@ -92,17 +92,15 @@
     <h4>Q1. (NLP) What are the major topics discussed in Reddit related to Russia Ukraine conflict?</h4>
     <br>
     <p>
-      <strong>Topic models</strong> generate interpretable text features extracted from documents. These models help
-      identify and cluster similar documents and are useful tools to tag documents.
+      <strong>Topic models</strong> generate interpretable text features extracted from documents. These models help identify and cluster similar documents and are useful tools to tag documents.
     </p>
 
-    <p><a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html">Spark
-        MLlib documentation</a> specifies the terminology used in this analysis: Link</p>
+    <p><a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html">Spark MLlib documentation</a> specifies the terminology used in this analysis: Link</p>
     <ol>
-      <li><mark>term = word</mark>: an element of the vocabulary</li>
-      <li><mark>token</mark>: instance of a term appearing in a document</li>
-      <li><mark>topic</mark>:multinomial distribution over terms representing some concept</li>
-      <li><mark>document</mark>: one piece of text, corresponding to one row in the input data</li>
+      <li><strong>term = word</strong>: an element of the vocabulary</li>
+      <li><strong>token</strong>: instance of a term appearing in a document</li>
+      <li><strong>topic</strong>:multinomial distribution over terms representing some concept</li>
+      <li><strong>document</strong>: one piece of text, corresponding to one row in the input data</li>
     </ol>
 
     <br>
@@ -116,18 +114,13 @@
       Latent Dirichlet Allocation (LDA)
     </h4>
     <p>
-      <strong>Latent Dirichlet Allocation (LDA)</strong> is a statistical model that helps produce meaningful topics
-      that humans can relate to. It assumes that topics are probability distributions over words, and documents are
-      distributions over topics and that topics use only a limited number of terms frequently.
+      <strong>Latent Dirichlet Allocation (LDA)</strong> is a statistical model that helps produce meaningful topics that humans can relate to. It assumes that topics are probability distributions over words, and documents are distributions over topics and that topics use only a limited number of terms frequently. 
     </p>
 
     <ul>
-      <li><mark>k</mark>: number of topics (= number of clusters)</li>
-      <li><mark>maxIter</mark>: number of iterations</li>
-      <li><mark>featuresCol</mark>: a collection of documents as input data. Feature transformers such as
-        <strong>Tokenizer</strong> and <strong>CountVectorizer</strong> are used to convert text to word count vectors
-        as input data.
-      </li>
+      <li><strong>k</strong>: number of topics (= number of clusters)</li>
+      <li><strong>maxIter</strong>: number of iterations</li>
+      <li><strong>featuresCol</strong>: a collection of documents as input data. Feature transformers such as <strong>Tokenizer</strong> and <strong>CountVectorizer</strong> are used to convert text to word count vectors as input data.</li>
     </ul>
     <br>
 
@@ -135,21 +128,104 @@
       Topic Modeling Pipeline
     </h4>
     <p>
-      We proceed with 15 topics, top 10 words per topic using the cleaned documents as input data. The <a
-        href="https://colab.research.google.com/drive/14bf2kwdU4f5UBUYEkTJO01NjFtWEZU_-#scrollTo=yqwgYNlgwxvX">notebook</a>
-      contains the LDA pipeline applied to the submissions and comments data. The data from two sources are stacked
-      using <mark>union</mark> command to provide comprehensive topic modeling on every posts related to RU Conflict in
-      the Reddit dataset.
+      We proceed with 15 topics, top 10 words per topic using the cleaned documents as input data. The <a href="https://colab.research.google.com/drive/14bf2kwdU4f5UBUYEkTJO01NjFtWEZU_-#scrollTo=yqwgYNlgwxvX">notebook</a> contains the LDA pipeline applied to the submissions and comments data. The data from two sources are stacked using <mark>union</mark> command to provide comprehensive topic modeling on every posts related to RU Conflict in the Reddit dataset. 
     </p>
 
     <!-- IMAGE: LDA PIPELINE -->
     <div class="row py-5">
-
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/pipeline.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>LDA Pipeline</p>
+              <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>LDA Pipeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- IMAGE END -->
+
+    <p>
+      The <strong>DocumentAssembler</strong> transforms the input data to annotation format so that Spark can use it as input data - <mark>DOCUMENT</mark>. The <strong>Tokenizer</strong> splits lines in document into words - <mark>TOKEN</mark>. Finally, the Finisher transforms the annotation format of Spark NLP to a "human-readable" format. Normalizer (lowercasing), Lemmatizer, and StopWordsCleaners are skipped in this pipeline since they are already processed in the Data Cleaning step. The <strong>CountVectorizer</strong> is used to count the frequency of the each term in the document and provide input data for the LDA model. (<mark>featuresCol</mark> vector)
+
+
+    </p>
+    <p style="font-weight: lighter; text-align: left;">Reference: <a href="https://medium.com/trustyou-engineering/topic-modelling-with-pyspark-and-spark-nlp-a99d063f1a6e">Topic Modelling with PySpark and Spark NLP</a> - Maria obedkova</p>
+    <br>
+    <p>
+      The table below summarizes the result 15 topics and top 10 words per each topic.
+    </p>
+
+
+
+
+    <!--TOPIC MODELING SUMMARIZATION TABLE-->
+    <table class="table table-bordered table-hover table-condensed">
+      <thead style="text-align: center">
+        <tr>
+          <th title="Field #1" style="width: 10%">Topic #</th>
+          <th title="Field #2" style="width: 90%">Topic Words</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        <tr>
+          <td>1</td>
+          <td>[lol, putin, russian, russia, dead, wait, years, good, guy, ukrainian]</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>[russian, ukraine, russians, russia, ukrainian, day, war, shit, make, ukrainians]</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>[russian, fuck, good, ukrainian, people, russia, guy, video, thing, lol]</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>[love, people, damn, ukraine, russia, world, war, god, good, lot]</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>[russian, ukraine, russia, tanks, air, tank, artillery, military, weapons, hit]</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>[post, ukraine, hope, video, people, reddit, russian, back, give, read]</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>[information, ukraine, message, rules, mod, reddit, issue, mail, vital, muted]</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>[ukraine, russian, bad, people, russia, youtu, troll, putin, army, time]</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>[russia, ukraine, war, people, russian, putin, country, nato, world, time]</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>[putin, shit, man, ukraine, russia, trump, russian, people, utm, war]</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ## </strong>Topic words processed for 15 Topics (=k, clusters)</p>
+    <!--TOPIC MODELING SUMMARIZATION TABLE-->
+
+
+    <br>
+    <br>
+    <p>
+      The plot below visualizes the result 15 topics and top 10 words per each topic.
+    </p>
+
+    <!-- IMAGE: LDA PIPELINE -->
+    <div class="row py-2">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/NLP/(temp)_topic_modeling_plot.png" class="card-img-top" alt="...">
+          <div class="card-body">
+              <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Temporary figure</p>
           </div>
         </div>
       </div>

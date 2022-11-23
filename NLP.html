@@ -716,13 +716,13 @@
         <tbody>
           <tr>
             <td>Russia</td>
-            <td align="right">12475</td>
-            <td align="right">52497</td>
+            <td align="right">9%</td>
+            <td align="right">40%</td>
           </tr>
           <tr>
             <td>Ukraine</td>
-            <td align="right">20067</td>
-            <td align="right">46907</td>
+            <td align="right">15%</td>
+            <td align="right">36%</td>
           </tr>
         </tbody>
       </table>
@@ -746,7 +746,7 @@
     </div>
     <p>
       <b>Figure ##</b> plots the aggregated daily average sentiment scores for comments and submissions. Both charts had
-      a steep upward trend at the end of February. Compared to submission sentiment scores's stale trend, comment
+      a steep upward trend at the end of February. Compared to submission sentiment score's stale trend, comment
       sentiment is getting more and more positive. We think it makes sense that comments are usually more emotional than
       submissions, especially at the beginning of the conflict. That's why we see a large dip at the beginning of the
       comment sentiment chart(right).
@@ -823,7 +823,7 @@
 
     <p>
       It is a common practice to use correlation as preliminary analysis to test simple relationships between variables.
-      Figure xx plots the Pearson correlations between all the timeseries we collected during the 8-month period.
+      <b>Figure xx</b> plots the Pearson correlations between all the timeseries we collected during the 8-month period.
     </p>
 
     <div class="row py-3">
@@ -832,7 +832,7 @@
           <img src="img/NLP/correlations.png" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Correlations between topics,
-              sentiments, and commodity prices.<a
+              sentiments, and commodity returns.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/Correlations.ipynb">Visualization
                 Code</a>.</p>
           </div>
@@ -840,7 +840,8 @@
       </div>
     </div>
     <p>
-      The highlighting areas concentrate on the top-left and bottom-right corners, indicating there is strong
+      The highlighting areas concentrate on the top-left and bottom-right corners,
+      indicating there is strong
       relationship within
       commodity returns and reddit textual features, but not between them. Since our goal is to use reddit to predict
       commodity returns, a weak correlation between predictor and target implies we will need better features and a

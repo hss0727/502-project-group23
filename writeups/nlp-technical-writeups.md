@@ -42,12 +42,12 @@ $\qquad$ Suppose $SentimentScore\in\mathbb{R^N}$ and we have $Trend\in \mathbb{R
 $\qquad$ (Trend series are in the same length with SentimentScore series.)  
 $\qquad$ in which $Trend_i=Avg(SentimentScore_{i:min(i+10,N)})$  
 
-![Invalid Image](visualizations/sentiment_score_plot.jpg)
+![Invalid Image](../img/NLP/sentiment_score_plot.jpg)
 
 * For the sentiment counts, we created the visualization composed of 4 subplots. While the above two are line plots for counts of submissions & comments in 2 different sentiments on a daily basis, the below two are stacked histograms for the same dataset on a weekly basis.
 
 
-![Invalid Image](visualizations/sentiment_count_plot.jpg)
+![Invalid Image](../img/NLP/sentiment_count_plot.jpg)
 
 ## Summary Tables
 We created two summary tables for the sentiments: one for the average sentiment scores(on a daily basis); one for the scores(Column of the Original Dataset) in different sentiments.

@@ -423,11 +423,31 @@
     <p>
       Sentiment analysis helps us cast a view on how people react to the topic of RU conflict. 
       By applying the sentiment analysis pipeline and further processing, we gain the sentiment scores 
-      for each reddit in both submissions and comments. Then we compute the daily average sentiment score 
-      as well as do the counting for positive and negative reddits. 
-      Please refer to <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these notebooks</a> 
-      for the code we use for generating the sentiment-related attributes & stats.
+      for each reddit in both submissions and comments. 
     </p>
+    <p><strong>Creation of Sentiment-Related Attributes & Stats:</strong></p>
+    <ul>
+      <li>
+        We used the pre-trained pipeline of <strong>analyze_sentimentdl_use_twitter</strong>
+        provided by <strong>John Snow Labs</strong>, since that's the most suitable
+        medium-size pipeline for our Reddit case.
+      </li>
+      <li>
+        While this pipeline outputed the four kinds of sentiment results:
+         'positive', 'negative', 'neutral', 'None', we created the new 
+         'sentiment_score' column, which is 1.0 when positive and 0.0 otherwise,
+          to place an accentuation on the positive sentiments.
+      </li>
+      <li>
+        And we focused our NLP analysis on positive & negative reddits. 
+      </li>
+      <li>
+        Then we compute the average sentiment score 
+        as well as count the numbers of positive and negative reddits, both on a daily basis. 
+        Please refer to <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Sentiment">these notebooks</a> 
+        for the code we use for generating the sentiment scores.
+      </li>
+    </ul> 
 
     <p><strong>Summary Tables:</strong></p>
     <p>
@@ -470,10 +490,10 @@
     of Sentiment Scores</p>
 
     <p>From the sentiment score summary table, we can see that:</p>
-    <ol>
+    <ul>
       <li>The dates for maximum/minimum sentiment scores in Submissions and Comments are similar.</li>
       <li>Submissions have a larger fluctuation and a overall lower level for the sentiment scores than comments.</li>
-    </ol>
+    </ul>
 
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
@@ -563,7 +583,10 @@
         </div>
       </div>
     </div>
-
+    <p>
+      Note: The weekly-based stacked histograms are also generated from the daily-based dataset.
+    </p>
+    
     <div class="row py-5">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
@@ -575,6 +598,14 @@
         </div>
       </div>
     </div>
+    <p>
+      Note: The trend value for a certain day is computed using the mean of daily 
+      average sentiment scores in the following 10 days. (If date-axis exceeded, then
+      less than 10 days)
+    </p>
+    <math>
+      &emsp;Trend[i]=Avg(SentScore[i:min((i+10),len(SentScore))])
+    </math>
 
     <div class="row py-5">
       <div class="col-md-12">

@@ -146,7 +146,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/data_flow.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 2 </strong>Data Pipeline. <a
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 1 </strong>Data Pipeline. <a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/Data">Pipeline
                 Code</a>.</p>
           </div>
@@ -208,7 +208,7 @@
     </h4>
     <p>
       We proceed with 15 topics, top 10 words per topic using the cleaned documents as input data. The <a
-        href="https://colab.research.google.com/drive/14bf2kwdU4f5UBUYEkTJO01NjFtWEZU_-#scrollTo=yqwgYNlgwxvX">notebook</a>
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_submissions.ipynb">notebook</a>
       contains the LDA pipeline applied to the submissions and comments data. The data from two sources are stacked
       using <mark>union</mark> command to provide comprehensive topic modeling on every posts related to RU Conflict in
       the Reddit dataset.
@@ -220,7 +220,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/pipeline.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>LDA Pipeline</p>
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 3 </strong>LDA Pipeline</p>
           </div>
         </div>
       </div>
@@ -253,75 +253,108 @@
       <thead style="text-align: center">
         <tr>
           <th title="Field #1" style="width: 10%">Topic #</th>
-          <th title="Field #2" style="width: 90%">Topic Words</th>
+          <th title="Field #2" style="width: 45%">Topic Words - Submissions</th>
+          <th title="Field #2" style="width: 45%">Topic Words - Comments</th>
         </tr>
       </thead>
       <tbody style="text-align: center">
         <tr>
           <td>1</td>
-          <td>[lol, putin, russian, russia, dead, wait, years, good, guy, ukrainian]</td>
+          <td>[tank, force, kharkiv, movie, military, fire, farmer, soldier, kherson, destroy]</td>
+          <td>[people, city, vote, crimea, putin, territory, state, country, force, belarus]</td>
         </tr>
         <tr>
           <td>2</td>
-          <td>[russian, ukraine, russians, russia, ukrainian, day, war, shit, make, ukrainians]</td>
+          <td>[day, mariupol, crime, putin, soldier, obama, invasion, military, drone, news]</td>
+          <td>[fuck, shit, love, hell, lol, lmao, think, fake, guy, holy]</td>
         </tr>
         <tr>
           <td>3</td>
-          <td>[russian, fuck, good, ukrainian, people, russia, guy, video, thing, lol]</td>
+          <td>[force, putin, people, soldier, military, fight, kyiv, video, destroy, make]</td>
+          <td>[call, word, true, point, good, haha, game, putin, speak, man]</td>
         </tr>
         <tr>
           <td>4</td>
-          <td>[love, people, damn, ukraine, russia, world, war, god, good, lot]</td>
+          <td>[city, shirt, force, riot, card, military, fest, chinese, mariupol, people]</td>
+          <td>[people, soldier, kill, good, die, man, fight, hope, putin, dead]</td>
         </tr>
         <tr>
           <td>5</td>
-          <td>[russian, ukraine, russia, tanks, air, tank, artillery, military, weapons, hit]</td>
+          <td>[army, musk, elon, destroy, starlink, gas, gazprom, anonymous, putin, church]</td>
+          <td>[orc, meme, low, effort, high, sunflower, send, supportive, opinion, seed]</td>
         </tr>
         <tr>
           <td>6</td>
-          <td>[post, ukraine, hope, video, people, reddit, russian, back, give, read]</td>
+          <td>[putin, discord, kyiv, people, flag, tank, aid, fighter, bomb, poland]</td>
+          <td>[mod, rule, information, message, reddit, issue, vital, remove, mail, muted]</td>
         </tr>
         <tr>
           <td>7</td>
-          <td>[information, ukraine, message, rules, mod, reddit, issue, mail, vital, muted]</td>
+          <td>[nance, people, malcolm, day, invasion, conspiracy, side, mother, talk, president]</td>
+          <td>[post, video, comment, source, make, read, link, news, bot, question]</td>
         </tr>
         <tr>
           <td>8</td>
-          <td>[ukraine, russian, bad, people, russia, youtu, troll, putin, army, time]</td>
+          <td>[denazification, nazi, nazism, content, support, make, putin, moderator, reddit, military]</td>
+          <td>[people, make, putin, country, time, nato, military, world, thing, year]</td>
         </tr>
         <tr>
           <td>9</td>
-          <td>[russia, ukraine, war, people, russian, putin, country, nato, world, time]</td>
+          <td>[putin, president, zelensky, nuclear, plant, bayraktar, island, indian, win, power]</td>
+          <td>[special, operation, translation, putin, dick, awesome, pretty, ah, start, suck]</td>
         </tr>
         <tr>
           <td>10</td>
-          <td>[putin, shit, man, ukraine, russia, trump, russian, people, utm, war]</td>
+          <td>[company, support, business, suspend, sanction, bank, military, stop, putin, asset]</td>
+          <td>[missile, air, system, drone, china, fly, ship, target, time, fire]</td>
         </tr>
       </tbody>
     </table>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ## </strong>Topic words processed for 15 Topics
-      (=k, clusters)</p>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 2 </strong>Top 10 topic words processed for 10 Topics<br>
+    <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_submissions.ipynb">Topic Modeling code (submissions)</a>
+    <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_comments.ipynb">Topic Modeling code (comments)</a></p>
     <!--TOPIC MODELING SUMMARIZATION TABLE-->
 
 
     <br>
-    <br>
     <p>
-      The plot below visualizes the result 15 topics and top 10 words per each topic.
+      Topic modeling is a popular technique to analyze the massice amount of textual social media data. It is a efficient tool to summarizing long documents. Some of the findings through the topic modeling includes:
     </p>
+    <ul>
+      <li><strong>Words related to the war: </strong> The subreddit names used to subset the data included not only the war-specific keywords. However, we can see that topic words related to the 'war' such as military, soldier, and tank, dominates the topic modeling result.</li>
+      <li><strong>Geographical information: </strong>Geographical names such as Kyiv (Capital of Ukraine), Mariupol indicates where the war broke out and the country names such as China, Belarus and Poland tell us countries near Russia and Ukraine that were affected by the war.</li>
+      <li><strong>Others: </strong>We can find topics that people talk about such as the war strategies Russia takes. Starlink, gas, nuclear plant, power indicates that people are interested in Russia's attack on the major infrastructures in Ukraine.</li> 
+    </ul>
 
-    <!-- IMAGE: LDA PIPELINE -->
-    <div class="row py-2">
-      <div class="col-md-12">
-        <div class="card p-0" style="border: none">
-          <img src="img/NLP/(temp)_topic_modeling_plot.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Temporary figure</p>
+    <p>
+      Topics found from the LDA model can be later used to label the documents. In <b>Figure 4</b> shows the change of topics of more interest in Reddit over time. The figures are drawn by first tagging the documents using the topic words and then calculating daily proportions. This shows that the topic model can be used transform the textual analysis to classification problems.
+    </p>
+    
+
+
+        <!-- IMAGE: SUBMISSIONS TOPIC MODELING TIME-SERIES -->
+        <div class="row py-3">
+          <div class="col-md-12">
+            <div class="card p-0" style="border: none">
+              <img src="img/NLP/TM-submissions-timeseries.png" class="card-img-top" alt="...">
+              <img src="img/NLP/TM-comments-timeseries.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 4 </strong>Time-series plot of topics proportion in the Reddit submissions (top) and comments (bottom)<br>
+                <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">LDA time-series code</a></p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- IMAGE END -->
+        <!-- IMAGE END -->
+
+
+
+
+
+
+
+
+
 
 
     <br>
@@ -354,7 +387,7 @@
       <div class="card p-0" style="border: none">
         <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
         <div class="card-body">
-          <p style="font-weight: lighter; text-align: center;"><b>FIGURE ##:</b>Volumes of submissions in English,
+          <p style="font-weight: lighter; text-align: center;"><b>FIGURE 5 </b>Volumes of submissions in English,
             Ukrainian, and
             Russian over the observation period.<a
               href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-timeseries-line-chart.ipynb">Visualization
@@ -508,7 +541,7 @@
           </td>
         </tr>
       </table>
-      <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Common/Important words found from
+      <p style="font-weight: lighter; text-align: center;"><strong>TABLE 3 </strong> Common/Important words found from
         applying tf-idf. <a
           href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Text%20Stats/common-words-submission-comment-language.ipynb">Common
           Words
@@ -553,6 +586,8 @@
       confliction area. While again, we can find words that describe <i>peace</i> and <i>human beings</i>.
     </p>
 
+
+    <br>
     <hr>
 
     <h4>Q4. How is the sentiment in Reddit posts over time related to Russian-Ukrainian Conflict?</h4>
@@ -585,7 +620,7 @@
       </li>
     </ul>
     <p>
-      <b>Table ##</b> shows a summary of the generated sentiment scores.
+      <b>Table 4</b> shows a summary of the generated sentiment scores.
     </p>
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
@@ -618,17 +653,17 @@
         </tr>
       </table>
     </div>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 4 </strong> Statistics
       of Sentiment Scores. <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
         Code</a>.</p>
-    <p>From <b>Table ##</b>, we can see that:</p>
+    <p>From <b>Table 4</b>, we can see that:</p>
     <ul>
       <li>The dates for maximum/minimum sentiment scores in Submissions and Comments are similar.</li>
       <li>Submission scores have larger fluctuations and lower sentiment scores overall than comments.</li>
     </ul>
     <p>Each Reddit post also has a score for itself. The score is simply the number of upvotes minus the number of
-      downvotes.<b>Table ##</b> shows a summary of Reddit scores.</p>
+      downvotes.<b>Table 5</b> shows a summary of Reddit scores.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <tr>
@@ -678,7 +713,7 @@
         </tr>
       </table>
     </div>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Statistics of
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 5 </strong> Statistics of
       Scores in Positive/Negative Sentiments. <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Summary%20Tables.ipynb">Visualization
         Code</a>.</p>
@@ -701,7 +736,7 @@
       lower scores than those with negative sentiments,
       for both submissions and comments.</p>
     <p>We also created two keyword generated dummy variables to separate Reddit posts with Russia-related content such
-      as "Putin", "Russia", etc, from Ukraine-related content such as "Zelensky", "Ukraine", etc. From <b>Table ##</b>,
+      as "Putin", "Russia", etc, from Ukraine-related content such as "Zelensky", "Ukraine", etc. From <b>Table 6</b>,
       we find that Ukraine-related content has more positive sentiment posts and less negative sentiment posts as
       compared to Russian-related content.</p>
     <div class="table-responsive">
@@ -727,7 +762,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE ##</strong> Positive/Negative Sentiments by
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 6 </strong> Positive/Negative Sentiments by
       Keywords. <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">Visualization
         Code</a>.</p>
@@ -736,7 +771,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/sentiment_score_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 6 </strong>
               Sentiment Score Time Series. Trend is the 10-day moving average.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Line%20Plot.ipynb">Visualization
                 Code</a>.</p>
@@ -745,7 +780,7 @@
       </div>
     </div>
     <p>
-      <b>Figure ##</b> plots the aggregated daily average sentiment scores for comments and submissions. Both charts had
+      <b>Figure 6</b> plots the aggregated daily average sentiment scores for comments and submissions. Both charts had
       a steep upward trend at the end of February. Compared to submission sentiment score's stale trend, comment
       sentiment is getting more and more positive. We think it makes sense that comments are usually more emotional than
       submissions, especially at the beginning of the conflict. That's why we see a large dip at the beginning of the
@@ -756,7 +791,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/RU_conflict_timeline.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Russia-Ukraine Conflict
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 7 </strong>Russia-Ukraine Conflict
               Event Timeline.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/timeline.ipynb">Visualization
                 Code</a>.</p>
@@ -764,7 +799,7 @@
         </div>
       </div>
     </div>
-    <p><b>Figure ##</b> plots the event line of Russia-Ukraine Conflict.</p>
+    <p><b>Figure 7</b> plots the event line of Russia-Ukraine Conflict.</p>
     <p>
       In the <strong>Prelude</strong> phase, contradictions were fermented between Russia and Ukraine on many
       issues, among which the most significant one is whether Ukraine should enter NATO.
@@ -823,7 +858,7 @@
 
     <p>
       It is a common practice to use correlation as preliminary analysis to test simple relationships between variables.
-      <b>Figure xx</b> plots the Pearson correlations between all the timeseries we collected during the 8-month period.
+      <b>Figure 8</b> plots the Pearson correlations between all the timeseries we collected during the 8-month period.
     </p>
 
     <div class="row py-3">
@@ -831,7 +866,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/correlations.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE ## </strong>Correlations between topics,
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 8 </strong>Correlations between topics,
               sentiments, and commodity returns.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/Correlations.ipynb">Visualization
                 Code</a>.</p>

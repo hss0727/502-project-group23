@@ -31,8 +31,10 @@
     <nav class="navbar mx-auto bg-light px-4 fixed-top">
       <a class="navbar-brand" href="index.html">Big Data and Cloud Computing - Final Project</a>
       <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project Introduction</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project
+            Introduction</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a>
+        </li>
         <li class="nav-item"><a class="nav-link" href="summary.html" style="color: black">Executive Summary</a></li>
         <li class="nav-item"><a class="nav-link" href="EDA.html" style="color: black">EDA</a></li>
         <li class="nav-item"><a class="nav-link" href="NLP.html" style="color: black">NLP</a></li>
@@ -310,42 +312,62 @@
         </tr>
       </tbody>
     </table>
-    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 2 </strong>Top 10 topic words processed for 10 Topics<br>
-    <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_submissions.ipynb">Topic Modeling code (submissions)</a>
-    <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_comments.ipynb">Topic Modeling code (comments)</a></p>
+    <p style="font-weight: lighter; text-align: center;"><strong>TABLE 2 </strong>Top 10 topic words processed for 10
+      Topics<br>
+      <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_submissions.ipynb">Topic
+        Modeling code (submissions)</a>
+      <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/TopicModeling_comments.ipynb">Topic
+        Modeling code (comments)</a>
+    </p>
     <!--TOPIC MODELING SUMMARIZATION TABLE-->
 
 
     <br>
     <p>
-      Topic modeling is a popular technique to analyze the massice amount of textual social media data. It is a efficient tool to summarizing long documents. Some of the findings through the topic modeling includes:
+      Topic modeling is a popular technique to analyze the massice amount of textual social media data. It is a
+      efficient tool to summarizing long documents. Some of the findings through the topic modeling includes:
     </p>
     <ul>
-      <li><strong>Words related to the war: </strong> The subreddit names used to subset the data included not only the war-specific keywords. However, we can see that topic words related to the 'war' such as military, soldier, and tank, dominates the topic modeling result.</li>
-      <li><strong>Geographical information: </strong>Geographical names such as Kyiv (Capital of Ukraine), Mariupol indicates where the war broke out and the country names such as China, Belarus and Poland tell us countries near Russia and Ukraine that were affected by the war.</li>
-      <li><strong>Others: </strong>We can find topics that people talk about such as the war strategies Russia takes. Starlink, gas, nuclear plant, power indicates that people are interested in Russia's attack on the major infrastructures in Ukraine.</li> 
+      <li><strong>Words related to the war: </strong> The subreddit names used to subset the data included not only the
+        war-specific keywords. However, we can see that topic words related to the 'war' such as military, soldier, and
+        tank, dominates the topic modeling result.</li>
+      <li><strong>Geographical information: </strong>Geographical names such as Kyiv (Capital of Ukraine), Mariupol
+        indicates where the war broke out and the country names such as China, Belarus and Poland tell us countries near
+        Russia and Ukraine that were affected by the war.</li>
+      <li><strong>Others: </strong>We can find topics that people talk about such as the war strategies Russia takes.
+        Starlink, gas, nuclear plant, power indicates that people are interested in Russia's attack on the major
+        infrastructures in Ukraine.</li>
     </ul>
 
     <p>
-      Topics found from the LDA model can be later used to label the documents. In <b>Figure 4</b> shows the change of topics of more interest in Reddit over time. The figures are drawn by first tagging the documents using the topic words and then calculating daily proportions. This shows that the topic model can be used transform the textual analysis to classification problems.
+      Topics found from the LDA model can be later used to label the documents. In <b>Figure 4</b> shows the change of
+      topics of more interest in Reddit over time. The figures are drawn by first tagging the documents using the topic
+      words and then calculating daily proportions. This shows that the topic model can be used transform the textual
+      analysis to classification problems.
     </p>
-    
 
 
-        <!-- IMAGE: SUBMISSIONS TOPIC MODELING TIME-SERIES -->
-        <div class="row py-3">
-          <div class="col-md-12">
-            <div class="card p-0" style="border: none">
-              <img src="img/NLP/TM-submissions-timeseries.png" class="card-img-top" alt="...">
-              <img src="img/NLP/TM-comments-timeseries.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 4 </strong>Time-series plot of topics proportion in the Reddit submissions (top) and comments (bottom)<br>
-                <a href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">LDA time-series code</a></p>
-              </div>
-            </div>
+
+    <!-- IMAGE: SUBMISSIONS TOPIC MODELING TIME-SERIES -->
+    <div class="row py-3">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/NLP/TM-submissions-timeseries.png" class="card-img-top" alt="...">
+          <img src="img/NLP/TM-comments-timeseries.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 4 </strong>Time-series plot of topics
+              proportion in the Reddit submissions (top) and comments (bottom)<br>
+              <a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">LDA
+                time-series code</a>
+            </p>
           </div>
         </div>
-        <!-- IMAGE END -->
+      </div>
+    </div>
+    <!-- IMAGE END -->
 
 
 
@@ -360,7 +382,7 @@
     <br>
     <hr>
     <h4>Q2. (NLP) What are different languages other than English that can be analyzed in the Dataset? (language
-      detection) Xinlu</h4>
+      detection)</h4>
     <p>
       Although it is easy to assume that most of the Reddit content is in English, based on the chosen topics, we target
       English, Ukrainian, and Russian as the languages of interest. To categorize the submission records by language, we

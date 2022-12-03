@@ -26,8 +26,10 @@
     <nav class="navbar mx-auto bg-light px-4 fixed-top">
       <a class="navbar-brand" href="index.html">Big Data and Cloud Computing - Final Project</a>
       <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project Introduction</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project
+            Introduction</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a>
+        </li>
         <li class="nav-item"><a class="nav-link" href="summary.html" style="color: black">Executive Summary</a></li>
         <li class="nav-item"><a class="nav-link" href="EDA.html" style="color: black">EDA</a></li>
         <li class="nav-item"><a class="nav-link" href="NLP.html" style="color: black">NLP</a></li>
@@ -222,19 +224,14 @@
               class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-gradient">
               <div class="col p-4 d-flex flex-column position-static">
                 <h6 style="color: blue;">Sentiment Analysis</h6>
-                <h5><strong class="mb-1">Q5. Are there specific users who have more influence on the sentiment?</strong>
+                <h5><strong class="mb-1">Q5. Can we use text classification algorithms on foreign languages?</strong>
                 </h5><br>
-                <p class="mb-auto"><strong>Business goal: </strong>Find specific authors of the reddit posts who have
-                  more
-                  influence (or try to have influence) on the sentiment of the public opinion.</p><br>
-                <p class="card-text mb-auto"><strong>Technical proposal: </strong>Find the hyperactive netizen to find
-                  how
-                  they influence the discussion.
-                  Technical Proposal: Group the dataset by the authors, and rank authors by their popularity measures.
-                  Extract all the posts and comments from targeted authors. Perform simple text analysis, sentiment
-                  extraction, and topic modeling on their posts. Find correlations between the submission popularity and
-                  their sentiments.
-
+                <p class="mb-auto"><strong>Business goal: </strong>Predict whether an Ukrainian comment receives
+                  positive or negative scores using a text classification algorithm</p><br>
+                <p class="card-text mb-auto"><strong>Technical proposal: </strong>While bag-of-word approach is useful
+                  in text classification in English, we will explore whether the same method can be worked on foreign
+                  languages. Our first step will be creating word tokens, and then indexing each word to a non-ordinal
+                  number. We will be applying the bag-of-words feature with logistic regression and naïve bayes.
                 </p>
               </div>
             </div>
@@ -435,11 +432,11 @@
 
 
 
-      <!-- About the Team  -->
-      <div id="aboutTeam" class="d-block" style="height:100px">
-      </div>
-      <hr>
-      <h4>About the Team</h4>
+        <!-- About the Team  -->
+        <div id="aboutTeam" class="d-block" style="height:100px">
+        </div>
+        <hr>
+        <h4>About the Team</h4>
 
         <div class="row py-5">
 

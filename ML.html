@@ -101,6 +101,19 @@
     
     <h4>Result</h4>
     <p>
+      We insert all the hyperparameter characters and values into our tuning function and obtain the model 
+      with the best prediction result. Our optimal gradient-boosting model uses only sentiment scores and 
+      topic scores from the comments. Although we test different possible dimension-reduced datasets using 
+      PCA, the transformation does not affect the result much. We remove the PCA process for our model to 
+      save training time and computational power. The best estimators have learning rates of around 0.001, 
+      maximum depths of about 100, and numbers of estimators of about 50. We give approximate values of 
+      parameters since the models with parameters that differ in small scales tend to deliver similar good 
+      results. And we consider the focus of generating the ideal model should be on following the 
+      hyperparameter tuning workflow instead of trying to fit a fixed set of parameters to data. 
+      The code used for the gradient boosting model can be found <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Gradient_Boosting Rank.ipynb">here</a>.
+    </p>
+    <p>
       Using our optimized gradient boosting model, we are able to achieve a positive r-squared score on 
       the prediction of our testing dataset at around 0.01257. Based on the hard-to-predict nature of 
       the commodity returns, the model performs well for our hypothesis.

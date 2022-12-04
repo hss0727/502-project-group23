@@ -51,7 +51,73 @@
     <hr>
     <br>
 
+    <h3>Gradient Boosting</h3>
+    <h4>Model</h4>
+    <p>
+      <b>Boosting</b> refers to modifying a weak learner or a weak hypothesis to make it perform better. 
+      A <b>weak hypothesis</b> or a <b>weak learner</b> is defined as one whose performance is at least 
+      slightly better than random chance. Commodity market returns are conventionally considered to be 
+      hard to model. We build our work based on the hypothesis that this data can be predicted using 
+      specific data and designated models. In other words, our work initializes with a weak hypothesis. 
+      And gradient descent is meant for this learning process. 
+    </p>
+    <p>
+      In gradient boosting, decision trees are used as the weak learner and are parameterized using 
+      gradient descent. Each tree obtains the instances it handles well and leaves the hard-to-handle 
+      instances to the following trees. The model adds a fixed number of tree-structured weak learners 
+      once at a time and stops when the loss reaches an acceptable level or no longer improves on 
+      external validation data. Thus, gradient boosting is a greedy algorithm that can quickly overfit 
+      a training dataset. We tune several key hyperparameters to add constraints to the training process.
+    </p>
+    <ul>
+      <li><i>learning_rate</i>: The model shrinks the contribution of each tree by the specified 
+        learning rate. default is 0.1</li>
+      <li><i>n_estimators</i>: The number of boosting stages to perform. More boosting stages 
+        add more trees to the model and perform fairly better. There is a considered trade-off 
+        between <i>learning_rate</i> and <i>n_estimators</i>, but we give a fair amount of 
+        attempts for both parameters in the hope of the best performance.</li>
+      <li><i>max_depth</i>: The maximum depth limit the number of nodes in the tree. And it can 
+        start with one node per tree.</li>
+      <li><i>subsample</i>: The value determines the fraction of samples to be used from 
+        fitting individual base learners.</li>
+    </ul>
+    <p>We first set up lists of these parameters in their acceptable range with large intervals. After 
+      looping through all combinations, we obtain the best set of parameters. We then derive new lists 
+      around the result with smaller intervals. Using this method, we get close to the actual range of 
+      possible best estimators. Although the models using different combinations are obtained through 
+      training and validation datasets, we filter the estimators with the highest r-squared score from the 
+      prediction on the test dataset to avoid overfitting.
+    </p>
+    <p>
+      On top of the tuning loop, we test different sets of variables to compare the testing score to 
+      find the optimal set of input variables. Based on the numbers of various input feature sets, we 
+      fit a range of PCA models with different limitations of components to the dataset before splitting 
+      it.
+    </p>
+    <p>
+      Moreover, We use the standard scaler over all the features in the dataset before splitting it into 
+      training, validation, and test subsets. 
+    </p>
+    
+    <h4>Result</h4>
+    <p>
+      Using our optimized gradient boosting model, we are able to achieve a positive r-squared score on 
+      the prediction of our testing dataset at around 0.01257. Based on the hard-to-predict nature of 
+      the commodity returns, the model performs well for our hypothesis.
+    </p>
+    <p>
+      We also obtain the prediction for each commodity from our optimal model. The r-squared score of 
+      <b>Heating Oil</b>,  <b>Wheat</b>, <b>Coffe</b>, <b>Natural Gas</b>, <b>Rough Rice</b>, <b>Soybean 
+        Oil Futures</b>, <b>Sugar #11</b> are all positive and higher than 0 by around 0.01. Among all 
+        the categories, <b>Soybean Meal Futures</b> has the highest score at around 0.173. Thus we 
+        conclude that the optimal gradient boosting model performs exceptionally well on the return 
+        of <b>Soybean Meal Futures</b>.
+    </p>
+
+    <hr>
+
     <br>
+
 
     <h4>Q5. Can Foreign Language Comments be used to Predict Comment Score? Using Transformation, Pipeline, and SparkML.
     </h4>

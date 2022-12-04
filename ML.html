@@ -276,12 +276,130 @@
 
     </div>
 
+    <br>
+    <hr>
 
+    <h4>Feedforward Neural Network</h4>
+    <p>
+      <strong>Feedforward Neural Network</strong> is a group of models, with turns of linear layers and activation.
+      It could be used to well model non-linear relationships and dig into the deep insights of a dataset.
+      Gradient descent based optimizers and schedulers are used for the training process.
+      Neural Network is different from the previous two methods, in the phase that not only the model structure
+      could be very complicated, but also a large number of choices for training hyper-parameters are needed.
+    </p>
+    <p>
+      We use Neural Network to construct models to predict the returns of different commodities on the features.
+      By having a large number of trials on the network structure, we find that the choice of a 
+      4-fully-connected-layer network with 
+      units-of-each-layer increased by a factor of 2, with a base number of units, is good.
+    </p>
+    <p>
+      We basically use a Adam optimizer, a linear scheduler with warmups and the MSE loss function
+      for the optimization program.
+    </p>
+    <p>
+      With a large number of trials into different choices of training hyper-parameters, 
+      we want to find models that perform well in the metric of r-squared scores. That's we simply filter
+      models with a minimum r-squared score(both on training and tesing dataset), 
+      and return the highest r-squared score we can achieve on the 
+      testing dataset.
+    </p>
+    <ul>
+      <li><i>learning_rate</i>: The variable deciding the scale of gradient changes applied to network
+      parameters.</li>
+      <li><i>epochs</i>: The time of optimization processes on the training dataset repeatedly.</li>
+      <li><i>batch_size</i>: Size of batch to compute the loss. Updating parameters using the loss computed 
+        on a batch of data points prevents the network from going into some local optimal regions.</li>
+      <li><i>max_grad_norm</i>: The value used to clip the parameter gradients before each update.</li>
+      <li><i>torch_seed</i>: Seed used for the random initialization of network parameters. Ways of initializing
+      the network always matter in different settings. Since we have no prior knowledge of this setting,
+      we simply control that initialization process by the pytorch seed.</li>
+      <li><i>num_warmup_steps</i>: Warmup steps for the scheduler. Default 3.</li>
+    </ul>
+    <h4>Result</h4>
+    <p>
+      We found that with proper initialization and training processes on the comment features, 
+      we can achieve good results in 12 commodities:
+      <strong>Natural Gas</strong>, <strong>RBOB Gasoline</strong>, <strong>Oats</strong>, 
+      <strong>Heating Oil</strong>, <strong>Corn Futures</strong>, <strong>Crude Oil</strong>, 
+      <strong>Soybean Meal Futures</strong>, <strong>Wheat</strong>, <strong>Soybean Oil Futures</strong>,
+      <strong>Coffee</strong>, <strong>Newcastle Coal</strong>, <strong>Barley</strong>.
+    </p>
+    
+    <p>The summary table of the best-case r-squared scores is listed below:(Sorted by testing R2 score)</p>
 
-
-
-
-
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 20%; text-align: center;">Commodity</th>
+          <th scope="col" style="width: 20%; text-align: center;">Testing R2 Score</th>
+          <th scope="col" style="width: 20%; text-align: center;">Training R2 Score</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center;">
+        <tr>
+          <td>Natural Gas</td>
+          <td>0.289160</td>
+          <td>0.120401</td>
+        </tr>
+        <tr>
+          <td>RBOB Gasoline</td>
+          <td>0.217282</td>
+          <td>0.088567</td>
+        </tr>
+        <tr>
+          <td>Oats</td>
+          <td>0.139280</td>
+          <td>0.075165</td>
+        </tr>
+        <tr>
+          <td>Heating Oil</td>
+          <td>0.131966</td>
+          <td>0.030550</td>
+        </tr>
+        <tr>
+          <td>Corn</td>
+          <td>0.120237</td>
+          <td>0.057378</td>
+        </tr>
+        <tr>
+          <td>Crude Oil</td>
+          <td>0.116677</td>
+          <td>0.093161</td>
+        </tr>
+        <tr>
+          <td>Soybean Meal</td>
+          <td>0.111873</td>
+          <td>0.052304</td>
+        </tr>
+        <tr>
+          <td>Wheat</td>
+          <td>0.104399</td>
+          <td>0.280816</td>
+        </tr>
+        <tr>
+          <td>Soybean Oil</td>
+          <td>0.055231</td>
+          <td>0.010789</td>
+        </tr>
+        <tr>
+          <td>Coffee</td>
+          <td>0.046736</td>
+          <td>0.030898</td>
+        </tr>
+        <tr>
+          <td>Newcastle Coal</td>
+          <td>0.042269</td>
+          <td>0.039902</td>
+        </tr>
+        <tr>
+          <td>Barley</td>
+          <td>0.029870</td>
+          <td>0.032735</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> The Best R-squared Scores Achieved from Feedforward Neural Network</p>
 
     <hr>
 

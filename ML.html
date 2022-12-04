@@ -127,6 +127,162 @@
         of <b>Soybean Meal Futures</b>.
     </p>
 
+    <br>
+
+    <hr>
+
+    <h4>Random Forest Regressor</h4>
+
+    <p>
+      Random Forest is another ensemble method that enhances learning by grouping weak learners to form a single strong learner. The robustness of Random Forest comes from the wisdom of crowds and works well on large datasets. Also, decision trees are goot at capturing non-linear relationships between input features and the target variable. 
+    </p>
+
+    <p>
+      We use Random Forest Regressor model to predict commodity returns. Similar to Boosting, the parameters tuned in the model are n_estimators and max_depth. Then we set up lists of these parameters and loop through all vombinations to get the best set of parameters. Finally, we filter out the estimators with the highest r-squared score.
+    </p>
+
+    <ul>
+      <li><i>n_estimators</i>: the number of trees in the forest</li>
+      <li><i>max_depth</i>: The maximum depth limit the number of nodes in the tree</li>
+    </ul>
+
+    <h4>Result</h4>
+
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 40%; text-align: center;">Commodity</th>
+            <th scope="col" style="width: 20%; text-align: center;">Comment</th>
+            <th scope="col" style="width: 20%; text-align: center;">Submission</th>
+            <th scope="col" style="width: 20%; text-align: center;">Comment+Submission</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr>
+            <td>Corn</td>
+            <td>-0.15</td>
+            <td>-0.45</td>
+            <td>-0.32</td>
+          </tr>
+
+          <tr>
+            <td>Crude Oil</td>
+            <td>-0.13</td>
+            <td>-0.08</td>
+            <td>-0.13</td>
+          </tr>
+
+          <tr>
+            <td>Heating Oil</td>
+            <td>-0.15</td>
+            <td>-0.08</td>
+            <td>-0.18</td>
+          </tr>
+
+          <tr>
+            <td>Wheat</td>
+            <td>-0.20</td>
+            <td>-0.35</td>
+            <td>-0.18</td>
+          </tr>
+
+          <tr>
+            <td>Cocoa</td>
+            <td>-0.14</td>
+            <td>-0.12</td>
+            <td>0.02</td>
+          </tr>
+
+          <tr>
+            <td>Coffee</td>
+            <td>-0.08</td>
+            <td>-0.20</td>
+            <td>-0.18</td>
+          </tr>
+
+          <tr>
+            <td>Natural Gas</td>
+            <td>-0.12</td>
+            <td>0.22</td>
+            <td>0.02</td>
+          </tr>
+
+          <tr>
+            <td>Oats</td>
+            <td>-0.05</td>
+            <td>-0.18</td>
+            <td>-0.25</td>
+          </tr>
+
+          <tr>
+            <td>RBOB Gasoline</td>
+            <td>-0.02</td>
+            <td>-0.10</td>
+            <td>-0.12</td>
+          </tr>
+
+          <tr>
+            <td>Rough Rice</td>
+            <td>-0.12</td>
+            <td>-0.14</td>
+            <td>-0.14</td>
+          </tr>
+
+          <tr>
+            <td>Soybean Meal</td>
+            <td>-0.10</td>
+            <td>-0.13</td>
+            <td>-0.06</td>
+          </tr>
+
+          <tr>
+            <td>Soybean Oil</td>
+            <td>-0.08</td>
+            <td>-0.14</td>
+            <td>-0.03</td>
+          </tr>
+
+          <tr>
+            <td>Sugar #11</td>
+            <td>-0.11</td>
+            <td>-0.14</td>
+            <td>-0.23</td>
+          </tr>
+
+          <tr>
+            <td>Newcastle Coal</td>
+            <td>-0.01</td>
+            <td>0.06</td>
+            <td>0.11</td>
+          </tr>
+
+          <tr>
+            <td>Barley</td>
+            <td>-0.53</td>
+            <td>-0.25</td>
+            <td>-0.32</td>
+          </tr>
+
+
+
+
+
+        </tbody>
+
+      </table>
+      <p style="font-weight: lighter; text-align: center;"><b>TABLE 1:</b> Selected subreddits</p>
+
+    </div>
+
+
+
+
+
+
+
+
     <hr>
 
     <br>

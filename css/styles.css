@@ -66,3 +66,7 @@ body { padding-top: 70px; }
   .card_text_color {
     color: black;
   }
+
+  .left, .right {
+    display: inline-block;
+  }

@@ -50,82 +50,131 @@
     <h2>Machine Learning</h2>
     <hr>
     <br>
-
-    <h3>Gradient Boosting</h3>
-    <h4>Model</h4>
+    <h4>Summary</h4>
+    <br>
     <p>
-      <b>Boosting</b> refers to modifying a weak learner or a weak hypothesis to make it perform better. 
-      A <b>weak hypothesis</b> or a <b>weak learner</b> is defined as one whose performance is at least 
-      slightly better than random chance. Commodity market returns are conventionally considered to be 
-      hard to model. We build our work based on the hypothesis that this data can be predicted using 
-      specific data and designated models. In other words, our work initializes with a weak hypothesis. 
-      And gradient descent is meant for this learning process. 
+      Reddit is a fruitful online community full of opinions on different topics. From using NLP techniques, we extract
+      a suite of topic and sentiment features, and subset language-specific reddit posts. We are able to use
+      bag-of-words features to predict Ukrainian reddit scores with a 95% accuracy.
+    </p>
+    <div class="col-md-10">
+      <div class="card p-0" style="border: none">
+        <img src="img/ML/comment_model.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1 </b>Model Performance from Comment Features<a
+              href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Visualization.ipynb">Visualization
+              Code</a>.</p>
+
+        </div>
+      </div>
+    </div>
+    <p>
+      We also try to predict commodity returns with sentiment and topic features. Financial assets returns are
+      notoriously hard to predict. A positive R^2 in modeling means a better-than-guess prediction, and if the positive
+      R^2 stays long enough, it can be built into a trading signal. As Figure shows, even though most of our models can
+      only generate negative R^2, we
+      are still able
+      to make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit data
+      has a low information-to-noise ratio for it to be used in commodity returns prediction. On the other hand, it
+      still can be used to generate decent prediction with advanced modeling.
+    </p>
+    <br>
+    <hr>
+
+    <h4>Q5. Can Foreign Language Comments be used to Predict Comment Score? Using Transformation, Pipeline, and SparkML.
+    </h4>
+    <p>
+      We split the training and testing dataset by 0.7 and 0.3 ratio from Ukrainian comment dataset, with 12859 and 5462
+      posts
+      respectively. We utilized SparkML and Spark Pipeline to streamline the tokenization, word vectorization, and
+      machine learning process. Logistic
+      regression has the best performance with a 95.75 Accuracy.
+      Our conclusion is that
+      bag-of-words approach text classification methods can be applied to any languages that use space to separate
+      words, and perform well. The code can be found <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Predict_Comment_Score.ipynb">here</a>.
+    </p>
+    <br>
+    <hr>
+    <h4>Q7, Q9, & Q10. How to use Redit Topics and Sentiments to Predict Commodity Returns?</h4>
+    <br>
+    <h4>Models</h4>
+    <br>
+    <h4>Gradient Boosting</h4>
+
+    <p>
+      <b>Boosting</b> refers to modifying a weak learner or a weak hypothesis to make it perform better.
+      A <b>weak hypothesis</b> or a <b>weak learner</b> is defined as one whose performance is at least
+      slightly better than random chance. Commodity market returns are conventionally considered to be
+      hard to model. We build our work based on the hypothesis that this data can be predicted using
+      specific data and designated models. In other words, our work initializes with a weak hypothesis.
+      And gradient descent is meant for this learning process.
     </p>
     <p>
-      In gradient boosting, decision trees are used as the weak learner and are parameterized using 
-      gradient descent. Each tree obtains the instances it handles well and leaves the hard-to-handle 
-      instances to the following trees. The model adds a fixed number of tree-structured weak learners 
-      once at a time and stops when the loss reaches an acceptable level or no longer improves on 
-      external validation data. Thus, gradient boosting is a greedy algorithm that can quickly overfit 
+      In gradient boosting, decision trees are used as the weak learner and are parameterized using
+      gradient descent. Each tree obtains the instances it handles well and leaves the hard-to-handle
+      instances to the following trees. The model adds a fixed number of tree-structured weak learners
+      once at a time and stops when the loss reaches an acceptable level or no longer improves on
+      external validation data. Thus, gradient boosting is a greedy algorithm that can quickly overfit
       a training dataset. We tune several key hyperparameters to add constraints to the training process.
     </p>
     <ul>
-      <li><i>learning_rate</i>: The model shrinks the contribution of each tree by the specified 
+      <li><i>learning_rate</i>: The model shrinks the contribution of each tree by the specified
         learning rate. default is 0.1</li>
-      <li><i>n_estimators</i>: The number of boosting stages to perform. More boosting stages 
-        add more trees to the model and perform fairly better. There is a considered trade-off 
-        between <i>learning_rate</i> and <i>n_estimators</i>, but we give a fair amount of 
+      <li><i>n_estimators</i>: The number of boosting stages to perform. More boosting stages
+        add more trees to the model and perform fairly better. There is a considered trade-off
+        between <i>learning_rate</i> and <i>n_estimators</i>, but we give a fair amount of
         attempts for both parameters in the hope of the best performance.</li>
-      <li><i>max_depth</i>: The maximum depth limit the number of nodes in the tree. And it can 
+      <li><i>max_depth</i>: The maximum depth limit the number of nodes in the tree. And it can
         start with one node per tree.</li>
-      <li><i>subsample</i>: The value determines the fraction of samples to be used from 
+      <li><i>subsample</i>: The value determines the fraction of samples to be used from
         fitting individual base learners.</li>
     </ul>
-    <p>We first set up lists of these parameters in their acceptable range with large intervals. After 
-      looping through all combinations, we obtain the best set of parameters. We then derive new lists 
-      around the result with smaller intervals. Using this method, we get close to the actual range of 
-      possible best estimators. Although the models using different combinations are obtained through 
-      training and validation datasets, we filter the estimators with the highest r-squared score from the 
+    <p>We first set up lists of these parameters in their acceptable range with large intervals. After
+      looping through all combinations, we obtain the best set of parameters. We then derive new lists
+      around the result with smaller intervals. Using this method, we get close to the actual range of
+      possible best estimators. Although the models using different combinations are obtained through
+      training and validation datasets, we filter the estimators with the highest r-squared score from the
       prediction on the test dataset to avoid overfitting.
     </p>
     <p>
-      On top of the tuning loop, we test different sets of variables to compare the testing score to 
-      find the optimal set of input variables. Based on the numbers of various input feature sets, we 
-      fit a range of PCA models with different limitations of components to the dataset before splitting 
+      On top of the tuning loop, we test different sets of variables to compare the testing score to
+      find the optimal set of input variables. Based on the numbers of various input feature sets, we
+      fit a range of PCA models with different limitations of components to the dataset before splitting
       it.
     </p>
     <p>
-      Moreover, We use the standard scaler over all the features in the dataset before splitting it into 
-      training, validation, and test subsets. 
+      Moreover, We use the standard scaler over all the features in the dataset before splitting it into
+      training, validation, and test subsets.
     </p>
-    
-    <h4>Result</h4>
+
+    <!-- <h4>Result</h4>
     <p>
-      We insert all the hyperparameter characters and values into our tuning function and obtain the model 
-      with the best prediction result. Our optimal gradient-boosting model uses only sentiment scores and 
-      topic scores from the comments. Although we test different possible dimension-reduced datasets using 
-      PCA, the transformation does not affect the result much. We remove the PCA process for our model to 
-      save training time and computational power. The best estimators have learning rates of around 0.001, 
-      maximum depths of about 100, and numbers of estimators of about 50. We give approximate values of 
-      parameters since the models with parameters that differ in small scales tend to deliver similar good 
-      results. And we consider the focus of generating the ideal model should be on following the 
-      hyperparameter tuning workflow instead of trying to fit a fixed set of parameters to data. 
+      We insert all the hyperparameter characters and values into our tuning function and obtain the model
+      with the best prediction result. Our optimal gradient-boosting model uses only sentiment scores and
+      topic scores from the comments. Although we test different possible dimension-reduced datasets using
+      PCA, the transformation does not affect the result much. We remove the PCA process for our model to
+      save training time and computational power. The best estimators have learning rates of around 0.001,
+      maximum depths of about 100, and numbers of estimators of about 50. We give approximate values of
+      parameters since the models with parameters that differ in small scales tend to deliver similar good
+      results. And we consider the focus of generating the ideal model should be on following the
+      hyperparameter tuning workflow instead of trying to fit a fixed set of parameters to data.
       The code used for the gradient boosting model can be found <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Gradient_Boosting Rank.ipynb">here</a>.
     </p>
     <p>
-      Using our optimized gradient boosting model, we are able to achieve a positive r-squared score on 
-      the prediction of our testing dataset at around 0.01257. Based on the hard-to-predict nature of 
+      Using our optimized gradient boosting model, we are able to achieve a positive r-squared score on
+      the prediction of our testing dataset at around 0.01257. Based on the hard-to-predict nature of
       the commodity returns, the model performs well for our hypothesis.
     </p>
     <p>
-      We also obtain the prediction for each commodity from our optimal model. The r-squared score of 
-      <b>Heating Oil</b>,  <b>Wheat</b>, <b>Coffe</b>, <b>Natural Gas</b>, <b>Rough Rice</b>, <b>Soybean 
-        Oil Futures</b>, <b>Sugar #11</b> are all positive and higher than 0 by around 0.01. Among all 
-        the categories, <b>Soybean Meal Futures</b> has the highest score at around 0.173. Thus we 
-        conclude that the optimal gradient boosting model performs exceptionally well on the return 
-        of <b>Soybean Meal Futures</b>.
-    </p>
+      We also obtain the prediction for each commodity from our optimal model. The r-squared score of
+      <b>Heating Oil</b>, <b>Wheat</b>, <b>Coffe</b>, <b>Natural Gas</b>, <b>Rough Rice</b>, <b>Soybean
+        Oil Futures</b>, <b>Sugar #11</b> are all positive and higher than 0 by around 0.01. Among all
+      the categories, <b>Soybean Meal Futures</b> has the highest score at around 0.173. Thus we
+      conclude that the optimal gradient boosting model performs exceptionally well on the return
+      of <b>Soybean Meal Futures</b>.
+    </p> -->
 
     <br>
 
@@ -134,11 +183,16 @@
     <h4>Random Forest Regressor</h4>
 
     <p>
-      Random Forest is another ensemble method that enhances learning by grouping weak learners to form a single strong learner. The robustness of Random Forest comes from the wisdom of crowds and works well on large datasets. Also, decision trees are goot at capturing non-linear relationships between input features and the target variable. 
+      Random Forest is another ensemble method that enhances learning by grouping weak learners to form a single strong
+      learner. The robustness of Random Forest comes from the wisdom of crowds and works well on large datasets. Also,
+      decision trees are goot at capturing non-linear relationships between input features and the target variable.
     </p>
 
     <p>
-      We use Random Forest Regressor model to predict commodity returns. Similar to Boosting, the parameters tuned in the model are n_estimators and max_depth. Then we set up lists of these parameters and loop through all vombinations to get the best set of parameters. Finally, we filter out the estimators with the highest r-squared score.
+      We use Random Forest Regressor model to predict commodity returns. Similar to Boosting, the parameters tuned in
+      the model are n_estimators and max_depth. Then we set up lists of these parameters and loop through all
+      vombinations to get the best set of parameters. Finally, we filter out the estimators with the highest r-squared
+      score.
     </p>
 
     <ul>
@@ -146,7 +200,7 @@
       <li><i>max_depth</i>: The maximum depth limit the number of nodes in the tree</li>
     </ul>
 
-    <h4>Result</h4>
+    <!-- <h4>Result</h4>
 
 
     <div class="table-responsive">
@@ -274,7 +328,7 @@
       </table>
       <p style="font-weight: lighter; text-align: center;"><b>TABLE 1:</b> Selected subreddits</p>
 
-    </div>
+    </div> -->
 
     <br>
     <hr>
@@ -289,8 +343,8 @@
     </p>
     <p>
       We use Neural Network to construct models to predict the returns of different commodities on the features.
-      By having a large number of trials on the network structure, we find that the choice of a 
-      4-fully-connected-layer network with 
+      By having a large number of trials on the network structure, we find that the choice of a
+      4-fully-connected-layer network with
       units-of-each-layer increased by a factor of 2, with a base number of units, is good.
     </p>
     <p>
@@ -298,35 +352,35 @@
       for the optimization program.
     </p>
     <p>
-      With a large number of trials into different choices of training hyper-parameters, 
+      With a large number of trials into different choices of training hyper-parameters,
       we want to find models that perform well in the metric of r-squared scores. That's we simply filter
-      models with a minimum r-squared score(both on training and tesing dataset), 
-      and return the highest r-squared score we can achieve on the 
+      models with a minimum r-squared score(both on training and tesing dataset),
+      and return the highest r-squared score we can achieve on the
       testing dataset.
     </p>
     <ul>
       <li><i>base_hidden_layer_units</i>: The base number of units for the first hidden layer.</li>
       <li><i>learning_rate</i>: The variable deciding the scale of gradient changes applied to network
-      parameters.</li>
+        parameters.</li>
       <li><i>epochs</i>: The time of optimization processes on the training dataset repeatedly.</li>
-      <li><i>batch_size</i>: Size of batch to compute the loss. Updating parameters using the loss computed 
+      <li><i>batch_size</i>: Size of batch to compute the loss. Updating parameters using the loss computed
         on a batch of data points prevents the network from going into some local optimal regions.</li>
       <li><i>max_grad_norm</i>: The value used to clip the parameter gradients before each update.</li>
       <li><i>torch_seed</i>: Seed used for the random initialization of network parameters. Ways of initializing
-      the network always matter in different settings. Since we have no prior knowledge of this setting,
-      we simply control that initialization process by the pytorch seed.</li>
+        the network always matter in different settings. Since we have no prior knowledge of this setting,
+        we simply control that initialization process by the pytorch seed.</li>
       <li><i>num_warmup_steps</i>: Warmup steps for the scheduler. Default 3.</li>
     </ul>
-    <h4>Result</h4>
+    <!-- <h4>Result</h4>
     <p>
-      We found that with proper initialization and training processes on the comment features, 
+      We found that with proper initialization and training processes on the comment features,
       we can achieve good results in 12 commodities:
-      <strong>Natural Gas</strong>, <strong>RBOB Gasoline</strong>, <strong>Oats</strong>, 
-      <strong>Heating Oil</strong>, <strong>Corn Futures</strong>, <strong>Crude Oil</strong>, 
+      <strong>Natural Gas</strong>, <strong>RBOB Gasoline</strong>, <strong>Oats</strong>,
+      <strong>Heating Oil</strong>, <strong>Corn Futures</strong>, <strong>Crude Oil</strong>,
       <strong>Soybean Meal Futures</strong>, <strong>Wheat</strong>, <strong>Soybean Oil Futures</strong>,
       <strong>Coffee</strong>, <strong>Newcastle Coal</strong>, <strong>Barley</strong>.
     </p>
-    
+
     <p>The summary table of the best-case r-squared scores is listed below:(Sorted by testing R2 score)</p>
 
     <table class="table">
@@ -400,24 +454,42 @@
         </tr>
       </tbody>
     </table>
-    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> The Best R-squared Scores Achieved from Feedforward Neural Network</p>
+    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> The Best R-squared Scores Achieved from
+      Feedforward Neural Network</p> -->
+    <p>All the models code can be found <a
+        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/ML">here.</a>
+    </p>
+    <br>
 
     <hr>
 
-    <br>
+    <h4>Results</h4>
 
-
-    <h4>Q5. Can Foreign Language Comments be used to Predict Comment Score? Using Transformation, Pipeline, and SparkML.
-    </h4>
+    <div class="row py-3">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 img-responsive">
+            <img src="img/ML/comment_model.png" class="card-img-top" alt="...">
+          </div>
+          <div class="col-md-6 img-responsive">
+            <img src="img/ML/submission_model.png" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 1 </strong>Performance of Different ML
+              Models. The left figure plots the performance using comment-generated features. The right figure plots the
+              performance using submission-generated features.<br>
+              <a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Visualization.ipynb">Visualization
+                Code</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>
-      We split the training and testing dataset by 0.7 and 0.3 ratio from Ukrainian comment dataset, with 12859 and 5462 posts
-      respectively. We utilized SparkML and Spark Pipeline to streamline the tokenization, word vectorization, and
-      machine learning process. Logistic
-      regression has the best performance with a 95.75 Accuracy.
-      Our conclusion is that
-      bag-of-words approach text classification methods can be applied to any languages that use space to separate
-      words, and perform well. The code can be found <a
-        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Predict_Comment_Score.ipynb">here</a>.
+      Because the market is very efficient, financial asset's returns are hard to predict. Even though most of the
+      models do not work well, gradient boosting is able to generate positive returns. And we notice that
+      comment-generated features generally have better results than submission-generated features.
     </p>
 
     <br>

@@ -281,127 +281,175 @@
 
     <h4>Feedforward Neural Network</h4>
     <p>
-      <strong>Feedforward Neural Network</strong> is a group of models, with turns of linear layers and activations.
+      <strong>Feedforward Neural Network</strong> is a group of models, with turns of linear layers and activation.
       It could be used to well model non-linear relationships and dig into the deep insights of a dataset.
       Gradient descent based optimizers and schedulers are used for the training process.
       Neural Network is different from the previous two methods, in the phase that not only the model structure
-      could be very complicated, but also a large number of trials for the hyper-parameters during training are needed.
+      could be very complicated, but also a large number of choices for training hyper-parameters are needed.
     </p>
     <p>
-      We use Neural Network to construct models to predict the returns of different commodities on the features.
-      By having a large number of trials on the network structure, we find that the choice of a 
-      4-fully-connected-layer network with 
-      units-of-each-layer increased by a factor of 2, with a base number of units, is good.
+      We use Neural Network to construct models to predict the return ranks of different commodities on the features.
+      To avoid overfittiing, we simply maintain 2 hidden layers for the network, with the units of the 2nd 
+      hidden layer being 2 times the units of the 1st hidden layer.
+
     </p>
     <p>
       We basically use a Adam optimizer, a linear scheduler with warmups and the MSE loss function
       for the optimization program.
     </p>
     <p>
-      With a large number of trials into different choices of training hyper-parameters, 
-      we want to find models that perform well in the metric of r-squared scores. That's we simply filter
-      models with a minimum r-squared score(both on training and tesing dataset), 
-      and return the highest r-squared score we can achieve on the 
-      testing dataset.
+      Still, we first try to find the best choice of hyper-parameters according to r-squared scores,
+      by training the model on the training dataset and then do validation on the validation dataset.
+      With the best choice of hyper-parameters, we do formal training on the training dataset and 
+      get the r-squared scores on the testing dataset.
     </p>
     <ul>
       <li><i>base_hidden_layer_units</i>: The base number of units for the first hidden layer.</li>
       <li><i>learning_rate</i>: The variable deciding the scale of gradient changes applied to network
       parameters.</li>
       <li><i>epochs</i>: The time of optimization processes on the training dataset repeatedly.</li>
+      <li><i>activation</i>: The choice of activation function for hidden layers.</li>
       <li><i>batch_size</i>: Size of batch to compute the loss. Updating parameters using the loss computed 
         on a batch of data points prevents the network from going into some local optimal regions.</li>
       <li><i>max_grad_norm</i>: The value used to clip the parameter gradients before each update.</li>
-      <li><i>torch_seed</i>: Seed used for the random initialization of network parameters. Ways of initializing
-      the network always matter in different settings. Since we have no prior knowledge of this setting,
-      we simply control that initialization process by the pytorch seed.</li>
       <li><i>num_warmup_steps</i>: Warmup steps for the scheduler. Default 3.</li>
     </ul>
     <h4>Result</h4>
     <p>
-      We found that with proper initialization and training processes on the comment features, 
-      we can achieve good results in 12 commodities:
-      <strong>Natural Gas</strong>, <strong>RBOB Gasoline</strong>, <strong>Oats</strong>, 
-      <strong>Heating Oil</strong>, <strong>Corn Futures</strong>, <strong>Crude Oil</strong>, 
-      <strong>Soybean Meal Futures</strong>, <strong>Wheat</strong>, <strong>Soybean Oil Futures</strong>,
-      <strong>Coffee</strong>, <strong>Newcastle Coal</strong>, <strong>Barley</strong>.
+      We found postive r-squared scores for commodities of <strong>Natural Gas</strong>, <strong>Soybean Meal</strong>
+      on the comment features and <strong>Natural Gas</strong>, <strong>RBOB Gasoline</strong>, 
+      <strong>Newcastle Coal</strong> on all the features(submission + comment + reddit).
     </p>
     
     <p>The summary table of the best-case r-squared scores is listed below:(Sorted by testing R2 score)</p>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" style="width: 20%; text-align: center;">Commodity</th>
-          <th scope="col" style="width: 20%; text-align: center;">Testing R2 Score</th>
-          <th scope="col" style="width: 20%; text-align: center;">Training R2 Score</th>
-        </tr>
-      </thead>
-      <tbody style="text-align: center;">
-        <tr>
-          <td>Natural Gas</td>
-          <td>0.289160</td>
-          <td>0.120401</td>
-        </tr>
-        <tr>
-          <td>RBOB Gasoline</td>
-          <td>0.217282</td>
-          <td>0.088567</td>
-        </tr>
-        <tr>
-          <td>Oats</td>
-          <td>0.139280</td>
-          <td>0.075165</td>
-        </tr>
-        <tr>
-          <td>Heating Oil</td>
-          <td>0.131966</td>
-          <td>0.030550</td>
-        </tr>
-        <tr>
-          <td>Corn</td>
-          <td>0.120237</td>
-          <td>0.057378</td>
-        </tr>
-        <tr>
-          <td>Crude Oil</td>
-          <td>0.116677</td>
-          <td>0.093161</td>
-        </tr>
-        <tr>
-          <td>Soybean Meal</td>
-          <td>0.111873</td>
-          <td>0.052304</td>
-        </tr>
-        <tr>
-          <td>Wheat</td>
-          <td>0.104399</td>
-          <td>0.280816</td>
-        </tr>
-        <tr>
-          <td>Soybean Oil</td>
-          <td>0.055231</td>
-          <td>0.010789</td>
-        </tr>
-        <tr>
-          <td>Coffee</td>
-          <td>0.046736</td>
-          <td>0.030898</td>
-        </tr>
-        <tr>
-          <td>Newcastle Coal</td>
-          <td>0.042269</td>
-          <td>0.039902</td>
-        </tr>
-        <tr>
-          <td>Barley</td>
-          <td>0.029870</td>
-          <td>0.032735</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> The Best R-squared Scores Achieved from Feedforward Neural Network</p>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 40%; text-align: center;">Commodity</th>
+            <th scope="col" style="width: 20%; text-align: center;">Comment</th>
+            <th scope="col" style="width: 20%; text-align: center;">Submission</th>
+            <th scope="col" style="width: 20%; text-align: center;">All Features</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr>
+            <td>Corn</td>
+            <td>-1.180</td>
+            <td>-0.520</td>
+            <td>-0.577</td>
+          </tr>
 
+          <tr>
+            <td>Crude Oil</td>
+            <td>-0.679</td>
+            <td>-0.672</td>
+            <td>-2.786</td>
+          </tr>
+
+          <tr>
+            <td>Heating Oil</td>
+            <td>-0.293</td>
+            <td>-0.276</td>
+            <td>-3.669</td>
+          </tr>
+
+          <tr>
+            <td>Wheat</td>
+            <td>-0.367</td>
+            <td>-1.819</td>
+            <td>-0.548</td>
+          </tr>
+
+          <tr>
+            <td>Cocoa</td>
+            <td>-0.144</td>
+            <td>-0.277</td>
+            <td>-0.268</td>
+          </tr>
+
+          <tr>
+            <td>Coffee</td>
+            <td>-1.375</td>
+            <td>-0.199</td>
+            <td>-0.776</td>
+          </tr>
+
+          <tr>
+            <td>Natural Gas</td>
+            <td>0.044</td>
+            <td>-0.052</td>
+            <td>0.158</td>
+          </tr>
+
+          <tr>
+            <td>Oats</td>
+            <td>-0.114</td>
+            <td>-0.308</td>
+            <td>-1.116</td>
+          </tr>
+
+          <tr>
+            <td>RBOB Gasoline</td>
+            <td>-0.250</td>
+            <td>-0.113</td>
+            <td>0.034</td>
+          </tr>
+
+          <tr>
+            <td>Rough Rice</td>
+            <td>-0.423</td>
+            <td>-0.407</td>
+            <td>-0.863</td>
+          </tr>
+
+          <tr>
+            <td>Soybean Meal</td>
+            <td>0.043</td>
+            <td>-0.920</td>
+            <td>-0.256</td>
+          </tr>
+
+          <tr>
+            <td>Soybean Oil</td>
+            <td>-0.215</td>
+            <td>-0.663</td>
+            <td>-0.128</td>
+          </tr>
+
+          <tr>
+            <td>Sugar #11</td>
+            <td>-0.654</td>
+            <td>-1.768</td>
+            <td>-0.222</td>
+          </tr>
+
+          <tr>
+            <td>Newcastle Coal</td>
+            <td>-0.164</td>
+            <td>-0.407</td>
+            <td>0.029</td>
+          </tr>
+
+          <tr>
+            <td>Barley</td>
+            <td>-0.243</td>
+            <td>-0.796</td>
+            <td>-0.478</td>
+          </tr>
+
+
+
+
+
+        </tbody>
+
+      </table>
+      <p style="font-weight: lighter; text-align: center;"><b>TABLE 1:</b> Selected subreddits</p>
+
+    </div>
+    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> The Best R-squared Scores Achieved from Feedforward Neural Network</p>
     <hr>
 
     <br>

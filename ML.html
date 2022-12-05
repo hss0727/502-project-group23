@@ -105,10 +105,7 @@
     <p>
       <b>Boosting</b> refers to modifying a weak learner or a weak hypothesis to make it perform better.
       A <b>weak hypothesis</b> or a <b>weak learner</b> is defined as one whose performance is at least
-      slightly better than random chance. Commodity market returns are conventionally considered to be
-      hard to model. We build our work based on the hypothesis that this data can be predicted using
-      specific data and designated models. In other words, our work initializes with a weak hypothesis.
-      And gradient descent is meant for this learning process.
+      slightly better than random chance.
     </p>
     <p>
       In gradient boosting, decision trees are used as the weak learner and are parameterized using
@@ -136,16 +133,6 @@
       possible best estimators. Although the models using different combinations are obtained through
       training and validation datasets, we filter the estimators with the highest r-squared score from the
       prediction on the test dataset to avoid overfitting.
-    </p>
-    <p>
-      On top of the tuning loop, we test different sets of variables to compare the testing score to
-      find the optimal set of input variables. Based on the numbers of various input feature sets, we
-      fit a range of PCA models with different limitations of components to the dataset before splitting
-      it.
-    </p>
-    <p>
-      Moreover, We use the standard scaler over all the features in the dataset before splitting it into
-      training, validation, and test subsets.
     </p>
 
     <!-- <h4>Result</h4>
@@ -335,40 +322,35 @@
 
     <h4>Feedforward Neural Network</h4>
     <p>
-      <strong>Feedforward Neural Network</strong> is a group of models, with turns of linear layers and activations.
-      It could be used to well model non-linear relationships and dig into the deep insights of a dataset.
+      <strong>Feedforward Neural Network</strong> is a group of models, with use of linear layers and activation.
+      It could be used to model non-linear relationships and dig into the deep insights of a dataset.
       Gradient descent based optimizers and schedulers are used for the training process.
-      Neural Network is different from the previous two methods, in the phase that not only the model structure
-      could be very complicated, but also a large number of trials for the hyper-parameters during training are needed.
+      Neural Network is different from the previous two methods. It requires a large number of choices for training
+      hyper-parameters.
     </p>
     <p>
-      We use Neural Network to construct models to predict the returns of different commodities on the features.
-      By having a large number of trials on the network structure, we find that the choice of a
-      4-fully-connected-layer network with
-      units-of-each-layer increased by a factor of 2, with a base number of units, is good.
+      To avoid overfittiing, we simply maintain 2 hidden layers for the network, with the units of the 2nd
+      hidden layer being 2 times the units of the 1st hidden layer.
     </p>
     <p>
-      We basically use a Adam optimizer, a linear scheduler with warmups and the MSE loss function
+      We use a Adam optimizer, a linear scheduler with warmups and the MSE loss function
       for the optimization program.
     </p>
     <p>
-      With a large number of trials into different choices of training hyper-parameters,
-      we want to find models that perform well in the metric of r-squared scores. That's we simply filter
-      models with a minimum r-squared score(both on training and tesing dataset),
-      and return the highest r-squared score we can achieve on the
-      testing dataset.
+      We first try to find the best choice of hyper-parameters according to r-squared scores,
+      by training the model on the training dataset and then do validation on the validation dataset.
+      With the best choice of hyper-parameters, we do formal training on the overall training dataset and
+      get the r-squared scores on the testing dataset.
     </p>
     <ul>
       <li><i>base_hidden_layer_units</i>: The base number of units for the first hidden layer.</li>
       <li><i>learning_rate</i>: The variable deciding the scale of gradient changes applied to network
         parameters.</li>
       <li><i>epochs</i>: The time of optimization processes on the training dataset repeatedly.</li>
+      <li><i>activation</i>: The choice of activation function for hidden layers.</li>
       <li><i>batch_size</i>: Size of batch to compute the loss. Updating parameters using the loss computed
         on a batch of data points prevents the network from going into some local optimal regions.</li>
       <li><i>max_grad_norm</i>: The value used to clip the parameter gradients before each update.</li>
-      <li><i>torch_seed</i>: Seed used for the random initialization of network parameters. Ways of initializing
-        the network always matter in different settings. Since we have no prior knowledge of this setting,
-        we simply control that initialization process by the pytorch seed.</li>
       <li><i>num_warmup_steps</i>: Warmup steps for the scheduler. Default 3.</li>
     </ul>
     <!-- <h4>Result</h4>

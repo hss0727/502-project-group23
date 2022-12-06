@@ -57,26 +57,38 @@
       a suite of topic and sentiment features, and subset language-specific reddit posts. We are able to use
       bag-of-words features to predict Ukrainian reddit scores with a 95% accuracy.
     </p>
-    <div class="col-md-10">
-      <div class="card p-0" style="border: none">
-        <img src="img/ML/comment_model.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <p style="font-weight: lighter; text-align: center;"><b>FIGURE 1 </b>Model Performance from Comment Features<a
-              href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Visualization.ipynb">Visualization
-              Code</a>.</p>
 
+    <div class="row py-3">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 img-responsive">
+            <img src="img/ML/comment_model.png" class="card-img-top" alt="...">
+          </div>
+          <div class="col-md-6 img-responsive">
+            <img src="img/ML/perf_comment.png" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 1 </strong>(left)Model Performance from
+              Comment Features. (right)Model Performance from Comment Features on each commodity.<br>
+              <a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Result_visualization.ipynb">Visualization
+                Code</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
     <p>
       We also try to predict commodity returns with sentiment and topic features. Financial assets returns are
       notoriously hard to predict. A positive R^2 in modeling means a better-than-guess prediction, and if the positive
-      R^2 stays long enough, it can be built into a trading signal. As Figure shows, even though most of our models can
+      R^2 stays long enough, it can be built into a trading signal. As <b>Figure 1</b> shows, even though most of
+      our models can
       only generate negative R^2, we
       are still able
       to make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit data
       has a low information-to-noise ratio for it to be used in commodity returns prediction. On the other hand, it
-      still can be used to generate decent prediction with advanced modeling.
+      shows potential be used to generate decent prediction with advanced modeling. For commodity like Natural Gas,
+      Reddit shows strong predictive power.
     </p>
     <br>
     <hr>
@@ -135,33 +147,6 @@
       prediction on the test dataset to avoid overfitting.
     </p>
 
-    <!-- <h4>Result</h4>
-    <p>
-      We insert all the hyperparameter characters and values into our tuning function and obtain the model
-      with the best prediction result. Our optimal gradient-boosting model uses only sentiment scores and
-      topic scores from the comments. Although we test different possible dimension-reduced datasets using
-      PCA, the transformation does not affect the result much. We remove the PCA process for our model to
-      save training time and computational power. The best estimators have learning rates of around 0.001,
-      maximum depths of about 100, and numbers of estimators of about 50. We give approximate values of
-      parameters since the models with parameters that differ in small scales tend to deliver similar good
-      results. And we consider the focus of generating the ideal model should be on following the
-      hyperparameter tuning workflow instead of trying to fit a fixed set of parameters to data.
-      The code used for the gradient boosting model can be found <a
-        href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Gradient_Boosting Rank.ipynb">here</a>.
-    </p>
-    <p>
-      Using our optimized gradient boosting model, we are able to achieve a positive r-squared score on
-      the prediction of our testing dataset at around 0.01257. Based on the hard-to-predict nature of
-      the commodity returns, the model performs well for our hypothesis.
-    </p>
-    <p>
-      We also obtain the prediction for each commodity from our optimal model. The r-squared score of
-      <b>Heating Oil</b>, <b>Wheat</b>, <b>Coffe</b>, <b>Natural Gas</b>, <b>Rough Rice</b>, <b>Soybean
-        Oil Futures</b>, <b>Sugar #11</b> are all positive and higher than 0 by around 0.01. Among all
-      the categories, <b>Soybean Meal Futures</b> has the highest score at around 0.173. Thus we
-      conclude that the optimal gradient boosting model performs exceptionally well on the return
-      of <b>Soybean Meal Futures</b>.
-    </p> -->
 
     <br>
 
@@ -187,135 +172,6 @@
       <li><i>max_depth</i>: The maximum depth limit the number of nodes in the tree</li>
     </ul>
 
-    <!-- <h4>Result</h4>
-
-
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 40%; text-align: center;">Commodity</th>
-            <th scope="col" style="width: 20%; text-align: center;">Comment</th>
-            <th scope="col" style="width: 20%; text-align: center;">Submission</th>
-            <th scope="col" style="width: 20%; text-align: center;">Comment+Submission</th>
-          </tr>
-        </thead>
-        <tbody style="text-align: center;">
-          <tr>
-            <td>Corn</td>
-            <td>-0.15</td>
-            <td>-0.45</td>
-            <td>-0.32</td>
-          </tr>
-
-          <tr>
-            <td>Crude Oil</td>
-            <td>-0.13</td>
-            <td>-0.08</td>
-            <td>-0.13</td>
-          </tr>
-
-          <tr>
-            <td>Heating Oil</td>
-            <td>-0.15</td>
-            <td>-0.08</td>
-            <td>-0.18</td>
-          </tr>
-
-          <tr>
-            <td>Wheat</td>
-            <td>-0.20</td>
-            <td>-0.35</td>
-            <td>-0.18</td>
-          </tr>
-
-          <tr>
-            <td>Cocoa</td>
-            <td>-0.14</td>
-            <td>-0.12</td>
-            <td>0.02</td>
-          </tr>
-
-          <tr>
-            <td>Coffee</td>
-            <td>-0.08</td>
-            <td>-0.20</td>
-            <td>-0.18</td>
-          </tr>
-
-          <tr>
-            <td>Natural Gas</td>
-            <td>-0.12</td>
-            <td>0.22</td>
-            <td>0.02</td>
-          </tr>
-
-          <tr>
-            <td>Oats</td>
-            <td>-0.05</td>
-            <td>-0.18</td>
-            <td>-0.25</td>
-          </tr>
-
-          <tr>
-            <td>RBOB Gasoline</td>
-            <td>-0.02</td>
-            <td>-0.10</td>
-            <td>-0.12</td>
-          </tr>
-
-          <tr>
-            <td>Rough Rice</td>
-            <td>-0.12</td>
-            <td>-0.14</td>
-            <td>-0.14</td>
-          </tr>
-
-          <tr>
-            <td>Soybean Meal</td>
-            <td>-0.10</td>
-            <td>-0.13</td>
-            <td>-0.06</td>
-          </tr>
-
-          <tr>
-            <td>Soybean Oil</td>
-            <td>-0.08</td>
-            <td>-0.14</td>
-            <td>-0.03</td>
-          </tr>
-
-          <tr>
-            <td>Sugar #11</td>
-            <td>-0.11</td>
-            <td>-0.14</td>
-            <td>-0.23</td>
-          </tr>
-
-          <tr>
-            <td>Newcastle Coal</td>
-            <td>-0.01</td>
-            <td>0.06</td>
-            <td>0.11</td>
-          </tr>
-
-          <tr>
-            <td>Barley</td>
-            <td>-0.53</td>
-            <td>-0.25</td>
-            <td>-0.32</td>
-          </tr>
-
-
-
-
-
-        </tbody>
-
-      </table>
-      <p style="font-weight: lighter; text-align: center;"><b>TABLE 1:</b> Selected subreddits</p>
-
-    </div> -->
 
     <br>
     <hr>
@@ -353,91 +209,7 @@
       <li><i>max_grad_norm</i>: The value used to clip the parameter gradients before each update.</li>
       <li><i>num_warmup_steps</i>: Warmup steps for the scheduler. Default 3.</li>
     </ul>
-    <!-- <h4>Result</h4>
-    <p>
-      We found that with proper initialization and training processes on the comment features,
-      we can achieve good results in 12 commodities:
-      <strong>Natural Gas</strong>, <strong>RBOB Gasoline</strong>, <strong>Oats</strong>,
-      <strong>Heating Oil</strong>, <strong>Corn Futures</strong>, <strong>Crude Oil</strong>,
-      <strong>Soybean Meal Futures</strong>, <strong>Wheat</strong>, <strong>Soybean Oil Futures</strong>,
-      <strong>Coffee</strong>, <strong>Newcastle Coal</strong>, <strong>Barley</strong>.
-    </p>
 
-    <p>The summary table of the best-case r-squared scores is listed below:(Sorted by testing R2 score)</p>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" style="width: 20%; text-align: center;">Commodity</th>
-          <th scope="col" style="width: 20%; text-align: center;">Testing R2 Score</th>
-          <th scope="col" style="width: 20%; text-align: center;">Training R2 Score</th>
-        </tr>
-      </thead>
-      <tbody style="text-align: center;">
-        <tr>
-          <td>Natural Gas</td>
-          <td>0.289160</td>
-          <td>0.120401</td>
-        </tr>
-        <tr>
-          <td>RBOB Gasoline</td>
-          <td>0.217282</td>
-          <td>0.088567</td>
-        </tr>
-        <tr>
-          <td>Oats</td>
-          <td>0.139280</td>
-          <td>0.075165</td>
-        </tr>
-        <tr>
-          <td>Heating Oil</td>
-          <td>0.131966</td>
-          <td>0.030550</td>
-        </tr>
-        <tr>
-          <td>Corn</td>
-          <td>0.120237</td>
-          <td>0.057378</td>
-        </tr>
-        <tr>
-          <td>Crude Oil</td>
-          <td>0.116677</td>
-          <td>0.093161</td>
-        </tr>
-        <tr>
-          <td>Soybean Meal</td>
-          <td>0.111873</td>
-          <td>0.052304</td>
-        </tr>
-        <tr>
-          <td>Wheat</td>
-          <td>0.104399</td>
-          <td>0.280816</td>
-        </tr>
-        <tr>
-          <td>Soybean Oil</td>
-          <td>0.055231</td>
-          <td>0.010789</td>
-        </tr>
-        <tr>
-          <td>Coffee</td>
-          <td>0.046736</td>
-          <td>0.030898</td>
-        </tr>
-        <tr>
-          <td>Newcastle Coal</td>
-          <td>0.042269</td>
-          <td>0.039902</td>
-        </tr>
-        <tr>
-          <td>Barley</td>
-          <td>0.029870</td>
-          <td>0.032735</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-weight: lighter; text-align: center;"><b>TABLE 2:</b> The Best R-squared Scores Achieved from
-      Feedforward Neural Network</p> -->
     <p>All the models code can be found <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/ML">here.</a>
     </p>
@@ -457,11 +229,11 @@
             <img src="img/ML/submission_model.png" class="card-img-top" alt="...">
           </div>
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 1 </strong>Performance of Different ML
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 2 </strong>Performance of Different ML
               Models. The left figure plots the performance using comment-generated features. The right figure plots the
               performance using submission-generated features.<br>
               <a
-                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Visualization.ipynb">Visualization
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Result_visualization.ipynb">Visualization
                 Code</a>
             </p>
           </div>
@@ -469,12 +241,41 @@
       </div>
     </div>
     <p>
-      Because the market is very efficient, financial asset's returns are hard to predict. Even though most of the
+      Because the market is very efficient, financial asset's returns are hard to predict. From <b>FIGURE 2</b>,
+      even though
+      most of the
       models do not work well, gradient boosting is able to generate positive returns. And we notice that
       comment-generated features generally have better results than submission-generated features.
     </p>
 
     <br>
+    <div class="row py-3">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 img-responsive">
+            <img src="img/ML/perf_comment.png" class="card-img-top" alt="...">
+          </div>
+          <div class="col-md-6 img-responsive">
+            <img src="img/ML/perf_submission.png" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;">
+              <b>FIGURE 3</b> Performance of Different ML
+              Models. The left figure plots the performance using comment-generated features. The right figure plots the
+              performance using submission-generated features.<br>
+              <a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Result_visualization.ipynb">Visualization
+                Code</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      <b>FIGURE 3</b> plots the model performance on each individual asset. It is clear to see some assets are better
+      predicted
+      than others. Prediction on Natrual Gas retursn are almost always better than other commodities.
+    </p>
 
     <hr>
     <br>

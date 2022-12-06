@@ -624,7 +624,10 @@
       <li>
         We use the pre-trained pipeline of <strong>analyze_sentimentdl_use_twitter</strong>
         provided by <strong>John Snow Labs</strong>, since that's the most suitable
-        medium-size pipeline for our Reddit case.
+        medium-size pipeline for our Reddit case. The language model in this pipeline is a large neural network
+        using encoded embeddings as inputs and
+        trained on the <strong>Sentiment140</strong> dataset in a distributed way, 
+        which is composed of 1.6 million tweets.
       </li>
       <li>
         While this pipeline outputs four kinds of sentiment results:

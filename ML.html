@@ -87,7 +87,7 @@
       are still able
       to make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit data
       has a low information-to-noise ratio for it to be used in commodity returns prediction. On the other hand, it
-      shows potential be used to generate decent prediction with advanced modeling. For commodity like Natural Gas,
+      shows potential to be used to generate decent prediction with advanced modeling. For commodity like Natural Gas,
       Reddit shows strong predictive power.
     </p>
     <br>
@@ -98,7 +98,7 @@
     <p>
       We split the training and testing dataset by 0.7 and 0.3 ratio from Ukrainian comment dataset, with 12859 and 5462
       posts
-      respectively. We utilized SparkML and Spark Pipeline to streamline the tokenization, word vectorization, and
+      respectively. We utiliz SparkML and Spark Pipeline to streamline the tokenization, word vectorization, and
       machine learning process. Logistic
       regression has the best performance with a 95.75 Accuracy.
       Our conclusion is that
@@ -277,11 +277,28 @@
       predicted
       than others. Predictions on Natural Gas returns are almost always better than other commodities.
     </p>
-
+    <div class="row py-4">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/ML/feature_importance.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 4 </strong>Feature Importance on Natural
+              Gas Prediction.<a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/feature_importance.ipynb">Visualization
+                Code.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      <b>FIGURE 4</b> plots the feature importance of gradient boosting method on natural gas prediction. The first
+      topic
+      related to [people, city, vote, crimea, putin, territory, state, country, force, belarus] has the best predictive
+      power. Topic timeseries and other commodity features also show strong importance in gradient boosting method.
+    </p>
     <hr>
     <br>
   </div> <!-- container -->
-
   <footer class="blog-footer">
     <p>
       <a href="#">Back to top</a>

@@ -31,12 +31,14 @@
     <nav class="navbar mx-auto bg-light px-4 fixed-top">
       <a class="navbar-brand" href="index.html">Big Data and Cloud Computing - Final Project</a>
       <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project Introduction</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a></li>
-        <li class="nav-item"><a class="nav-link" href="summary.html" style="color: black">Executive Summary</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#projectIntroduction" style="color: black">Project
+            Introduction</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#aboutTeam" style="color: black">About the Team</a>
+        </li>
         <li class="nav-item"><a class="nav-link" href="EDA.html" style="color: black">EDA</a></li>
         <li class="nav-item"><a class="nav-link" href="NLP.html" style="color: black">NLP</a></li>
         <li class="nav-item"><a class="nav-link" href="ML.html" style="color: black">Machine Learning</a></li>
+        <li class="nav-item"><a class="nav-link" href="summary.html" style="color: black">Conclusion</a></li>
       </ul>
     </nav>
 
@@ -45,76 +47,37 @@
 
 
     <br>
-    <h2>Executive Summary of the Project</h2>
+    <h2>Conclusion</h2>
     <hr>
     <br>
 
-
-
-
-    <br>
-    <br>
-    <h1>Use below as templates</h1>
-    <h4>
-      Summary
-    </h4>
-    <br>
-    <hr>
-    <h3>Natural Language Processing</h3>
-    <br>
     <p>
       While the sub-reddit dataset contains different types of data, the most important information remains
-      in the text. Thus, we combine and clean all the meaningful text and 
-      apply different NLP pipelines to the text column
-      to finally extract the important information, specifically, features in the timeline.
-    </p>
-    <p>  
-      We place our main focus
+      in the text. We place our main focus
       on the sentiment analysis and topic modeling. While sentiment analysis gives us the daily average sentiment
-      scores, topic modeling helps us extract the most significant topics and return the daily topic proportions, 
-      which are used as features in the later modeling for stationary patterns in the timeline.
-    </p>
-    <br>
-    <h4>Sentiment Analysis</h4>
-    <p>
-      We make use of the pre-trained pipeline of <strong>analyze_sentimentdl_use_twitter</strong> 
-      provided by <strong>John Snow</strong>, and apply it to both the submission and comment datasets.
-      Then we assign the sentiment scores of 'positive' reddits being 1.0 and others being 0.0. 
-      Finally we aggregate the sentiment scores by averaging them on a daily basis. 
+      scores, topic modeling helps us extract the most significant topics and generate the daily topic proportions.
     </p>
     <p>
-      We plot the final daily sentiment scores as well as the moving-average trend on a 10-day basis
-       for both the submission and comment datasets.
-    </p>  
-     <!-- IMAGE: LDA PIPELINE -->
-     <div class="row py-5">
+      <b>Figure xx</b> plots the daily sentiment scores as well as the moving-average trend on a 10-day basis
+      for both the submission and comment datasets.
+    </p>
+    <!-- IMAGE: LDA PIPELINE -->
+    <div class="row py-5">
       <div class="col-md-12">
         <div class="card p-0" style="border: none">
           <img src="img/NLP/sentiment_score_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <p style="font-weight: lighter; text-align: center;"><strong>FIGURE XX </strong>
               Sentiment Score Time Series. Trend is the 10-day moving average.<a
-              href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Line%20Plot.ipynb">Visualization
-              Code</a>.</p>
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Line%20Plot.ipynb">Visualization
+                Code</a>.</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- IMAGE END -->
-    <h4>Topic Modeling</h4>
     <p>
-      We use the <strong>LDA</strong> model provided in <strong>SparkMLlib</strong>. We contruct the 
-      whole pipeline using <strong>DocumentAssembler</strong>, <strong>Tokenizer</strong>, 
-      <strong>stopwords_cleaner_v2</strong>, <strong>finisher</strong>,
-      <strong>CountVectorizer</strong> and finally <strong>LDA</strong>.
-    </p>
-    <p>
-      We proceed with 15 topics, top 10 words per topic using this pipeline, for both the submission 
-      and comment datasets.
-    </p>
-    <p>
-      After we tag the reddits using the topic words and calculate daily proportions, finally we plot
-      the daily topic proportions in the timeline.
+      We construct 10 topics using LDA for both the submission and comment datasets. <b>Figure xx</b> plots the daily
+      topic proportions as timeseries.
     </p>
     <!-- IMAGE: SUBMISSIONS TOPIC MODELING TIME-SERIES -->
     <div class="row py-3">
@@ -134,18 +97,13 @@
       </div>
     </div>
     <!-- IMAGE END -->
-    <h4>NLP Features</h4>
     <p>
-      Finally we have the NLP features of sentiment scores and topic proportions in the timeline,
-      for both submissions and comments. 
+      Sentiment and topic can be seen as two major components of text data. Sentiment focuses on Redditor's feelings and
+      experience, while topic focuses on the facts and objective information. We build models with the generated
+      sentiment
+      and topic features to predict commodity daily returns from the
+      external dataset.
     </p>
-    <p>
-      We expect to build models with these features and 
-      targets as daily returns of specific commodities in the external dataset, in order to explore
-      how well we can achieve for the R-squared scores from the models, and whether some interesting findings 
-      on the stationary patterns exist.
-    </p>
-    
     <br>
     <hr>
     <br>

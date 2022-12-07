@@ -133,7 +133,7 @@
     <p>
       Our text data sets are the Reddit comments and submissions from January 1, 2022 to August 31, 2022, amounting to
       10,378,762 unique posts. For submission posts, "title" and "selftext" are concatenated. We leverage Apache
-      Spark and Spark NLP to build the text processing pipeline. <b>Figure 2</b> plots our data processing flow. First,
+      Spark and Spark NLP to build the text processing pipeline. <b>Figure 1</b> plots our data processing flow. First,
       we used the pre-trained model
       “detect_language_375” provided by John Snow Labs, to detect the languages of each post and estimate the language
       proportion from 0 to 1. We include posts in Ukrainian, Russian, and English, and create three sub-datasets for
@@ -222,7 +222,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/pipeline.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 3 </strong>LDA Pipeline</p>
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 2 </strong>LDA Pipeline</p>
           </div>
         </div>
       </div>
@@ -342,7 +342,7 @@
     </ul>
 
     <p>
-      Topics found from the LDA model can be later used to label the documents. In <b>Figure 4</b> shows the change of
+      Topics found from the LDA model can be later used to label the documents. <b>Figure 3</b> shows the change of
       topics of more interest in Reddit over time. The figures are drawn by first tagging the documents using the topic
       words and then calculating daily proportions. This shows that the topic model can be used transform the textual
       analysis to classification problems.
@@ -357,7 +357,7 @@
           <img src="img/NLP/TM-submissions-timeseries.png" class="card-img-top" alt="...">
           <img src="img/NLP/TM-comments-timeseries.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 4 </strong>Time-series plot of topics
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 3 </strong>Time-series plot of topics
               proportion in the Reddit submissions (top) and comments (bottom)<br>
               <a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/LDA_Timeseries.ipynb">LDA
@@ -409,7 +409,7 @@
       <div class="card p-0" style="border: none">
         <img src="img/EDA/submission_count_languages.png" class="card-img-top" alt="...">
         <div class="card-body">
-          <p style="font-weight: lighter; text-align: center;"><b>FIGURE 5 </b>Volumes of submissions in English,
+          <p style="font-weight: lighter; text-align: center;"><b>FIGURE 4 </b>Volumes of submissions in English,
             Ukrainian, and
             Russian over the observation period.<a
               href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/language-timeseries-line-chart.ipynb">Visualization
@@ -796,7 +796,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/sentiment_score_plot.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 6 </strong>
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 5 </strong>
               Sentiment Score Time Series. Trend is the 10-day moving average.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/Sentiment%20Line%20Plot.ipynb">Visualization
                 Code</a>.</p>
@@ -805,7 +805,7 @@
       </div>
     </div>
     <p>
-      <b>Figure 6</b> plots the aggregated daily average sentiment scores for comments and submissions. Both charts had
+      <b>Figure 5</b> plots the aggregated daily average sentiment scores for comments and submissions. Both charts had
       a steep upward trend at the end of February. Compared to submission sentiment score's stale trend, comment
       sentiment is getting more and more positive. We think it makes sense that comments are usually more emotional than
       submissions, especially at the beginning of the conflict. That's why we see a large dip at the beginning of the
@@ -816,7 +816,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/RU_conflict_timeline.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 7 </strong>Russia-Ukraine Conflict
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 6 </strong>Russia-Ukraine Conflict
               Event Timeline.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Sentiment/timeline.ipynb">Visualization
                 Code</a>.</p>
@@ -824,7 +824,7 @@
         </div>
       </div>
     </div>
-    <p><b>Figure 7</b> plots the event line of Russia-Ukraine Conflict.</p>
+    <p><b>Figure 6</b> plots the event line of Russia-Ukraine Conflict.</p>
     <p>
       In the <strong>Prelude</strong> phase, contradictions were fermented between Russia and Ukraine on many
       issues, among which the most significant one is whether Ukraine should enter NATO.
@@ -883,7 +883,7 @@
 
     <p>
       It is a common practice to use correlation as preliminary analysis to test simple relationships between variables.
-      <b>Figure 8</b> plots the Pearson correlations between all the timeseries we collected during the 8-month period.
+      <b>Figure 7</b> plots the Pearson correlations between all the timeseries we collected during the 8-month period.
     </p>
 
     <div class="row py-3">
@@ -891,7 +891,7 @@
         <div class="card p-0" style="border: none">
           <img src="img/NLP/correlations.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 8 </strong>Correlations between topics,
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 7 </strong>Correlations between topics,
               sentiments, and commodity returns.<a
                 href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/Topic/Correlations.ipynb">Visualization
                 Code</a>.</p>

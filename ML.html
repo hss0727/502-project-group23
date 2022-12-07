@@ -53,8 +53,10 @@
     <h4>Summary</h4>
     <br>
     <p>
-      Reddit is a fruitful online community full of opinions on different topics. From using NLP techniques, we extract
-      a suite of topic and sentiment features, and subset language-specific reddit posts. We are able to use
+      Reddit is a large online community with different opinions on different topics. From using NLP techniques, we
+      have extracted
+      a suite of topic and sentiment features, and subset language-specific reddit posts. Now, to use the data for
+      specific task, we are able to use
       bag-of-words features to predict Ukrainian reddit scores with a 95% accuracy.
     </p>
 
@@ -79,16 +81,18 @@
       </div>
     </div>
     <p>
-      We also predict commodity returns with sentiment and topic features. Financial asset returns are
+      As our primary goal, we also predict commodity returns with sentiment and topic features. Financial asset returns
+      are
       notoriously hard to predict. A positive R^2 in modeling means a better-than-guess prediction, and if the positive
       R^2 stays long enough, it can be built into a trading signal. As <b>Figure 1</b> shows, even though most of
       our models can
       only generate negative R^2, we
-      can still make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit
+      can make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit
       data
       has a low information-to-noise ratio for it to be used in commodity returns prediction. On the other hand, it
-      shows potential to be used to generate decent prediction with advanced modeling. For commodity like Natural Gas,
-      Reddit shows strong predictive power.
+      shows potential to generate decent prediction with optimal features and advanced modeling. The most remarkable
+      result is for commodity like Natural Gas,
+      Reddit shows strong predictive power with almost any models.
     </p>
     <br>
     <hr>

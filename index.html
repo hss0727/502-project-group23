@@ -62,18 +62,46 @@
           <br>
           <p>
             During this year, the financial market is having extra turmoil due to the ongoing Russia-Ukraine Conflict.
+            Figure 1 and 2 show the event effect of Russia-Ukraine conflict on S&P 500 index and Wheat Price.
             This project aims to study this event from a perspective combining the commodity market with online social
             media Reddit. Modern finance theory holds that asset prices are mainly affected by market and psychological
             factors. From the market perspective, global economies are presently facing severe challenges due to food
             and energy shortages, since
             Ukraine and Russia are among the major exporters of wheat, natural gas, etc. From the behavioral finance
-            perspective, geopolitical conflict can have an impact on investors’ psychological factors, which in turn can
+            perspective, geopolitical conflict can have an impact on investors' psychological factors, which in turn can
             have an impact on commodity prices. This project will explore the relationship between the food and energy
             commodity market and Russia-Ukraine related Reddit posts, in hope that the data can capture both market and
             psychological factors. If another emergent event happens in the future, a similar approach can be conducted
             to evaluate the impact on commodity markets.
           </p>
-
+          <div class="row py-3">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-6 img-responsive">
+                  <img src="img/nyt.png" class="card-img-top" alt="...">
+                </div>
+                <div class="col-md-6 img-responsive">
+                  <img src="img/ft.png" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;"><strong>FIGURE 1 and 2 </strong>(left)S&P 500
+                    index
+                    from <a
+                      href="https://www.nytimes.com/2022/02/23/business/dealbook/russia-sanctions-ukraine-markets.html">New
+                      York Times</a>. (right)Wheat price from <a
+                      href="https://www.ft.com/content/cde1a3c5-9143-457c-9e9f-a09edfec8148">Financial Times</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>
+            To be able to analyze the Reddit data in an efficient and quantitative way, we borrow techniques from the
+            burgeoning Natural Langauge Processing(NLP) field including Topic Modeling, Sentiment Analysis, Language
+            Detection, etc. For the regression taks of predicting returns, we experiment a suite of machine learning(ML)
+            algorithms including Lasso/Ridge Regression, Principal Component Regression, Random Forest, Gradient
+            Boosting, and Neural Network.
+          </p>
           <p>
             As Reddit is a large community with thousands of hundreds of users that have a large volume of information,
             we utilize Big Data Processing tool Spark to handle the heavy data lifting. Our ultimate goal to predict

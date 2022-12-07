@@ -47,7 +47,8 @@
 
 
     <br>
-    <h2>Conclusion</h2>
+    <h2>Executive Summary of the Proejct</h2>
+    <br>
     <hr>
     <h3>Introduction</h3>
     <p>
@@ -64,6 +65,47 @@
       measurements. With our result, we can make the market more resilient to shocks like this.
     </p>
     <br>
+    <br>
+    <hr>
+    <h3>EDA</h3>
+    <p>
+      A <i>subreddit</i> is a specific community in the social media website Reddit and it is dedicated to a specific topic that people write about. One way to filter out the contents from the original Reddit dataset, which contains every posts and comments from January 2021 to August 2022.
+    </p>
+    <p>
+      We decided to replicate the date collection process from <a href="https://arxiv.org/abs/2206.05107">this paper</a>. The resulting subset from the original dataset indicates that the submissions are more active after the Russia-Ukraine conflict became a global issue. 
+    </p>
+
+
+       <!-- IMAGE: number of posts time series -->
+       <div class="row py-5">
+        <div class="col-md-12">
+          <div class="card p-0" style="border: none">
+            <img src="img/EDA/submission_time_series_bar_plot.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p style="font-weight: lighter; text-align: center;"><b>FIGURE XX:</b>Starting from February 2022, number of posts in the dataset increased drastically when the Russia-Ukraine conflict became a global issue.<a href="https://github.com/gu-anly502/fall-2022-project-eda-adb-project-group-23/blob/main/visualize_code/time_barplot.ipynb">Visualization Code</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- IMAGE END -->
+
+
+    <p>
+      The overall EDA process included <b>Data Engineering, Exploratory Analysis, and Analysis on the Languages.</b> The cleaned dataset is then used in the Spark NLP (Natural Language Processing) pipeline to Topic Model and Sentiment Analysis.
+    </p>
+
+    <p>
+      We collected Commodity Prices of <mark>Barly, Cocoa, Coffee, Corn, Crude Oil, etc.</mark> from investing.com as our External Data. We want to find out whether sentiments in Russia-Ukraine Conflict Reddits help explain price movement in the commodity market. 
+    </p>
+
+
+    <br>
+    <br>
+    <hr>
+    <h3>NLP</h3>
+    <p>
+
+
 
     <p>
       While the subreddit dataset contains different types of data, the most important information remains

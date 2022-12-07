@@ -52,10 +52,10 @@
     <br>
 
     <p>
-      While the sub-reddit dataset contains different types of data, the most important information remains
-      in the text. We place our main focus
-      on the sentiment analysis and topic modeling. While sentiment analysis gives us the daily average sentiment
-      scores, topic modeling helps us extract the most significant topics and generate the daily topic proportions.
+      While the subreddit dataset contains different types of data, the most important information remains
+      in the text. We place our primary focus
+      on sentiment analysis and topic modeling. While sentiment analysis gives us the daily average sentiment
+      scores, topic modeling helps us extract the essential topics and generate the daily topic proportions.
     </p>
     <p>
       <b>Figure xx</b> plots the daily sentiment scores as well as the moving-average trend on a 10-day basis
@@ -99,10 +99,48 @@
     <!-- IMAGE END -->
     <p>
       Sentiment and topic can be seen as two major components of text data. Sentiment focuses on Redditor's feelings and
-      experience, while topic focuses on the facts and objective information. We build models with the generated
+      experience, while topic focuses on facts and objective information. We build models with the generated
       sentiment
-      and topic features to predict commodity daily returns from the
+      and topic features to predict daily commodity returns from the
       external dataset.
+    </p>
+    <p>
+      We experiment 6 machine learning models to minimize Mean Squared Error(MSE), including Lasso/Ridge Regression,
+      Principal Component Regression, Random Forest, Gradient Boosting, and Neural Network. Our training set is the
+      commodity returns from February 23rd to June 30th; validation set is from July 1st to July 31st; and our test
+      set is from August 1st to August 31st.
+    </p>
+    <div class="row py-5">
+      <div class="col-md-12">
+        <div class="card p-0" style="border: none">
+          <img src="img/ML/perf_comment.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="font-weight: lighter; text-align: center;"><strong>FIGURE XX </strong>
+              Model performance with comment-generated features.<a
+                href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Result_visualization.ipynb">Visualization
+                Code</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      Predicting returns is a notoriously difficult task. As <b>FIGURE xx</b> shows, while most of the commodities we
+      attempt
+      to predict show poor
+      performance, we are able to achieve promising R^2 with models other than neural network.
+    </p>
+    <h4>Next Steps</h4>
+    <p>
+      Our analysis includes 1-day lag commodity returns in our feature set, which is equivalent to an AR(1) model.
+      While the commodity market can have spillover effects lasting more than one day, it can be helpful to include more
+      orders in our prediction model. Vector Autoregression(VAR) can further help us study the relationships between
+      the Reddit community and the financial market.
+    </p>
+    <p>
+      Correlation analysis, predicting algorithms, and AR model help us make associational claims about the feature set
+      and target variable. A caveat of this reasoning is that the relationship can be coincidental or non-causal.
+      To make the project more rigorous, a next step for us is studying the causal effect between Reddit posts and
+      commodity returns.
     </p>
     <br>
     <hr>

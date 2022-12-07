@@ -79,13 +79,13 @@
       </div>
     </div>
     <p>
-      We also try to predict commodity returns with sentiment and topic features. Financial assets returns are
+      We also predict commodity returns with sentiment and topic features. Financial asset returns are
       notoriously hard to predict. A positive R^2 in modeling means a better-than-guess prediction, and if the positive
       R^2 stays long enough, it can be built into a trading signal. As <b>Figure 1</b> shows, even though most of
       our models can
       only generate negative R^2, we
-      are still able
-      to make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit data
+      can still make a positive R^2 prediction using Gradient Boosting. This result is two-fold. On the one hand, reddit
+      data
       has a low information-to-noise ratio for it to be used in commodity returns prediction. On the other hand, it
       shows potential to be used to generate decent prediction with advanced modeling. For commodity like Natural Gas,
       Reddit shows strong predictive power.
@@ -98,17 +98,17 @@
     <p>
       We split the training and testing dataset by 0.7 and 0.3 ratio from Ukrainian comment dataset, with 12859 and 5462
       posts
-      respectively. We utiliz SparkML and Spark Pipeline to streamline the tokenization, word vectorization, and
+      respectively. We utilize SparkML and Spark Pipeline to streamline the tokenize, word vectorization, and
       machine learning process. Logistic
       regression has the best performance with a 95.75 Accuracy.
-      Our conclusion is that
-      bag-of-words approach text classification methods can be applied to any languages that use space to separate
-      words, and perform well. The code can be found <a
+      We conclude that
+      bag-of-words approach text classification methods can be applied to any language that uses space to separate
+      words and perform well. The code can be found <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/blob/master/code/ML/Predict_Comment_Score.ipynb">here</a>.
     </p>
     <br>
     <hr>
-    <h4>Q7, Q9, & Q10. How to use Redit Topics and Sentiments to Predict Commodity Returns?</h4>
+    <h4>Q7, Q9, & Q10. How to use Reddit Topics and Sentiments to Predict Commodity Returns?</h4>
     <br>
     <h4>Models</h4>
     <br>
@@ -117,13 +117,13 @@
     <p>
       <b>Boosting</b> refers to modifying a weak learner or a weak hypothesis to make it perform better.
       A <b>weak hypothesis</b> or a <b>weak learner</b> is defined as one whose performance is at least
-      slightly better than random chance.
+      slightly better than a random chance.
     </p>
     <p>
       In gradient boosting, decision trees are used as the weak learner and are parameterized using
       gradient descent. Each tree obtains the instances it handles well and leaves the hard-to-handle
       instances to the following trees. The model adds a fixed number of tree-structured weak learners
-      once at a time and stops when the loss reaches an acceptable level or no longer improves on
+      once a time and stops when the loss reaches an acceptable level or no longer improves on
       external validation data. Thus, gradient boosting is a greedy algorithm that can quickly overfit
       a training dataset. We tune several key hyperparameters to add constraints to the training process.
     </p>
@@ -157,13 +157,13 @@
     <p>
       Random Forest is another ensemble method that enhances learning by grouping weak learners to form a single strong
       learner. The robustness of Random Forest comes from the wisdom of crowds and works well on large datasets. Also,
-      decision trees are goot at capturing non-linear relationships between input features and the target variable.
+      decision trees are good at capturing non-linear relationships between input features and the target variable.
     </p>
 
     <p>
       We use Random Forest Regressor model to predict commodity returns. Similar to Boosting, the parameters tuned in
       the model are n_estimators and max_depth. Then we set up lists of these parameters and loop through all
-      vombinations to get the best set of parameters. Finally, we filter out the estimators with the highest r-squared
+      combinations to get the best set of parameters. Finally, we filter out the estimators with the highest r-squared
       score.
     </p>
 
@@ -178,18 +178,18 @@
 
     <h4>Feedforward Neural Network</h4>
     <p>
-      <strong>Feedforward Neural Network</strong> is a group of models, with use of linear layers and activation.
+      <strong>Feedforward Neural Network</strong> is a group of models using linear layers and activation.
       It could be used to model non-linear relationships and dig into the deep insights of a dataset.
       Gradient descent based optimizers and schedulers are used for the training process.
       Neural Network is different from the previous two methods. It requires a large number of choices for training
       hyper-parameters.
     </p>
     <p>
-      To avoid overfittiing, we simply maintain 2 hidden layers for the network, with the units of the 2nd
+      To avoid overfitting, we maintain 2 hidden layers for the network, with the units of the 2nd
       hidden layer being 2 times the units of the 1st hidden layer.
     </p>
     <p>
-      We use a Adam optimizer, a linear scheduler with warmups and the MSE loss function
+      We use an Adam optimizer, a linear scheduler with warmups and, the MSE loss function
       for the optimization program.
     </p>
     <p>
@@ -210,7 +210,7 @@
       <li><i>num_warmup_steps</i>: Warmup steps for the scheduler. Default 3.</li>
     </ul>
 
-    <p>All the models code can be found <a
+    <p>All the models' code can be found <a
         href="https://github.com/gu-anly502/fall-2022-reddit-big-data-project-project-group-23/tree/master/code/ML">here.</a>
     </p>
     <br>
@@ -241,10 +241,9 @@
       </div>
     </div>
     <p>
-      Because the market is very efficient, financial asset's returns are hard to predict. From <b>FIGURE 2</b>,
+      Because the market is very efficient, financial asset returns are hard to predict. From <b>FIGURE 2</b>,
       even though
-      most of the
-      models do not work well, gradient boosting is able to generate positive returns. And we notice that
+      most models do not work well, gradient boosting can generate positive returns. Moreover, we notice that
       comment-generated features generally have better results than submission-generated features.
     </p>
 
@@ -273,7 +272,7 @@
       </div>
     </div>
     <p>
-      <b>FIGURE 3</b> plots the model performance on each individual asset. It is clear to see some assets are better
+      <b>FIGURE 3</b> plots the model performance on each asset. It is clear to see that some assets can be better
       predicted
       than others. Predictions on Natural Gas returns are almost always better than other commodities.
     </p>
